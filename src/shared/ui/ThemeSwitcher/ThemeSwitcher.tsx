@@ -1,9 +1,10 @@
 import {FC} from 'react';
-import {Button} from "shared/ui/Button/Button";
-import SunIcon from "shared/assets/icons/sun-solid.svg"
-import MoonIcon from "shared/assets/icons/moon-solid.svg"
-import {useTheme} from "app/providers/ThemeProvider";
-import {Theme} from "app/providers/ThemeProvider/lib/ThemeContext";
+import {Button} from "shared/ui";
+import {useTheme} from "shared/lib/hooks/useTheme";
+import {Theme} from "app/providers/ThemeProvider";
+import SunIcon from "shared/assets/icons/themeIcons/sun-solid.svg"
+import MoonIcon from "shared/assets/icons/themeIcons/moon-solid.svg"
+
 
 interface ThemeSwitcherProps {
     className?: string
