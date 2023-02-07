@@ -4,6 +4,7 @@
     "paths" : {
       "*": ["./src/*"]
     },
+"strictNullChecks": true,
     "outDir": "./dist/",
     "noImplicitAny": true,
     "module": "ESNext",
