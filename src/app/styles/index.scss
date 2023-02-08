@@ -3,19 +3,18 @@
 @import "./themes/dark";
 @import "./themes/light";
 
-
 .app {
-   height: 100vh;
-   font: var(--font-m);
-   background: var(--bg-color);
-   color: var(--primary-color);
-   transition: 0.6s;
+  height: 100vh;
+  font: var(--font-m);
+  background: var(--bg-color);
+  color: var(--primary-color);
+  transition: 0.6s;
 }
 
 .page-wrapper {
-   display: flex;
+  display: flex;
 }
 
 .page-content {
-   flex-grow: 1;
+  flex-grow: 1;
 }

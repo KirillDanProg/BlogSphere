@@ -4,7 +4,8 @@ export const Theme = {
   LIGHT: 'light',
   DARK: 'dark'
 } as const
-export type ThemeType = typeof Theme
+
+export type ThemeType = 'light' | 'dark'
 
 export interface IThemeContext {
   theme?: ThemeType

@@ -15,8 +15,8 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 export const Button: FC<ButtonProps> = (props) => {
   const {
-    className,
-    theme,
+    className = '',
+    theme = ButtonTheme.PRIMARY,
     children,
     ...otherProps
   } = props
