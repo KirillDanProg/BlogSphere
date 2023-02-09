@@ -1,0 +1,21 @@
+{
+	"Create a React component": {
+		"prefix": "rfc",
+		"body": [
+			"import s from './${TM_FILENAME_BASE}.module.scss'",
+			"import { classNames } from 'shared/lib/classNames/classNames'",
+
+			"interface ${1:${TM_FILENAME_BASE}}Props {",
+			"\tclassName?: string",
+			"}",
+			"",
+			"export const ${1:${TM_FILENAME_BASE}} = (props: ${1:${TM_FILENAME_BASE}}Props ) => {",
+			"\treturn (",
+			"\t\t<div className={classNames(s.${TM_FILENAME_BASE})}>",
+			"\t\t</div>",
+			"\t)",
+			"}",
+			"",
+		]
+	},
+}

@@ -4,20 +4,21 @@ import { Navbar } from 'widgets/Navbar'
 import { Suspense } from 'react'
 import { Sidebar } from 'widgets/Sidebar'
 import { useTheme } from 'shared/lib/hooks/useTheme'
+import { PageLoader } from 'widgets/PageLoader/PageLoader'
 import './styles/index.scss'
 
 export const App = () => {
-  const { theme } = useTheme()
+    const { theme } = useTheme()
 
-  return (
-        <Suspense fallback="">
+    return (
+        
             <div className={classNames('app', {}, [theme])}>
-                <Navbar/>
+                <Navbar />
                 <div className="page-wrapper">
-                    <Sidebar/>
-                    <AppRouter/>
+                    <Sidebar />
+                    <AppRouter />
                 </div>
             </div>
-        </Suspense>
-  )
+    
+    )
 }
