@@ -1,12 +1,12 @@
 import { useTranslation } from 'react-i18next'
 
 const AboutPage = () => {
-  const { t } = useTranslation('about')
-  return (
+    const { t } = useTranslation('about')
+    return (
         <div>
             {t('title')}
         </div>
-  )
+    )
 }
 
 export default AboutPage
