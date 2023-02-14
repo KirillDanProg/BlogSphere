@@ -1,4 +1,4 @@
- {
+{
   "env": {
     "browser": true,
     "es2021": true
@@ -23,18 +23,36 @@
     "i18next"
   ],
   "rules": {
-    "@typescript-eslint/indent": ["warn", 4],
+    "@typescript-eslint/indent": [
+      "warn",
+      4
+    ],
     "@typescript-eslint/strict-boolean-expressions": "warn",
     "@typescript-eslint/prefer-nullish-coalescing": "warn",
     "@typescript-eslint/explicit-function-return-type": "off",
     "react/react-in-jsx-scope": "off",
-    "@typescript-eslint/naming-convention": [0],
+    "@typescript-eslint/naming-convention": [
+      0
+    ],
     "@typescript-eslint/consistent-type-imports": "warn",
-     "i18next/no-literal-string": ["error", {"markupOnly": true}],
-    "react/jsx-curly-spacing": [2,  "always"],
-//    "selector-pseudo-element-colon-notation": [2, "double"],
+    "i18next/no-literal-string": [
+      "error",
+      {
+        "markupOnly": true,
+        "ignoreAttribute": [
+          "data-testid",
+          "to",
+          "alt"
+        ]
+      }
+    ],
+    "react/jsx-curly-spacing": [
+      2,
+      "always"
+    ],
+    //    "selector-pseudo-element-colon-notation": [2, "double"],
     "keyframes-name-pattern": "off"
-//    "declaration-block-no-shorthand-property-overrides": [2, true]
-//    "i18next/no-literal-string": 2
+    //    "declaration-block-no-shorthand-property-overrides": [2, true]
+    //    "i18next/no-literal-string": 2
   }
 }
