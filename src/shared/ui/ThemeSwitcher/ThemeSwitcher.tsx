@@ -6,17 +6,24 @@ import SunIcon from 'shared/assets/icons/themeIcons/sun-solid.svg'
 import MoonIcon from 'shared/assets/icons/themeIcons/moon-solid.svg'
 
 interface ThemeSwitcherProps {
-  className?: string
+    className?: string
 }
 
-export const ThemeSwitcher: FC<ThemeSwitcherProps> = (props) => {
-  const { theme, toggleTheme } = useTheme()
+export const ThemeSwitcher: FC<ThemeSwitcherProps> = () => {
+    const {
+        theme,
+        toggleTheme
+    } = useTheme()
 
-  return (
-        <Button onClick={toggleTheme}>
+    return (
+        <Button onClick={ toggleTheme }>
             {
-                theme === Theme.LIGHT ? <SunIcon fill="#fffb0d" width="30px"/> : <MoonIcon fill="#4d48bc" width="30px"/>
+                theme === Theme.LIGHT
+                    // eslint-disable-next-line i18next/no-literal-string
+                    ? <SunIcon fill="#fffb0d" width="30px"/>
+                    // eslint-disable-next-line i18next/no-literal-string
+                    : <MoonIcon fill="#4d48bc" width="30px"/>
             }
         </Button>
-  )
+    )
 }
