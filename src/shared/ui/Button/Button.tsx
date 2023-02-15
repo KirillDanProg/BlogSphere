@@ -2,31 +2,32 @@ import { type ButtonHTMLAttributes, type FC } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import s from './Button.module.scss'
 
-export enum ButtonTheme {
-  PRIMARY = 'primary',
-  INVERTED = 'inverted',
-  OUTLINED = 'outlined'
+export enum ButtonVariant {
+    PRIMARY = 'primary',
+    INVERTED = 'inverted',
+    OUTLINED = 'outlined'
 }
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  className?: string
-  theme?: ButtonTheme
+    className?: string
+    variant?: ButtonVariant
 }
 
 export const Button: FC<ButtonProps> = (props) => {
-  const {
-    className = '',
-    theme = ButtonTheme.PRIMARY,
-    children,
-    ...otherProps
-  } = props
+    const {
+        className = '',
+        variant = ButtonVariant.PRIMARY,
+        children,
+        ...otherProps
+    } = props
 
-  return (
+    return (
         <button
-              className={classNames(s.Button, {}, [className, s[theme]])}
-              {...otherProps}
+            data-testid="button"
+            className={ classNames(s.Button, {}, [className, s[variant]]) }
+            { ...otherProps }
         >
             {children}
         </button>
-  )
+    )
 }
