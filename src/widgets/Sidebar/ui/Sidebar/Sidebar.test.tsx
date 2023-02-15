@@ -11,18 +11,19 @@ describe('Sidebar', () => {
             .toBeInTheDocument()
     })
 
-    it('testing sidebar toggle effect', () => {
-        renderWithTranslation(
-            <Sidebar/>
-        )
+    it('testing sidebar toggle', () => {
+        renderWithTranslation(<Sidebar/>)
+        const toggleButton = screen.queryByTestId('sidebar-toggle')
+        expect(screen.queryByTestId('sidebar'))
+            .toBeInTheDocument()
         expect(screen.queryByTestId('sidebar'))
             .toHaveClass('collapsed')
-        const toggleButton = screen.queryByTestId('sidebar-toggle')
-        if (toggleButton != null) {
-            fireEvent.click(toggleButton)
-        }
+        ;(toggleButton != null) && fireEvent.click(toggleButton)
         expect(screen.queryByTestId('sidebar'))
             .not
+            .toHaveClass('collapsed')
+        ;(toggleButton != null) && fireEvent.click(toggleButton)
+        expect(screen.queryByTestId('sidebar'))
             .toHaveClass('collapsed')
     })
 })
