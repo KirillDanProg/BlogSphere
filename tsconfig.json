@@ -1,10 +1,12 @@
 {
   "compilerOptions": {
     "baseUrl": "./",
-    "paths" : {
-      "*": ["./src/*"]
+    "paths": {
+      "*": [
+        "./src/*"
+      ]
     },
-"strictNullChecks": true,
+    "strictNullChecks": true,
     "outDir": "./dist/",
     "noImplicitAny": true,
     "module": "ESNext",
@@ -19,5 +21,10 @@
     "compilerOptions": {
       "module": "CommonJS"
     }
-  }
+  },
+  "include": [
+    "src/**/*",
+    "config/jest/**/*",
+    "config/jest/mocks/fileMock.tsx"
+  ]
 }
