@@ -4,6 +4,7 @@ import s from './Button.module.scss'
 
 export enum ButtonVariant {
     PRIMARY = 'primary',
+    DEFAULT = 'default',
     INVERTED = 'inverted',
     OUTLINED = 'outlined'
 }
@@ -16,7 +17,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 export const Button: FC<ButtonProps> = (props) => {
     const {
         className = '',
-        variant = ButtonVariant.PRIMARY,
+        variant = ButtonVariant.DEFAULT,
         children,
         ...otherProps
     } = props

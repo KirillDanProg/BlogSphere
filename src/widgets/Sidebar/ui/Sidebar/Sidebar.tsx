@@ -22,7 +22,7 @@ export const Sidebar: FC<SidebarProps> = (props) => {
             <Button
                 data-testid="sidebar-toggle"
                 onClick={ toggleSidebar }
-                variant={ ButtonVariant.OUTLINED }
+                variant={ ButtonVariant.PRIMARY }
             >
                 Toggle
             </Button>

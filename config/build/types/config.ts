@@ -1,6 +1,6 @@
 type ModeType = 'production' | 'development'
 
-export interface IPaths {
+export interface BuildPaths {
     entry: string
     output: string
     html: string
@@ -11,9 +11,10 @@ export interface BuildEnv {
     mode: ModeType
     port: number
 }
+
 export interface BuildOptions {
     mode: ModeType
-    paths: IPaths
+    paths: BuildPaths
     port: number
     isDev: boolean
 }

@@ -25,6 +25,7 @@
   "include": [
     "src/**/*",
     "config/jest/**/*",
-    "config/jest/mocks/fileMock.tsx"
+    "config/.storybook/*.ts",
+    "config/build/*",
   ]
 }
