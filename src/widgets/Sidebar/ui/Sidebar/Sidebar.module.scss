@@ -1,8 +1,11 @@
+@import "app/styles/mixins/mixins.scss";
+
 .Sidebar {
+  @include gradientBgColor(var(--inverted-bg-color), var(--bg-color-sec));
   position: relative;
   width: var(--sidebar-width);
   height: calc(100vh - var(--navbar-height));
-  background-color: var(--inverted-bg-color);
+  //background-color: var(--inverted-bg-color);
   transition: width 0.3s;
 }
 
