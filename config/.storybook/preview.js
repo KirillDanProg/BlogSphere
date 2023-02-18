@@ -1,6 +1,7 @@
 import { StyleDecorator } from '../../src/shared/config/storybook/decorators/StyleDecorator';
 import { ThemeDecorator } from '../../src/shared/config/storybook/decorators/ThemeDecorator';
 import { Theme } from '../../src/app/providers/ThemeProvider';
+import { RouterDecorator } from '../../src/shared/config/storybook/decorators/RouterDecorator';
 
 export const parameters = {
   backgrounds: {
@@ -17,6 +18,7 @@ export const parameters = {
 };
 
 export const decorators = [
+  ThemeDecorator(Theme.LIGHT),
+  RouterDecorator,
   StyleDecorator,
-  ThemeDecorator(Theme.LIGHT)
 ];
