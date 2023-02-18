@@ -1,4 +1,4 @@
-import './Loader.scss'
+import s from './Loader.module.scss'
 
 interface LoaderProps {
     className?: string
@@ -6,8 +6,7 @@ interface LoaderProps {
 
 export const Loader = (props: LoaderProps) => {
     return (
-        <div>
-            <span className="loader"></span>
+        <div className={ s.loader }>
         </div>
     )
 }
