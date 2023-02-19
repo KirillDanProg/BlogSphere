@@ -1,4 +1,4 @@
-import { type StoryFn } from '@storybook/react'
+import { type ComponentStory } from '@storybook/react'
 import { Navbar } from 'widgets/Navbar'
 import { Theme } from 'app/providers/ThemeProvider'
 import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecorator'
@@ -8,7 +8,7 @@ export default {
     component: Navbar
 }
 
-const Template: StoryFn<typeof Navbar> = (args) => <Navbar { ...args }/>
+const Template: ComponentStory<typeof Navbar> = (args) => <Navbar { ...args }/>
 
 export const LightNavbar = Template.bind({})
 LightNavbar.args = {}
