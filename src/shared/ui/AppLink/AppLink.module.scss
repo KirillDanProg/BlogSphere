@@ -1,27 +1,28 @@
-@import "app/styles/mixins/mixins.scss";
+@import "../../../app/styles/mixins/mixins";
 
 .AppLink {
-  margin-left: 10px;
-  color: var(--inverted-primary-color);
-  text-decoration: none;
-  text-transform: uppercase;
+    margin-left: 10px;
+    color: var(--text-color);
+    text-decoration: none;
+    text-transform: uppercase;
 }
 
 .default {
-  @include gradientColor(var(--secondary-color), var(--secondary-color-bright));
+    @include gradient-color(var(--secondary-color), var(--secondary-color-bright));
 }
 
 .primary {
-  @include gradientColor(var(--primary-color), var(--primary-color-light));
+    @include gradient-color(var(--primary-color), var(--primary-color-light));
 }
 
 .inverted {
-  @include gradientColor(var(--primary-color), var(--primary-color-light));
+    @include gradient-color(var(--primary-color), var(--primary-color-light));
 }
 
 .outlined {
-  @include gradientColor(var(--secondary-color), var(--secondary-color-bright));
-  border: 2px solid var(--secondary-color-bright);
-  padding: 6px 10px;
-  border-radius: 10px;
+    @include gradient-color(var(--secondary-color), var(--secondary-color-bright));
+
+    border: 2px solid var(--secondary-color-bright);
+    padding: 6px 10px;
+    border-radius: 10px;
 }

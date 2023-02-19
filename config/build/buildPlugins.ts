@@ -23,6 +23,5 @@ export function buildPlugins ({
         plugins.push(new webpack.DefinePlugin({ __IS__DEV__: JSON.stringify(isDev) }))
         plugins.push((new BundleAnalyzerPlugin({ openAnalyzer: false })))
     }
-
     return plugins
 }
