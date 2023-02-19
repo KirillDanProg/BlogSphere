@@ -27,5 +27,6 @@
     "config/jest/**/*",
     "config/.storybook/*.ts",
     "config/build/*",
+    "./*.config.ts"
   ]
 }
