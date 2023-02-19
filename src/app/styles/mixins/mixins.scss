@@ -1,7 +1,7 @@
 @mixin gradient-color($from, $to) {
     background: linear-gradient($from, $to);
-    -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 @mixin gradient-bg-color($from, $to) {
