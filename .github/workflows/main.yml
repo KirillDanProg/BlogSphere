@@ -29,6 +29,6 @@ jobs:
       - name: storybook build
         run: npm run storybook:build
       - name: screenshots update
-        run: npx  loki update --storiesFilter="^shared\\/AppLink Default App Link|shared\\/AppLink Outlined App Link|widget\\/Navbar Dark Navbar|widget\\/Sidebar Light Sidebar|widget\\/Sidebar Dark Sidebar\$" --reactUri="file:./storybook-static"
+        run: npx loki update"
       - name: screenshot testing
         run: npm run test:ui:ci
