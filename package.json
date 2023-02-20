@@ -19,7 +19,7 @@
     "stylelint": "stylelint \"**/*.scss\"",
     "stylelint:fix": "stylelint \"**/*.scss\" --fix",
     "storybook": "start-storybook -p 6006 -c ./config/.storybook",
-    "storybook:build": "build-storybook"
+    "storybook:build": "build-storybook -c ./config/.storybook"
   },
   "devDependencies": {
     "@babel/core": "^7.17.5",
