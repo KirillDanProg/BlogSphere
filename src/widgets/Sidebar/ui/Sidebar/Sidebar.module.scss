@@ -2,6 +2,7 @@
 
 .Sidebar {
     @include gradient-bg-color(var(--inverted-bg-color), var(--bg-color-sec));
+
     position: relative;
     width: var(--sidebar-width);
     height: calc(100vh - var(--navbar-height));

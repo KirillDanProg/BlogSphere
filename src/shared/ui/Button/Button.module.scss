@@ -24,5 +24,6 @@
 
 .primary {
     @include gradient-bg-color(var(--secondary-color), var(--secondary-color-bright));
+
     border-radius: 10px;
 }
