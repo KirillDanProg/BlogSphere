@@ -3,7 +3,7 @@
 .Button {
     cursor: pointer;
     margin: 0;
-    padding: 8px 16px;
+    padding: 6px 14px;
     outline: none;
     background: none;
     border: none;
@@ -19,12 +19,10 @@
 
 .outlined {
     border: 2px solid var(--primary-color-light);
-    padding: 6px 14px;
     border-radius: 10px;
 }
 
 .primary {
     @include gradient-bg-color(var(--secondary-color), var(--secondary-color-bright));
-
     border-radius: 10px;
 }

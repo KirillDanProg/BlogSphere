@@ -28,7 +28,5 @@ jobs:
         run: npm run test:unit
       - name: storybook build
         run: npm run storybook:build
-      - name: screenshots update
-        run: npx loki update --requireReference --reactUri file:./storybook-static
       - name: screenshot testing
         run: npm run test:ui:ci
