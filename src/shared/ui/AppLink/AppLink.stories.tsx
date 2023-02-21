@@ -1,6 +1,5 @@
-import { AppLink } from 'shared/ui'
+import { AppLink, AppLinkVariant } from './AppLink'
 import { type ComponentStory } from '@storybook/react'
-import { AppLinkVariant } from 'shared/ui/AppLink/AppLink'
 
 export default {
     title: 'shared/AppLink',

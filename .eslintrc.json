@@ -49,10 +49,12 @@
         "ignoreAttribute": [
           "data-testid",
           "to",
-          "alt"
+          "alt",
+          "fill"
         ]
       }
     ],
+    "restrict-template-expressions": "off",
     "react/jsx-curly-spacing": [
       2,
       "always"

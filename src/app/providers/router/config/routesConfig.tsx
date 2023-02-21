@@ -5,16 +5,16 @@ import { AppRoutes, RoutePath, type RoutesType } from 'shared/config/routes/rout
 import { NotFound } from 'pages/NotFound/NotFound'
 
 export const routesConfig: Record<RoutesType, RouteProps> = {
-  [AppRoutes.MAIN]: {
-    path: RoutePath.main,
-    element: <MainPage/>
-  },
-  [AppRoutes.ABOUT]: {
-    path: RoutePath.about,
-    element: <AboutPage/>
-  },
-  [AppRoutes.NOT_FOUND]: {
-    path: RoutePath['not-found'],
-    element: <NotFound/>
-  }
+    [AppRoutes.MAIN]: {
+        path: RoutePath.main,
+        element: <MainPage/>
+    },
+    [AppRoutes.ABOUT]: {
+        path: RoutePath.about,
+        element: <AboutPage/>
+    },
+    [AppRoutes.NOT_FOUND]: {
+        path: RoutePath['not-found'],
+        element: <NotFound/>
+    }
 }

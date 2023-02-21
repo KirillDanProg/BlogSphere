@@ -1,5 +1,7 @@
 {
   "lang": "English",
+  "not-found": "Page not found",
   "pageError": "Something went wrong",
-  "not-found": "Page not found"
+  "menu-main": "Main",
+  "menu-info": "Info"
 }

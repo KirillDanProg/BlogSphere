@@ -1,7 +1,7 @@
 import { type FC } from 'react'
-import { classNames } from 'shared/lib/classNames/classNames'
-import { Link, type LinkProps } from 'react-router-dom'
+import { type LinkProps, NavLink } from 'react-router-dom'
 import s from './AppLink.module.scss'
+import { classNames } from 'shared/lib/classNames/classNames'
 
 export enum AppLinkVariant {
     PRIMARY = 'primary',
@@ -24,12 +24,17 @@ export const AppLink: FC<AppLinkProps> = (props) => {
         ...otherProps
     } = props
 
+    const toggleActiveLink = (navData: { isActive: boolean, isPending: boolean }) => {
+        return `${classNames(s.AppLink, {}, [className, s[variant]])}  ${navData.isActive ? s.outlined : ''}`
+    }
+
     return (
-        <Link to={ to }
-            className={ classNames(s.AppLink, {}, [className, s[variant]]) }
+        <NavLink to={ to }
             { ...otherProps }
+            className={ toggleActiveLink }
         >
             {children}
-        </Link>
+        </NavLink>
+
     )
 }

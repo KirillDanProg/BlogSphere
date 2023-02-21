@@ -1,14 +1,24 @@
 @import "../../../app/styles/mixins/mixins";
 
 .Button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
     margin: 0;
     padding: 6px 14px;
     outline: none;
     background: none;
     border: none;
+    border-radius: 30px;
     text-transform: uppercase;
     color: var(--text-color);
+    box-sizing: content-box;
+    transition: 0.3s;
+
+    &:hover {
+        box-shadow: 0 12px 20px var(--shadow);
+    }
 }
 
 .default {
@@ -26,4 +36,34 @@
     @include gradient-bg-color(var(--secondary-color), var(--secondary-color-bright));
 
     border-radius: 10px;
+}
+
+.square.size_m {
+    width: var(--font-line-m);
+    height: var(--font-line-m);
+    padding: 6px;
+}
+
+.square.size_l {
+    width: var(--font-line-l);
+    height: var(--font-line-l);
+    padding: 10px;
+}
+
+.square.size_xl {
+    width: var(--font-line-xl);
+    height: var(--font-line-xl);
+    padding: 14px;
+}
+
+.size_m {
+    font-size: var(--font-size-m);
+}
+
+.size_l {
+    font-size: var(--font-size-l);
+}
+
+.size_xl {
+    font-size: var(--font-size-xl);
 }

@@ -1,5 +1,5 @@
+import { Navbar } from './Navbar'
 import { type ComponentStory } from '@storybook/react'
-import { Navbar } from 'widgets/Navbar'
 import { Theme } from 'app/providers/ThemeProvider'
 import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecorator'
 

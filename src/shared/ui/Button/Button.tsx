@@ -2,16 +2,11 @@ import { type ButtonHTMLAttributes, type FC } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import s from './Button.module.scss'
 
-export enum ButtonVariant {
-    PRIMARY = 'primary',
-    DEFAULT = 'default',
-    INVERTED = 'inverted',
-    OUTLINED = 'outlined'
-}
-
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     className?: string
-    variant?: ButtonVariant
+    variant?: Variants
+    size?: Sizes
+    square?: boolean
 }
 
 export const Button: FC<ButtonProps> = (props) => {
@@ -19,16 +14,44 @@ export const Button: FC<ButtonProps> = (props) => {
         className = '',
         variant = ButtonVariant.DEFAULT,
         children,
+        square,
+        size = ButtonSize.M,
         ...otherProps
     } = props
+
+    const additional = [
+        className,
+        s[variant],
+        s[size]
+    ]
+
+    const mods = {
+        [s.square]: square
+    }
 
     return (
         <button
             data-testid="button"
-            className={ classNames(s.Button, {}, [className, s[variant]]) }
+            className={ classNames(s.Button, mods, additional) }
             { ...otherProps }
         >
             {children}
         </button>
     )
 }
+
+export const ButtonVariant = {
+    PRIMARY: 'primary',
+    DEFAULT: 'default',
+    INVERTED: 'inverted',
+    OUTLINED: 'outlined'
+} as const
+
+export const ButtonSize = {
+    M: 'size_m',
+    L: 'size_l',
+    XL: 'size_xl'
+} as const
+
+type Variants = 'primary' | 'default' | 'inverted' | 'outlined'
+type Sizes = 'size_m' | 'size_l' | 'size_xl'

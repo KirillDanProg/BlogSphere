@@ -22,7 +22,7 @@ export const ThemeSwitcher: FC<ThemeSwitcherProps> = () => {
                     // eslint-disable-next-line i18next/no-literal-string
                     ? <SunIcon fill="#d0ac58" width="30px"/>
                     // eslint-disable-next-line i18next/no-literal-string
-                    : <MoonIcon fill="#d8d8d8" width="30px"/>
+                    : <MoonIcon fill="#d8d8d8" width="35px" height="35px"/>
             }
         </Button>
     )

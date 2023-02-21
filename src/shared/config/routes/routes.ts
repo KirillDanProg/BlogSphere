@@ -4,7 +4,10 @@ export const AppRoutes = {
     NOT_FOUND: 'not-found'
 } as const
 
-export type RoutesType = 'main' | 'about' | 'not-found'
+export type RoutesType =
+    'main'
+    | 'about'
+    | 'not-found'
 
 export const RoutePath: Record<RoutesType, string> = {
     [AppRoutes.MAIN]: '/',

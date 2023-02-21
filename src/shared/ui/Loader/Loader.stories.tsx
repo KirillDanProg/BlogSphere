@@ -1,4 +1,4 @@
-import { Loader } from 'shared/ui/Loader/Loader'
+import { Loader } from './Loader'
 import { type StoryFn } from '@storybook/react'
 import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
