@@ -10,7 +10,10 @@
   ],
   "overrides": [
     {
-      "files": ["**/*.test.tsx", "**/*.test.ts"],
+      "files": [
+        "**/*.test.tsx",
+        "**/*.test.ts"
+      ],
       "rules": {
         "i18next/no-literal-string": "off"
       }
@@ -54,6 +57,7 @@
         ]
       }
     ],
+    "linebreak-style": "off",
     "restrict-template-expressions": "off",
     "react/jsx-curly-spacing": [
       2,
