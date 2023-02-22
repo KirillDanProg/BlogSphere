@@ -6,10 +6,10 @@ on:
     branches: [ main ]
 jobs:
   pipeline:
-    runs-on: windows-2019
+    runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [ 16.x ]
+        node-version: [ 17.x ]
     steps:
       - uses: actions/checkout@v2
       - name: Starting Node.js ${{ matrix.node-version }}
@@ -32,6 +32,8 @@ jobs:
       - name: storybook build
         run: npm run storybook:build
         if: always()
+      - name: update screenshot
+        run: npx loki update --storiesFilter="^shared\\/AppLink Default App Link|shared\\/AppLink Outlined App Link|widget\\/Navbar Dark Navbar|widget\\/Sidebar Light Sidebar|widget\\/Sidebar Dark Sidebar\$" --reactUri="file:./storybook-static"
       - name: screenshot testing
         run: npm run test:ui:ci
         if: always()
