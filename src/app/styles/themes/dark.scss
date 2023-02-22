@@ -1,11 +1,12 @@
-.app.dark {
+:root[data-theme='dark'] {
     --bg-color: #000;
     --bg-color-sec: #343434;
     --inverted-bg-color: #d8d8d8;
     --primary-color: #d5b86f;
     --primary-color-light: #d2a441;
-    --secondary-color: #2a2a2a;
-    --secondary-color-bright: #dcdcdc;
+    --secondary-color: #3a3a3a;
+    --secondary-color-bright: #b6b6b6;
     --text-color: #d8d8d8;
     --shadow: rgb(0 0 0);
+    --overlay-color: rgba(59, 59, 59, 0.6);
 }

@@ -12,7 +12,8 @@
     {
       "files": [
         "**/*.test.tsx",
-        "**/*.test.ts"
+        "**/*.test.ts",
+        "**/*.stories.tsx"
       ],
       "rules": {
         "i18next/no-literal-string": "off"

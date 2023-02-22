@@ -21,10 +21,15 @@
     }
 }
 
-.default {
+.default,
+.inverted {
     outline: none;
     background: none;
     border: none;
+}
+
+.inverted {
+    @include gradient-color(var(--secondary-color), var(--secondary-color-bright));
 }
 
 .outlined {

@@ -1,7 +1,8 @@
 {
   "lang": "English",
+  "login": "Sign in",
+  "menu-info": "Info",
+  "menu-main": "Home",
   "not-found": "Page not found",
-  "pageError": "Something went wrong",
-  "menu-main": "Main",
-  "menu-info": "Info"
+  "pageError": "Something went wrong"
 }

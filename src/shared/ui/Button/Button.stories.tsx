@@ -23,6 +23,19 @@ DefaultDark.args = {
     variant: ButtonVariant.DEFAULT
 }
 
+export const DefaultInverted = Template.bind({})
+DefaultInverted.args = {
+    children: 'inverted',
+    variant: ButtonVariant.INVERTED
+}
+
+export const DefaultInvertedDark = Template.bind({})
+DefaultInvertedDark.decorators = [ThemeDecorator(Theme.DARK)]
+DefaultInvertedDark.args = {
+    children: 'inverted dark',
+    variant: ButtonVariant.INVERTED
+}
+
 export const Outlined = Template.bind({})
 Outlined.args = {
     children: 'outlined',
