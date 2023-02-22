@@ -4,8 +4,7 @@ import { type ThemeType } from 'app/providers/ThemeProvider/lib/ThemeContext'
 
 export const ThemeDecorator = (theme: ThemeType) => (Story: StoryFn) => {
     return (
-        <div style={ { paddingTop: '20px' } }
-            className={ `app ${theme}` }>
+        <div className={ `app ${theme}` }>
             <Story/>
         </div>
     )

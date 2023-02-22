@@ -25,7 +25,7 @@ export const AppLink: FC<AppLinkProps> = (props) => {
     } = props
 
     const toggleActiveLink = (navData: { isActive: boolean, isPending: boolean }) => {
-        return `${classNames(s.AppLink, {}, [className, s[variant]])}  ${navData.isActive ? s.outlined : ''}`
+        return `${classNames(s.AppLink, {}, [className, s[variant], navData.isActive ? s.active : ''])}`
     }
 
     return (
