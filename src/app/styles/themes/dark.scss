@@ -1,4 +1,4 @@
-:root[data-theme='dark'] {
+:root[data-theme="dark"] {
     --bg-color: #000;
     --bg-color-sec: #343434;
     --inverted-bg-color: #d8d8d8;
@@ -8,5 +8,5 @@
     --secondary-color-bright: #b6b6b6;
     --text-color: #d8d8d8;
     --shadow: rgb(0 0 0);
-    --overlay-color: rgba(59, 59, 59, 0.6);
+    --overlay-color: rgb(59 59 59 / 60%);
 }
