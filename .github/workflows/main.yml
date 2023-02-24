@@ -35,10 +35,10 @@ jobs:
 
       - name: Linting typescript
         if: always()
-        run: npm run lint:ts
+        run: npm run lint
       - name: CSS linter
         if: always()
-        run: npm run lint:scss
+        run: npm run stylelint
 
   unit-test:
     name: 2.2 Unit testing
@@ -54,6 +54,7 @@ jobs:
       - name: Cache Restore
         id: cache-npm
         uses: actions/cache/restore@v3
+        with:
         with:
           path: node_modules
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
