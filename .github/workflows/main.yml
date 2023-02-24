@@ -55,7 +55,6 @@ jobs:
         id: cache-npm
         uses: actions/cache/restore@v3
         with:
-        with:
           path: node_modules
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
@@ -90,7 +89,7 @@ jobs:
         if: always()
         id: screenshots
         run: npm run test:ui:ci
-      - name: Uploade fail screenshots
+      - name: Upload fail screenshots
         if: ${{ failure() && steps.screenshots.conclusion == 'failure'}}
         uses: actions/upload-artifact@v3
         with:
