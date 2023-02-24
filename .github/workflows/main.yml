@@ -1,121 +1,39 @@
-name: Linting, testing and building
+name: linting, testing, build
 on:
   push:
-    branches:
-      - main
-    paths-ignore:
-      - ".github/**"
+    branches: [ main ]
   pull_request:
-    branches:
-      - main
-    paths-ignore:
-      - ".github/**"
+    branches: [ main ]
 jobs:
-  init-host:
-    name: 1. Load project & Linting
-    runs-on: windows-2019
+  pipeline:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [ 17.x ]
     steps:
-      - name: Get repository code
-        uses: actions/checkout@v3
-      - name: Starting Node.js
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v2
+      - name: Starting Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
         with:
-          node-version: 17.4.0
-      - name: Cache Start
-        id: cache-npm
-        uses: actions/cache@v3
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
-      - name: Install node modules
-        run: npm ci
-
-      - name: Linting typescript
-        if: always()
+          node-version: ${{ matrix.node-version }}
+      - name: install modules
+        run: npm install
+      - name: build project
+        run: npm run build:prod
+      - name: linting typescript
         run: npm run lint
-      - name: CSS linter
         if: always()
+      - name: linting css
         run: npm run stylelint
-
-  unit-test:
-    name: 2.2 Unit testing
-    needs: init-host
-    runs-on: windows-2019
-    steps:
-      - name: Get repository code
-        uses: actions/checkout@v3
-      - name: Starting Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 17.4.0
-      - name: Cache Restore
-        id: cache-npm
-        uses: actions/cache/restore@v3
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-          fail-on-cache-miss: true
+        if: always()
       - name: unit testing
         run: npm run test:unit
-  screens:
-    name: 2.3 Screenshots testing project
-    needs: init-host
-    runs-on: windows-2019
-    steps:
-      - name: Get repository code
-        uses: actions/checkout@v3
-      - name: Starting Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 17.4.0
-      - name: Cache Restore
-        id: cache-npm
-        uses: actions/cache/restore@v3
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-          fail-on-cache-miss: true
-      - name: build storybook
         if: always()
+      - name: storybook build
         run: npm run storybook:build
-      - name: Screenshot testing
         if: always()
-        id: screenshots
+      - name: update screenshot
+        run: npx loki update --storiesFilter="^shared\\/AppLink Default App Link|shared\\/AppLink Outlined App Link|widget\\/Navbar Dark Navbar|widget\\/Sidebar Light Sidebar|widget\\/Sidebar Dark Sidebar\$" --reactUri="file:./storybook-static"
+      - name: screenshot testing
         run: npm run test:ui:ci
-      - name: Upload fail screenshots
-        if: ${{ failure() && steps.screenshots.conclusion == 'failure'}}
-        uses: actions/upload-artifact@v3
-        with:
-          path: ".loki/difference"
-          name: loki-fail-difference
-  build:
-    name: 3. Build production
-    needs:
-      - unit-test
-      - screens
-    runs-on: windows-2019
-    steps:
-      - name: Get repository code
-        uses: actions/checkout@v3
-      - name: Starting Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 17.4.0
-      - name: Cache Restore
-        id: cache-npm
-        uses: actions/cache/restore@v3
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-          fail-on-cache-miss: true
-      - name: build production project
-        run: npm run build:prod
+        if: always(
