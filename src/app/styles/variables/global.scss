@@ -1,3 +1,5 @@
+@import "../mixins/mixins";
+
 :root {
     --font-family-main: verdana, serif;
     --font-size-m: 16px;
@@ -12,4 +14,6 @@
     --navbar-height: 50px;
     --sidebar-width: 20%;
     --collapsed-sidebar-width: 5%;
+    --overlay-color: rgba(0 0 0 / 50%);
+    --modal-z-index: 3;
 }

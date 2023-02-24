@@ -1,11 +1,11 @@
 import { createContext } from 'react'
 
 export const Theme = {
-    LIGHT: 'light',
-    DARK: 'dark'
+    LIGHT: 'app_light_theme',
+    DARK: 'app_dark_theme'
 } as const
 
-export type ThemeType = 'light' | 'dark'
+export type ThemeType = 'app_light_theme' | 'app_dark_theme'
 
 export interface IThemeContext {
     theme?: ThemeType

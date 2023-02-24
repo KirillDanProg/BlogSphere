@@ -3,10 +3,11 @@ import { PageError } from './PageError'
 import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 
-export default {
+const Story: ComponentMeta<typeof PageError> = {
     title: 'widget/ErrorPage',
     component: PageError
-} as ComponentMeta<typeof PageError>
+}
+export default Story
 
 const Template: ComponentStory<typeof PageError> = (args) => <PageError { ...args }/>
 

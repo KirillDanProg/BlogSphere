@@ -12,7 +12,8 @@
     {
       "files": [
         "**/*.test.tsx",
-        "**/*.test.ts"
+        "**/*.test.ts",
+        "**/*.stories.tsx"
       ],
       "rules": {
         "i18next/no-literal-string": "off"
@@ -30,7 +31,8 @@
   },
   "plugins": [
     "react",
-    "i18next"
+    "i18next",
+    "react-hooks"
   ],
   "rules": {
     "@typescript-eslint/indent": [
@@ -41,6 +43,7 @@
     "@typescript-eslint/prefer-nullish-coalescing": "warn",
     "@typescript-eslint/explicit-function-return-type": "off",
     "react/react-in-jsx-scope": "off",
+    "typescript-eslint/consistent-type-assertions": "off",
     "@typescript-eslint/naming-convention": [
       0
     ],
@@ -63,9 +66,11 @@
       2,
       "always"
     ],
-    //    "selector-pseudo-element-colon-notation": [2, "double"],
-    "keyframes-name-pattern": "off"
+    "keyframes-name-pattern": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "error"
     //    "declaration-block-no-shorthand-property-overrides": [2, true]
     //    "i18next/no-literal-string": 2
+    //    "selector-pseudo-element-colon-notation": [2, "double"],
   }
 }

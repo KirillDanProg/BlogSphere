@@ -36,4 +36,4 @@ jobs:
         run: npx loki update --storiesFilter="^shared\\/AppLink Default App Link|shared\\/AppLink Outlined App Link|widget\\/Navbar Dark Navbar|widget\\/Sidebar Light Sidebar|widget\\/Sidebar Dark Sidebar\$" --reactUri="file:./storybook-static"
       - name: screenshot testing
         run: npm run test:ui:ci
-        if: always()
+        if: always(

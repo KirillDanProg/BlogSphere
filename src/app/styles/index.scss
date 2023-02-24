@@ -4,12 +4,15 @@
 @import "./themes/light";
 @import "./mixins/mixins";
 
+body {
+    font: var(--font-m);
+    color: var(--inverted-bg-color);
+}
+
 .app {
     @include gradient-bg-color(var(--bg-color), var(--bg-color-sec));
 
     height: 100vh;
-    font: var(--font-m);
-    color: var(--inverted-bg-color);
     transition: 0.6s;
 }
 

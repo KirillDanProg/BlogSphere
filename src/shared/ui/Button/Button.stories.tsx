@@ -3,11 +3,11 @@ import { type ComponentMeta, type ComponentStory } from '@storybook/react'
 import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 
-export default {
+const Story: ComponentMeta<typeof Button> = {
     title: 'shared/Button',
     component: Button
-} as ComponentMeta<typeof Button>
-
+}
+export default Story
 const Template: ComponentStory<typeof Button> = (args) => <Button { ...args }/>
 
 export const Default = Template.bind({})
@@ -21,6 +21,19 @@ DefaultDark.decorators = [ThemeDecorator(Theme.DARK)]
 DefaultDark.args = {
     children: 'default dark',
     variant: ButtonVariant.DEFAULT
+}
+
+export const DefaultInverted = Template.bind({})
+DefaultInverted.args = {
+    children: 'inverted',
+    variant: ButtonVariant.INVERTED
+}
+
+export const DefaultInvertedDark = Template.bind({})
+DefaultInvertedDark.decorators = [ThemeDecorator(Theme.DARK)]
+DefaultInvertedDark.args = {
+    children: 'inverted dark',
+    variant: ButtonVariant.INVERTED
 }
 
 export const Outlined = Template.bind({})
