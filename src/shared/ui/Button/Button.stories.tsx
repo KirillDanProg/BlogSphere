@@ -3,11 +3,11 @@ import { type ComponentMeta, type ComponentStory } from '@storybook/react'
 import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 
-export default {
+const Story: ComponentMeta<typeof Button> = {
     title: 'shared/Button',
     component: Button
-} as ComponentMeta<typeof Button>
-
+}
+export default Story
 const Template: ComponentStory<typeof Button> = (args) => <Button { ...args }/>
 
 export const Default = Template.bind({})

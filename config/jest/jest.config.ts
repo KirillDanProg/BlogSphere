@@ -6,6 +6,9 @@
 import path from 'path'
 
 export default {
+    globals: {
+        __IS_DEV__: true
+    },
     // The root directory that Jest should scan for tests and modules within
     rootDir: '../../',
     // Automatically clear mock calls, instances and results before every test

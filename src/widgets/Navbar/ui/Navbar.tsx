@@ -33,7 +33,7 @@ export const Navbar: FC<NavbarProps> = (props) => {
                 isOpen={ isAuthModalOpen }
                 onClose={ toggleAuthModal }
             >
-                loremdfasndf ewfwqe rwr qwerq wer
+                {t('loremdfasndf ewfwqe rwr qwerq wer')}
             </Modal>
         </div>
     )
