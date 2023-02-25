@@ -4,7 +4,7 @@ import s from './Navbar.module.scss'
 import { Button } from 'shared/ui'
 import { ButtonVariant } from 'shared/ui/Button/Button'
 import { useTranslation } from 'react-i18next'
-import { LoginModal } from 'features/AuthByUserName/ui/LoginModal/LoginModal'
+import { LoginModal } from 'features/AuthByUserName'
 
 interface NavbarProps {
     className?: string
@@ -28,7 +28,9 @@ export const Navbar: FC<NavbarProps> = (props) => {
                     {t('login')}
                 </Button>
             </div>
-            <LoginModal isOpen={ isAuthModalOpen } onClose={ toggleAuthModal }/>
+            <LoginModal
+                isOpen={ isAuthModalOpen }
+                onClose={ toggleAuthModal }/>
         </div>
     )
 }

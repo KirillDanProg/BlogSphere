@@ -39,7 +39,7 @@
       "warn",
       4
     ],
-    "@typescript-eslint/strict-boolean-expressions": "warn",
+    "@typescript-eslint/strict-boolean-expressions": "off",
     "@typescript-eslint/prefer-nullish-coalescing": "warn",
     "@typescript-eslint/explicit-function-return-type": "off",
     "react/react-in-jsx-scope": "off",
@@ -61,6 +61,7 @@
         ]
       }
     ],
+    "react/display-name": "off",
     "linebreak-style": "off",
     "restrict-template-expressions": "off",
     "react/jsx-curly-spacing": [
