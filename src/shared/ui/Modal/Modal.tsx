@@ -9,6 +9,7 @@ interface ModalProps {
     children?: ReactNode
     isOpen?: boolean
     onClose?: () => void
+    overlayClose?: boolean
 }
 
 export const Modal: FC<ModalProps> = (props) => {
@@ -16,7 +17,8 @@ export const Modal: FC<ModalProps> = (props) => {
         children,
         className = '',
         isOpen,
-        onClose
+        onClose,
+        overlayClose = true
     } = props
 
     const { theme } = useTheme()
@@ -28,7 +30,7 @@ export const Modal: FC<ModalProps> = (props) => {
         e.stopPropagation()
     }
     const closeHandler = () => {
-        onClose?.()
+        overlayClose && onClose?.()
     }
     return (
         <Portal>
