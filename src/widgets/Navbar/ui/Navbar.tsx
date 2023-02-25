@@ -2,9 +2,9 @@ import { type FC, useCallback, useState } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import s from './Navbar.module.scss'
 import { Button } from 'shared/ui'
-import { Modal } from 'shared/ui/Modal/Modal'
 import { ButtonVariant } from 'shared/ui/Button/Button'
 import { useTranslation } from 'react-i18next'
+import { LoginModal } from 'features/AuthByUserName/ui/LoginModal/LoginModal'
 
 interface NavbarProps {
     className?: string
@@ -28,13 +28,7 @@ export const Navbar: FC<NavbarProps> = (props) => {
                     {t('login')}
                 </Button>
             </div>
-
-            <Modal
-                isOpen={ isAuthModalOpen }
-                onClose={ toggleAuthModal }
-            >
-                {t('loremdfasndf ewfwqe rwr qwerq wer')}
-            </Modal>
+            <LoginModal isOpen={ isAuthModalOpen } onClose={ toggleAuthModal }/>
         </div>
     )
 }
