@@ -1,3 +1,5 @@
+@import '../../../app/styles/mixins/mixins';
+
 .Modal {
     position: fixed;
     inset: 0;
@@ -17,12 +19,12 @@
 }
 
 .content {
+    @include gradient-bg-color(var(--bg-color), var(--bg-color-sec));
     max-width: 60%;
     transform: scale(0.5);
     transition: 0.3s transform;
     padding: 20px;
     border-radius: 16px;
-    background-color: var(--bg-color);
     color: var(--text-color);
 }
 

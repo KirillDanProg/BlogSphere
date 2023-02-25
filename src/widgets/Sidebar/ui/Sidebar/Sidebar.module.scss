@@ -34,6 +34,10 @@
     right: -16px;
     top: 45%;
     border-radius: 50%;
+
+    & svg {
+        fill: var(--text-color)
+    }
 }
 
 .switchers {

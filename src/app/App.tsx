@@ -5,8 +5,6 @@ import { Suspense } from 'react'
 import { Sidebar } from 'widgets/Sidebar'
 
 export const App = () => {
-    // const { theme } = useTheme()
-
     return (
         <Suspense fallback="">
             <div id="app" className={ classNames('app', {}, []) }>

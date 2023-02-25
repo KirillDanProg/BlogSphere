@@ -56,7 +56,8 @@
           "data-testid",
           "to",
           "alt",
-          "fill"
+          "fill",
+          "label"
         ]
       }
     ],
