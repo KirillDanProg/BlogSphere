@@ -3,10 +3,12 @@
     flex-direction: column;
     justify-content: center;
     gap: 10px;
-    min-width: 400px;
+    width: 400px;
     padding: 10px 20px;
+
+    .loginButton {
+        margin-left: auto;
+    }
 }
 
-.loginButton {
-    margin-left: auto;
-}
+
