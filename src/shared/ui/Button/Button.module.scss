@@ -22,10 +22,17 @@
 }
 
 .default,
-.inverted {
+.inverted,
+.noHover {
     outline: none;
     background: none;
     border: none;
+}
+
+.noHover {
+    &:hover {
+        box-shadow: none;
+    }
 }
 
 .inverted {
