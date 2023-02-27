@@ -1,4 +1,4 @@
-@import '../../../app/styles/mixins/mixins';
+@import "../../../app/styles/mixins/mixins";
 
 .Modal {
     position: fixed;
@@ -20,6 +20,7 @@
 
 .content {
     @include gradient-bg-color(var(--bg-color), var(--bg-color-sec));
+
     max-width: 60%;
     transform: scale(0.5);
     transition: 0.3s transform;

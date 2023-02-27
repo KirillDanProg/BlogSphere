@@ -1,4 +1,4 @@
-import React, { type FC, type ReactNode } from 'react'
+import React, { type FC, type ReactNode, useEffect, useState } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import s from './Modal.module.scss'
 import { Portal } from 'shared/ui/Portal/Portal'
@@ -10,6 +10,7 @@ interface ModalProps {
     isOpen?: boolean
     onClose?: () => void
     overlayClose?: boolean
+    lazy?: boolean
 }
 
 export const Modal: FC<ModalProps> = (props) => {
@@ -18,12 +19,27 @@ export const Modal: FC<ModalProps> = (props) => {
         className = '',
         isOpen,
         onClose,
-        overlayClose = true
+        overlayClose = true,
+        lazy = false
     } = props
 
     const { theme } = useTheme()
     const mods = {
         [s.opened]: isOpen
+    }
+    const [isMounted, setIsMounted] = useState(false)
+
+    useEffect(() => {
+        if (isOpen) {
+            setIsMounted(true)
+        }
+        return () => {
+            setIsMounted(false)
+        }
+    }, [isOpen])
+
+    if (lazy && !isMounted) {
+        return null
     }
 
     const onContentClick = (e: React.MouseEvent) => {

@@ -4,7 +4,10 @@ import s from './Navbar.module.scss'
 import { Button } from 'shared/ui'
 import { ButtonVariant } from 'shared/ui/Button/Button'
 import { useTranslation } from 'react-i18next'
-import { LoginModal } from 'features/AuthByUserName/ui/LoginModal/LoginModal'
+import { LoginModal } from 'features/AuthByUserName'
+import { useDispatch, useSelector } from 'react-redux'
+import { getUserId } from 'entities/User/model/selectors/getUserId'
+import { deleteAuthUserDataThunk } from 'entities/User/model/slice/userSlice'
 
 interface NavbarProps {
     className?: string
@@ -12,23 +15,46 @@ interface NavbarProps {
 
 export const Navbar: FC<NavbarProps> = (props) => {
     const [isAuthModalOpen, setIsAuthModal] = useState(false)
-    const { t } = useTranslation()
+    const { t } = useTranslation('auth')
+    const isAuth = useSelector(getUserId)
+    const dispatch = useDispatch()
 
-    const toggleAuthModal = useCallback(() => {
-        setIsAuthModal(prev => !prev)
+    const onCloseHandler = useCallback(() => {
+        setIsAuthModal(false)
     }, [])
+    const onOpenHandler = useCallback(() => {
+        setIsAuthModal(true)
+    }, [])
+
+    const signOutHandler = () => {
+        if (isAuth) {
+            dispatch(deleteAuthUserDataThunk())
+        }
+    }
 
     return (
         <div className={ classNames(s.Navbar) }>
             <div className={ classNames(s.links) }>
                 <Button
                     variant={ ButtonVariant.INVERTED }
-                    onClick={ toggleAuthModal }
+                    onClick={ isAuth
+                        ? signOutHandler
+                        : onOpenHandler
+                    }
                 >
-                    {t('login')}
+                    {
+                        isAuth
+                            ? t('signout')
+                            : t('signin')
+
+                    }
+
                 </Button>
             </div>
-            <LoginModal isOpen={ isAuthModalOpen } onClose={ toggleAuthModal }/>
+            <LoginModal
+                isOpen={ isAuthModalOpen }
+                onClose={ onCloseHandler }
+            />
         </div>
     )
 }

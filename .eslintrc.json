@@ -39,7 +39,7 @@
       "warn",
       4
     ],
-    "@typescript-eslint/strict-boolean-expressions": "warn",
+    "@typescript-eslint/strict-boolean-expressions": "off",
     "@typescript-eslint/prefer-nullish-coalescing": "warn",
     "@typescript-eslint/explicit-function-return-type": "off",
     "react/react-in-jsx-scope": "off",
@@ -47,6 +47,7 @@
     "@typescript-eslint/naming-convention": [
       0
     ],
+    "react/prop-types": "off",
     "@typescript-eslint/consistent-type-imports": "warn",
     "i18next/no-literal-string": [
       "error",
@@ -57,10 +58,12 @@
           "to",
           "alt",
           "fill",
-          "label"
+          "autoComplete",
+          "name"
         ]
       }
     ],
+    "react/display-name": "off",
     "linebreak-style": "off",
     "restrict-template-expressions": "off",
     "react/jsx-curly-spacing": [
