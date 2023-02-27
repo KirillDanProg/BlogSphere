@@ -1,0 +1,20 @@
+.Text {
+    color: var(--text-color);
+
+    .title {
+        font: var(--font-l);
+        margin-bottom: 10px;
+    }
+
+    .text {
+        font: var(--font-m);
+    }
+}
+
+.error {
+    color: var(--error-color);
+}
+
+.center {
+    text-align: center;
+}
