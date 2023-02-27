@@ -2,13 +2,16 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 10px;
+    gap: 15px;
     width: 400px;
     padding: 10px 20px;
 
-    .loginButton {
-        margin-left: auto;
+    .buttonsGroup {
+        display: flex;
+        gap: 12px;
+
+        .loginButton {
+            margin-left: auto;
+        }
     }
 }
-
-

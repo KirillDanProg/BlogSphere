@@ -1,6 +1,5 @@
-import React, { type FC, type InputHTMLAttributes, memo, useEffect, useRef } from 'react'
+import React, { type FC, type InputHTMLAttributes, memo, useEffect, useRef, useState } from 'react'
 import s from './Input.module.scss'
-import { classNames } from 'shared/lib/classNames/classNames'
 import { useTranslation } from 'react-i18next'
 
 type HTMLInputProps =
@@ -17,7 +16,6 @@ const Input: FC<InputProps> = (props) => {
     const {
         value,
         onChange,
-        className = '',
         type = 'text',
         label = '',
         autoFocus,
@@ -26,9 +24,12 @@ const Input: FC<InputProps> = (props) => {
 
     const { t } = useTranslation()
 
+    const [inputValue, setValue] = useState(value || '')
+
     const ref = useRef<HTMLInputElement>(null)
 
     const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setValue(e.target.value)
         onChange?.(e.target.value)
     }
 
@@ -44,13 +45,13 @@ const Input: FC<InputProps> = (props) => {
                 ref={ ref }
                 autoFocus
                 required
-                value={ value }
+                value={ inputValue }
                 onChange={ onChangeHandler }
                 type={ type }
-                className={ classNames(s.input, {}, [className]) }
+                className={ s.input }
                 { ...otherProps }
             />
-            <label>{t(`${label}`)}</label>
+            <label>{t(label)}</label>
         </div>
 
     )

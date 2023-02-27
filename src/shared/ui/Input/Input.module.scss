@@ -33,9 +33,9 @@
 
         &:valid ~ label {
             top: -23px;
-            left: -20px;
+            left: -15px;
             color: var(--primary-color);
-            transform: scale(0.6);
+            transform: scale(0.7);
         }
     }
 }

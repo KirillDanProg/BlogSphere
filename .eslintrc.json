@@ -47,6 +47,7 @@
     "@typescript-eslint/naming-convention": [
       0
     ],
+    "react/prop-types": "off",
     "@typescript-eslint/consistent-type-imports": "warn",
     "i18next/no-literal-string": [
       "error",
@@ -57,7 +58,8 @@
           "to",
           "alt",
           "fill",
-          "label"
+          "autoComplete",
+          "name"
         ]
       }
     ],

@@ -9,14 +9,14 @@ interface ThemeSwitcherProps {
     className?: string
 }
 
-export const ThemeSwitcher: FC<ThemeSwitcherProps> = () => {
+export const ThemeSwitcher: FC<ThemeSwitcherProps> = (props) => {
     const {
         theme,
         toggleTheme
     } = useTheme()
 
     return (
-        <Button onClick={ toggleTheme }>
+        <Button onClick={ toggleTheme } className={ props.className }>
             {
                 theme === Theme.LIGHT
                     // eslint-disable-next-line i18next/no-literal-string
