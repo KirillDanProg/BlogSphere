@@ -1,7 +1,7 @@
 import { type ComponentStory } from '@storybook/react'
 import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
-import { LoginForm } from '../LoginForm/LoginForm'
+import LoginForm from '../LoginForm/LoginForm'
 import { StoreDecorator } from 'shared/config/storybook/decorators/StoreDecorator'
 
 export default {
@@ -10,20 +10,30 @@ export default {
 }
 const Template: ComponentStory<typeof LoginForm> = (args) => <LoginForm { ...args }/>
 
-export const LightLoginForm = Template.bind({})
-LightLoginForm.decorators = [StoreDecorator({
+export const Light = Template.bind({})
+Light.decorators = [StoreDecorator({
     auth: {
         email: 'test@mail.ru',
         password: 'qwerqwer'
     }
 })]
-LightLoginForm.args = {}
+Light.args = {}
 
-export const DarkLoginForm = Template.bind({})
-DarkLoginForm.decorators = [ThemeDecorator(Theme.DARK), StoreDecorator({
+export const Dark = Template.bind({})
+Dark.decorators = [ThemeDecorator(Theme.DARK), StoreDecorator({
     auth: {
         email: 'test@mail.ru',
         password: 'qwerqwer'
     }
 })]
-DarkLoginForm.args = {}
+Dark.args = {}
+
+export const withError = Template.bind({})
+withError.decorators = [StoreDecorator({
+    auth: {
+        email: 'test@mail.ru',
+        password: 'qwerqwer',
+        error: 'error'
+    }
+})]
+withError.args = {}

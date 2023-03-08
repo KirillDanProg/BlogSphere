@@ -10,6 +10,15 @@ import { authRegisterThunk } from '../../model/services/AuthRegister/authRegiste
 import { authLoginThunk } from '../../model/services/AuthLogin/authLoginThunk'
 import { getAuthError } from '../../model/selectors/getAuthError'
 import { Text, TextVariant } from 'shared/ui/Text/Text'
+import {
+    DynamicModuleLoader,
+    type ReducersListType
+} from 'shared/lib/components/DynamicModuleLoader'
+import { authReducer } from 'features/AuthByUserName'
+
+const initialReducers: ReducersListType = {
+    auth: authReducer
+}
 
 interface LoginFormProps {
     className?: string
@@ -18,7 +27,7 @@ interface LoginFormProps {
     goToSignUp: () => void
 }
 
-export const LoginForm: FC<LoginFormProps> = (props) => {
+const LoginForm: FC<LoginFormProps> = (props) => {
     const {
         haveAnAccount,
         goToSignUp,
@@ -48,71 +57,89 @@ export const LoginForm: FC<LoginFormProps> = (props) => {
     }
 
     return (
-        <form
-            autoComplete={ 'off' }
-            onSubmit={ handleSubmit }
-            className={ classNames(s.LoginForm) }>
+        <DynamicModuleLoader
+            reducers={ initialReducers }
+            removeAfterUnmount
+        >
+            <form
+                autoComplete={ 'off' }
+                onSubmit={ handleSubmit }
+                className={ classNames(s.LoginForm) }>
 
-            {
-                authError && <Text center variant={ TextVariant.ERROR } title={ authError }/>
-            }
+                {
+                    authError && <Text center variant={ TextVariant.ERROR } title={ authError }/>
+                }
 
-            {
-                !haveAnAccount &&
+                {
+                    !haveAnAccount &&
+                    <Input
+                        autoComplete={ 'off' }
+                        name="userName"
+                        autoFocus
+                        label={ t('username') }
+                        type="text"/>
+                }
                 <Input
                     autoComplete={ 'off' }
-                    name="userName"
-                    autoFocus
-                    label={ t('username') }
+                    name="email"
+                    label={ t('email') }
                     type="text"/>
-            }
-            <Input
-                autoComplete={ 'off' }
-                name="email"
-                label={ t('email') }
-                type="text"/>
-            <Input
-                autoComplete={ 'off' }
-                name="password"
-                label={ t('password') }
-                type="password"/>
-            <div className={ s.buttonsGroup }>
-                {
-                    haveAnAccount
-                        ? <>
+                <Input
+                    autoComplete={ 'off' }
+                    name="password"
+                    label={ t('password') }
+                    type="password"/>
+                <div className={ s.buttonsGroup }>
+                    {
+                        <>
                             <Button
                                 type="submit"
                                 className={ s.loginButton }
                                 variant={ ButtonVariant.NO_HOVER }
-                                onClick={ goToSignUp }
+                                onClick={
+                                    haveAnAccount
+                                        ? goToSignUp
+                                        : goToSignIn
+                                }
                             >
-                                {t('no-account')}
+                                {
+                                    haveAnAccount
+                                        ? t('no-account')
+                                        : t('have-account')
+                                }
                             </Button>
                             <Button
                                 type="submit"
                                 className={ s.loginButton }
                                 variant={ ButtonVariant.OUTLINED }
                             >
-                                {t('signin')}
+                                {
+                                    haveAnAccount
+                                        ? t('signin')
+                                        : t('signup')
+                                }
                             </Button>
                         </>
-                        : <>
-                            <Button
-                                className={ s.loginButton }
-                                variant={ ButtonVariant.NO_HOVER }
-                                onClick={ goToSignIn }
-                            >
-                                {t('have-account')}
-                            </Button>
-                            <Button
-                                className={ s.loginButton }
-                                variant={ ButtonVariant.OUTLINED }
-                            >
-                                {t('signup')}
-                            </Button>
-                        </>
-                }
-            </div>
-        </form>
+                        // : <>
+                        //     <Button
+                        //         className={ s.loginButton }
+                        //         variant={ ButtonVariant.NO_HOVER }
+                        //         onClick={ goToSignIn }
+                        //     >
+                        //         {t('have-account')}
+                        //     </Button>
+                        //     <Button
+                        //         className={ s.loginButton }
+                        //         variant={ ButtonVariant.OUTLINED }
+                        //     >
+                        //         {t('signup')}
+                        //     </Button>
+                        // </>
+                    }
+                </div>
+            </form>
+        </DynamicModuleLoader>
     )
 }
+
+export default LoginForm

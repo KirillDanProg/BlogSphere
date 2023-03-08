@@ -1,14 +1,15 @@
-import { type FC, useEffect, useState } from 'react'
+import { type FC, Suspense, useEffect, useState } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { Modal } from 'shared/ui/Modal/Modal'
 import { Button } from 'shared/ui'
 import { ButtonVariant } from 'shared/ui/Button/Button'
 import CloseModal from 'shared/assets/icons/close-icon.svg'
-import { LoginForm } from '../LoginForm/LoginForm'
 import s from './LoginModal.module.scss'
 import { getAuthStatus } from '../../model/selectors/getAuthStatus'
 import { useSelector } from 'react-redux'
 import { getUserId } from 'entities/User/model/selectors/getUserId'
+import { LoginFormLazy } from 'features/AuthByUserName/ui/LoginForm/LoginFormLazy'
+import { Loader } from 'shared/ui/Loader/Loader'
 
 interface LoginModalProps {
     className?: string
@@ -56,10 +57,13 @@ export const LoginModal: FC<LoginModalProps> = (props) => {
                 <Button className={ s.closeBtn } variant={ ButtonVariant.PRIMARY }>
                     <CloseModal onClick={ onClose }/>
                 </Button>
-                <LoginForm
-                    goToSignUp={ goToSignUpHandler }
-                    goToSignIn={ goToSignInHandler }
-                    haveAnAccount={ haveAnAccount }/>
+                <Suspense fallback={ <Loader/> }>
+                    <LoginFormLazy
+                        goToSignUp={ goToSignUpHandler }
+                        goToSignIn={ goToSignInHandler }
+                        haveAnAccount={ haveAnAccount }/>
+                </Suspense>
+
             </Modal>
         </div>
     )
