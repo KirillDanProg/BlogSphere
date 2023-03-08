@@ -6,7 +6,7 @@ import { ButtonVariant } from 'shared/ui/Button/Button'
 import { useTranslation } from 'react-i18next'
 import { LoginModal } from 'features/AuthByUserName'
 import { useDispatch, useSelector } from 'react-redux'
-import { getUserId } from 'entities/User/model/selectors/getUserId'
+import { getUserId } from 'entities/User/model/selectors/getUserId/getUserId'
 import { deleteAuthUserDataThunk } from 'entities/User/model/slice/userSlice'
 
 interface NavbarProps {

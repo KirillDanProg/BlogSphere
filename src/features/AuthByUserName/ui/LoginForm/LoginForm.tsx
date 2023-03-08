@@ -8,7 +8,7 @@ import Input from 'shared/ui/Input/Input'
 import { useDispatch, useSelector } from 'react-redux'
 import { authRegisterThunk } from '../../model/services/AuthRegister/authRegisterThunk'
 import { authLoginThunk } from '../../model/services/AuthLogin/authLoginThunk'
-import { getAuthError } from '../../model/selectors/getAuthError'
+import { getAuthError } from '../../model/selectors/getAuthError/getAuthError'
 import { Text, TextVariant } from 'shared/ui/Text/Text'
 import {
     DynamicModuleLoader,
