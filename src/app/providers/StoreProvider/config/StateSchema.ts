@@ -7,10 +7,15 @@ import {
     type Reducer,
     type ReducersMapObject
 } from '@reduxjs/toolkit'
+import { type ProfileSchema } from 'entities/Profile'
 
 export interface StateSchema {
     user: UserSchema
+
+    // async reducers
     auth?: LoginSchema
+    profile?: ProfileSchema
+
 }
 
 export interface IReducerManager {

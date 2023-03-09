@@ -1,4 +1,4 @@
-import { type FC, useCallback, useState } from 'react'
+import { type FC, memo, useCallback, useState } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import s from './Navbar.module.scss'
 import { Button } from 'shared/ui'
@@ -13,7 +13,7 @@ interface NavbarProps {
     className?: string
 }
 
-export const Navbar: FC<NavbarProps> = (props) => {
+export const Navbar: FC<NavbarProps> = memo((props) => {
     const [isAuthModalOpen, setIsAuthModal] = useState(false)
     const { t } = useTranslation('auth')
     const isAuth = useSelector(getUserId)
@@ -26,11 +26,11 @@ export const Navbar: FC<NavbarProps> = (props) => {
         setIsAuthModal(true)
     }, [])
 
-    const signOutHandler = () => {
+    const signOutHandler = useCallback(() => {
         if (isAuth) {
             dispatch(deleteAuthUserDataThunk())
         }
-    }
+    }, [isAuth, dispatch])
 
     return (
         <div className={ classNames(s.Navbar) }>
@@ -57,4 +57,4 @@ export const Navbar: FC<NavbarProps> = (props) => {
             />
         </div>
     )
-}
+})

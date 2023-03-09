@@ -1,4 +1,4 @@
-import { type FC } from 'react'
+import { type FC, memo } from 'react'
 import { Button } from 'shared/ui'
 import { useTranslation } from 'react-i18next'
 import ruIcon from 'shared/assets/icons/langIcons/icons8-russian-federation-48.png'
@@ -8,7 +8,7 @@ interface LangSwitcherProps {
     className?: string
 }
 
-export const LangSwitcher: FC<LangSwitcherProps> = (props) => {
+export const LangSwitcher: FC<LangSwitcherProps> = memo((props) => {
     const { className } = props
     const { i18n } = useTranslation()
     const toggleLanguage = () => {
@@ -23,4 +23,4 @@ export const LangSwitcher: FC<LangSwitcherProps> = (props) => {
             }
         </Button>
     )
-}
+})

@@ -7,28 +7,19 @@
     width: var(--sidebar-width);
     height: calc(100vh - var(--navbar-height));
     transition: width 0.5s;
-}
 
-.items {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 10px;
-    opacity: 1;
-    transition: 1s;
-
-    .item {
+    .items {
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 10px;
+        gap: 15px;
+        margin-top: 10px;
+        opacity: 1;
+        transition: 1s;
 
-        .icon {
-            fill: var(--bg-color-sec);
-        }
     }
+
 }
 
 .toggleSidebar {
@@ -75,14 +66,5 @@
     .langSwitcher img {
         transition: 0.5s;
         transform: translateX(0);
-    }
-
-    .items {
-        .item {
-            .linkTitle {
-                opacity: 0;
-                width: 0;
-            }
-        }
     }
 }

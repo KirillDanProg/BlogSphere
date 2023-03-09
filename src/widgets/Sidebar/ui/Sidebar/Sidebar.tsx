@@ -1,26 +1,33 @@
-import { type FC, useState } from 'react'
+import { type FC, memo, useMemo, useState } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { LangSwitcher } from 'shared/ui/LangSwitcher/LangSwitcher'
 import { Button, ButtonSize, ButtonVariant } from 'shared/ui/Button/Button'
 import s from './Sidebar.module.scss'
-import { AppLink, ThemeSwitcher } from 'shared/ui'
+import { ThemeSwitcher } from 'shared/ui'
 import AngleLeft from 'shared/assets/icons/angles-left-solid.svg'
 import AngleRight from 'shared/assets/icons/angles-right-solid.svg'
-import HomeItem from 'shared/assets/icons/menu-icons/house-solid.svg'
-import InfoItem from 'shared/assets/icons/menu-icons/circle-question-regular.svg'
-import { useTranslation } from 'react-i18next'
-import { RoutePath } from 'shared/config/routes/routes'
+import { SidebarItemsList } from 'widgets/Sidebar/model/items'
+import { SidebarItem } from 'widgets/Sidebar/ui/SidebarItem/SidebarItem'
 
 interface SidebarProps {
     className?: string
 }
 
-export const Sidebar: FC<SidebarProps> = (props) => {
+export const Sidebar: FC<SidebarProps> = memo((props) => {
     const [collapsed, setCollapsed] = useState(true)
-    const { t } = useTranslation()
     const toggleSidebar = () => {
         setCollapsed(!collapsed)
     }
+
+    const itemsList = useMemo(() => {
+        return SidebarItemsList.map((item) => <SidebarItem
+            key={ item.path }
+            text={ item.text }
+            path={ item.path }
+            Icon={ item.Icon }
+            collapsed={ collapsed }
+        />)
+    }, [collapsed])
 
     return (
         <div
@@ -28,14 +35,7 @@ export const Sidebar: FC<SidebarProps> = (props) => {
             className={ classNames(s.Sidebar, { [s.collapsed]: collapsed }) }>
 
             <div className={ s.items }>
-                <AppLink className={ s.item } to={ RoutePath.main }>
-                    <HomeItem width="20px" className={ s.icon }/>
-                    <span className={ s.linkTitle }>{t('menu-main')}</span>
-                </AppLink>
-                <AppLink className={ s.item } to={ RoutePath.about }>
-                    <InfoItem width="20px" className={ s.icon }/>
-                    <span className={ s.linkTitle }>{t('menu-info')}</span>
-                </AppLink>
+                {itemsList}
             </div>
 
             <Button
@@ -58,4 +58,4 @@ export const Sidebar: FC<SidebarProps> = (props) => {
             </div>
         </div>
     )
-}
+})

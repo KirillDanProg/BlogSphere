@@ -1,0 +1,20 @@
+
+.item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    .icon {
+        fill: var(--bg-color-sec);
+    }
+}
+
+.collapsed {
+    .linkTitle {
+        opacity: 0;
+        width: 0;
+    }
+}
+
+

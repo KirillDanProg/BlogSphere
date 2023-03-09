@@ -63,7 +63,6 @@ export const LoginModal: FC<LoginModalProps> = (props) => {
                         goToSignIn={ goToSignInHandler }
                         haveAnAccount={ haveAnAccount }/>
                 </Suspense>
-
             </Modal>
         </div>
     )

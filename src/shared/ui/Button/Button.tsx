@@ -1,4 +1,4 @@
-import { type ButtonHTMLAttributes, type FC } from 'react'
+import { type ButtonHTMLAttributes, type FC, memo } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import s from './Button.module.scss'
 
@@ -9,7 +9,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     square?: boolean
 }
 
-export const Button: FC<ButtonProps> = (props) => {
+export const Button: FC<ButtonProps> = memo((props) => {
     const {
         className = '',
         variant = ButtonVariant.DEFAULT,
@@ -38,7 +38,7 @@ export const Button: FC<ButtonProps> = (props) => {
             {children}
         </button>
     )
-}
+})
 
 export const ButtonVariant = {
     PRIMARY: 'primary',
