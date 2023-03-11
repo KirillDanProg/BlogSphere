@@ -1,12 +1,15 @@
 import { type StatusType } from 'app/types/global'
 
 export interface ProfileType {
-    firstName: string
-    lastName: string
-    dateOfBirth: string
     country: string
-    contacts: ContactType
+    age: number
+    firstName: string
+    instagram: string
+    avatar: string
+    lastName: string
 }
+
+export type ProfileUpdateType = Partial<ProfileType>
 
 export interface ProfileSchema {
     data: ProfileType | null

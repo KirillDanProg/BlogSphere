@@ -1,0 +1,11 @@
+.header {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+}
+
+.data {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
