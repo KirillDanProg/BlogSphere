@@ -7,7 +7,8 @@ import path from 'path'
 
 export default {
     globals: {
-        __IS_DEV__: true
+        __IS_DEV__: true,
+        __API__: ''
     },
     // The root directory that Jest should scan for tests and modules within
     rootDir: '../../',
