@@ -1,6 +1,6 @@
 import { type StoryFn } from '@storybook/react'
 import { type StateSchema, StoreProvider } from 'app/providers/StoreProvider'
-import { type DeepPartial, type ReducersMapObject } from '@reduxjs/toolkit'
+import { type ReducersMapObject } from '@reduxjs/toolkit'
 import { authReducer } from 'features/AuthByUserName'
 
 const initialAsyncReducers: DeepPartial<ReducersMapObject<StateSchema>> = {
