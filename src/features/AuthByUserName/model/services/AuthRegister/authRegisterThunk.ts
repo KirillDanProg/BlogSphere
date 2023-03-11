@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { type IUser } from 'entities/User'
-import axios from 'axios'
 import { type IServerResponseUser } from 'entities/User/model/types/user'
+import { type ThunkConfig } from 'app/providers/StoreProvider/config/StateSchema'
 
 interface RegisterData {
     userName: string
@@ -9,7 +9,7 @@ interface RegisterData {
     password: string
 }
 
-export const authRegisterThunk = createAsyncThunk<IUser, RegisterData, { rejectValue: string }>(
+export const authRegisterThunk = createAsyncThunk<IUser, RegisterData, ThunkConfig<string>>(
     'auth/register',
     async ({
         email,
@@ -17,8 +17,8 @@ export const authRegisterThunk = createAsyncThunk<IUser, RegisterData, { rejectV
         userName
     }, thunkAPI) => {
         try {
-            const response = await axios.post<IServerResponseUser>(
-                'http://localhost:4444/auth/register', {
+            const response = await thunkAPI.extra.api.post<IServerResponseUser>(
+                'auth/register', {
                     userName,
                     email,
                     password

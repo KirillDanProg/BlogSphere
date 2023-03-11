@@ -24,7 +24,7 @@ const Input: FC<InputProps> = (props) => {
 
     const { t } = useTranslation()
 
-    const [inputValue, setValue] = useState(value || '')
+    const [inputValue, setValue] = useState(value ?? '')
 
     const ref = useRef<HTMLInputElement>(null)
 
@@ -32,7 +32,11 @@ const Input: FC<InputProps> = (props) => {
         setValue(e.target.value)
         onChange?.(e.target.value)
     }
-
+    useEffect(() => {
+        if (value) {
+            setValue(value)
+        }
+    }, [value])
     useEffect(() => {
         if (autoFocus) {
             ref.current?.focus()

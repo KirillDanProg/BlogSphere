@@ -1,6 +1,6 @@
 type Mode = Record<string, string | boolean | undefined>
 
-export const classNames = (className: string, mode: Mode = {}, additional: string[] = []) => {
+export const classNames = (className: string, mode: Mode = {}, additional: Array<string | undefined> = []) => {
     const modeArr = [
         ...Object.entries(mode)
             .filter(([key, value]) => Boolean(value))

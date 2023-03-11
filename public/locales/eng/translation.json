@@ -1,5 +1,9 @@
 {
   "lang": "English",
   "not-found": "Page not found",
-  "pageError": "Something went wrong"
+  "pageError": "Something went wrong",
+  "info": "Info",
+  "main": "Home",
+  "profile": "Profile",
+  "edit": "edit"
 }

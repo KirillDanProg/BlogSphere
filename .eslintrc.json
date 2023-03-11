@@ -3,6 +3,10 @@
     "browser": true,
     "es2021": true
   },
+  "globals": {
+    "__API__": true,
+    "__IS_DEV__": true
+  },
   "extends": [
     "plugin:react/recommended",
     "standard-with-typescript",
@@ -59,7 +63,8 @@
           "alt",
           "fill",
           "autoComplete",
-          "name"
+          "name",
+          "label"
         ]
       }
     ],

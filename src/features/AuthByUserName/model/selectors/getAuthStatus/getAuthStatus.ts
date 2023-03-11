@@ -1,3 +1,3 @@
 import { type StateSchema } from 'app/providers/StoreProvider'
 
-export const getAuthStatus = (state: StateSchema) => state.auth?.status || 'idle'
+export const getAuthStatus = (state: StateSchema) => state.auth?.status ?? 'idle'
