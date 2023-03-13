@@ -44,6 +44,7 @@
       4
     ],
     "@typescript-eslint/strict-boolean-expressions": "off",
+    "@typescript-eslint/restrict-template-expressions": "off",
     "@typescript-eslint/prefer-nullish-coalescing": "warn",
     "@typescript-eslint/explicit-function-return-type": "off",
     "react/react-in-jsx-scope": "off",
@@ -60,6 +61,7 @@
         "ignoreAttribute": [
           "data-testid",
           "to",
+          "align",
           "alt",
           "fill",
           "autoComplete",

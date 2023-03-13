@@ -1,9 +1,11 @@
 {
+  "cancel": "Cancel",
+  "edit": "edit",
+  "info": "Info",
   "lang": "English",
+  "main": "Home",
   "not-found": "Page not found",
   "pageError": "Something went wrong",
-  "info": "Info",
-  "main": "Home",
   "profile": "Profile",
-  "edit": "edit"
+  "save": "Save"
 }

@@ -16,7 +16,7 @@ export const SidebarItem: FC<PropsType> = memo((props) => {
         Icon,
         collapsed
     } = props
-    const { t } = useTranslation('sidebar')
+    const { t } = useTranslation()
 
     return (
         <AppLink className={ classNames(s.item, { [s.collapsed]: collapsed }, []) } to={ path }>

@@ -1,55 +1,61 @@
-import React, { type FC, type InputHTMLAttributes, memo, useEffect, useRef, useState } from 'react'
+import React, { type FC, type InputHTMLAttributes, memo, useEffect, useRef } from 'react'
 import s from './Input.module.scss'
 import { useTranslation } from 'react-i18next'
+import { classNames } from 'shared/lib/classNames/classNames'
 
 type HTMLInputProps =
-    Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange'>
+    Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange'>
     & { label?: string }
 
 interface InputProps extends HTMLInputProps {
     className?: string
-    value?: string
+    value?: string | number
     onChange?: (value: string) => void
+    readonly?: boolean
+    onFileInputChange?: (value: File) => void
 }
 
 const Input: FC<InputProps> = (props) => {
     const {
         value,
         onChange,
+        onFileInputChange,
         type = 'text',
         label = '',
         autoFocus,
+        readonly,
+        className,
         ...otherProps
     } = props
 
     const { t } = useTranslation()
 
-    const [inputValue, setValue] = useState(value ?? '')
-
     const ref = useRef<HTMLInputElement>(null)
 
     const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setValue(e.target.value)
+        if (e.target.name === 'avatar' && e.target.files) {
+            onFileInputChange?.(e.target.files[0])
+        }
         onChange?.(e.target.value)
     }
-    useEffect(() => {
-        if (value) {
-            setValue(value)
-        }
-    }, [value])
+
     useEffect(() => {
         if (autoFocus) {
             ref.current?.focus()
         }
     }, [autoFocus])
 
+    const mods = {
+        [s.readonly]: readonly
+    }
+
     return (
-        <div className={ s.inputBox }>
+        <div className={ classNames(s.inputBox, mods, [className]) }>
             <input
                 ref={ ref }
-                autoFocus
+                autoFocus={ autoFocus }
                 required
-                value={ inputValue }
+                value={ value }
                 onChange={ onChangeHandler }
                 type={ type }
                 className={ s.input }
