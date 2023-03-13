@@ -5,14 +5,15 @@ export interface ProfileType {
     age: number
     firstName: string
     instagram: string
-    avatar: string
+    avatar: any
     lastName: string
 }
 
-export type ProfileUpdateType = Partial<ProfileType>
+export type ProfileTypePartial = Partial<ProfileType>
 
 export interface ProfileSchema {
-    data: ProfileType | null
+    form: ProfileTypePartial | null
+    data: ProfileTypePartial | null
     error: string | null
     status: StatusType
     readonly: boolean

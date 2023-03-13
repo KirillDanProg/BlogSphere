@@ -1,11 +1,22 @@
-.header {
-    display: flex;
-    align-items: baseline;
-    gap: 10px;
+.ProfileCard {
+    margin-top: 15px;
+
+    .input {
+        width: 100%;
+        margin-bottom: 20px;
+    }
 }
 
 .data {
     display: flex;
     flex-direction: column;
     gap: 10px;
+}
+
+.loading,
+.error {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
 }
