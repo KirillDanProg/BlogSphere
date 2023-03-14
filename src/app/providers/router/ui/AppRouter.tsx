@@ -1,13 +1,25 @@
-import { Suspense } from 'react'
+import { Suspense, useMemo } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { routesConfig } from 'app/providers/router'
 import { PageLoader } from 'widgets/PageLoader/PageLoader'
+import { useSelector } from 'react-redux'
+import { getUserId } from 'entities/User/model/selectors/getUserId/getUserId'
 
 export const AppRouter = () => {
+    const isAuth = useSelector(getUserId)
+    const routes = useMemo(() => {
+        return Object.values(routesConfig)
+            .filter(route => {
+                if (route.authOnly && !isAuth) {
+                    return false
+                }
+                return true
+            })
+    }, [isAuth])
     return (
         <Routes>
             {
-                Object.values(routesConfig)
+                routes
                     .map(({
                         element,
                         path

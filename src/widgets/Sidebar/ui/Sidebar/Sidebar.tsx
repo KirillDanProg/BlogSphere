@@ -25,6 +25,7 @@ export const Sidebar: FC<SidebarProps> = memo((props) => {
             text={ item.text }
             path={ item.path }
             Icon={ item.Icon }
+            authOnly={ item.authOnly }
             collapsed={ collapsed }
         />)
     }, [collapsed])
