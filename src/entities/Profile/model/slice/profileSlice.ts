@@ -9,7 +9,8 @@ const initialState: ProfileSchema = {
     form: null,
     error: null,
     status: 'idle',
-    readonly: true
+    readonly: true,
+    validationErrors: null
 }
 
 export const profileSlice = createSlice({
@@ -27,6 +28,7 @@ export const profileSlice = createSlice({
         },
         cancelEditForm: (state) => {
             state.form = state.data
+            state.validationErrors = null
             state.readonly = true
         }
     },
@@ -52,11 +54,12 @@ export const profileSlice = createSlice({
             .addCase(updateUserProfile.fulfilled, (state, action: PayloadAction<ProfileType>) => {
                 state.status = 'succeeded'
                 state.data = state.form
+                state.validationErrors = null
             })
             .addCase(updateUserProfile.rejected, (state, action) => {
                 state.status = 'failed'
                 if (action.payload) {
-                    state.error = action.payload
+                    state.validationErrors = action.payload
                 }
             })
             .addCase(uploadAvatarProfile.rejected, (state, action) => {

@@ -17,12 +17,15 @@ export interface ProfileSchema {
     error: string | null
     status: StatusType
     readonly: boolean
+    validationErrors: ValidateProfileErrors[] | null
 }
 
-export interface ContactType {
-    instagram: string
-    vk: string
-    telegram: string
-    phone: number
-    email: string
+export enum ValidateProfileErrors {
+    INCORRECT_COUNTRY = 'INCORRECT_COUNTRY',
+    INCORRECT_AGE = 'INCORRECT_AGE',
+    INCORRECT_FIRSTNAME = 'INCORRECT_FIRSTNAME',
+    INCORRECT_LASTNAME = 'INCORRECT_LASTNAME',
+    INCORRECT_INSTAGRAM = 'INCORRECT_INSTAGRAM',
+    SERVER_ERROR = 'SERVER_ERROR',
+    NO_DATA = 'NO_DATA'
 }
