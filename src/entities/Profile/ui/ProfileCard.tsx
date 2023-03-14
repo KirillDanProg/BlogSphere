@@ -21,7 +21,6 @@ interface ProfileCardProps {
     onAgeChange?: onChangeHandlerType
     onCountryChange?: onChangeHandlerType
     onInstagramChange?: onChangeHandlerType
-    onAvatarChange?: (value: File) => void
 }
 
 export const ProfileCard: FC<ProfileCardProps> = (props) => {
@@ -36,8 +35,7 @@ export const ProfileCard: FC<ProfileCardProps> = (props) => {
         onLastNameChange,
         onAgeChange,
         onCountryChange,
-        onInstagramChange,
-        onAvatarChange
+        onInstagramChange
     } = props
 
     if (profileStatus === 'loading') {
@@ -62,7 +60,7 @@ export const ProfileCard: FC<ProfileCardProps> = (props) => {
             <Input
                 className={ s.input }
                 readonly={ readonly }
-                label={ 'FirstName' }
+                label={ t('FirstName') }
                 name="firstName"
                 value={ profileData?.firstName }
                 onChange={ onFirstNameChange }
@@ -70,7 +68,7 @@ export const ProfileCard: FC<ProfileCardProps> = (props) => {
             <Input
                 className={ s.input }
                 readonly={ readonly }
-                label={ 'LastName' }
+                label={ t('LastName') }
                 name="lastName"
                 value={ profileData?.lastName }
                 onChange={ onLastNameChange }
@@ -78,7 +76,7 @@ export const ProfileCard: FC<ProfileCardProps> = (props) => {
             <Input
                 className={ s.input }
                 readonly={ readonly }
-                label={ 'Your age' }
+                label={ t('age') }
                 name="age"
                 value={ profileData?.age }
                 onChange={ onAgeChange }
@@ -86,7 +84,7 @@ export const ProfileCard: FC<ProfileCardProps> = (props) => {
             <Input
                 className={ s.input }
                 readonly={ readonly }
-                label={ 'Country' }
+                label={ t('Country') }
                 name="country"
                 value={ profileData?.country }
                 onChange={ onCountryChange }
@@ -98,13 +96,6 @@ export const ProfileCard: FC<ProfileCardProps> = (props) => {
                 name="instagram"
                 value={ profileData?.instagram }
                 onChange={ onInstagramChange }
-            />
-            <Input
-                className={ s.input }
-                type={ 'file' }
-                label={ 'Avatar' }
-                name="avatar"
-                onFileInputChange={ onAvatarChange }
             />
         </div>
     )
