@@ -1,3 +1,3 @@
 import { type StateSchema } from 'app/providers/StoreProvider'
 
-export const getProfileStatus = (state: StateSchema) => state.profile?.status
+export const getProfileStatus = (state: StateSchema) => state.profile?.status || 'idle'
