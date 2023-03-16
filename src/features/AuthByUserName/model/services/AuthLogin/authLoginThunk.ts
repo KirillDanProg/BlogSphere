@@ -19,7 +19,7 @@ export const authLoginThunk = createAsyncThunk<IUser, AuthLoginData, ThunkConfig
                 password
             })
             if (!response.data) {
-                throw new Error()
+                return thunkAPI.rejectWithValue('something went wrong')
             }
             const {
                 updatedAt,
@@ -36,7 +36,7 @@ export const authLoginThunk = createAsyncThunk<IUser, AuthLoginData, ThunkConfig
             if (axios.isAxiosError(e)) {
                 return thunkAPI.rejectWithValue(e.response?.data.message)
             } else {
-                return thunkAPI.rejectWithValue('error')
+                return thunkAPI.rejectWithValue('something went wrong')
             }
         }
     }

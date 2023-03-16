@@ -30,7 +30,7 @@ describe('authLoginThunk.test', () => {
     it('failed authorization', async () => {
         const thunk = new TestAsyncThunk(authLoginThunk)
         // eslint-disable-next-line prefer-promise-reject-errors
-        thunk.api.post.mockReturnValue(Promise.reject({ response: { data: { message: 'error' } } }))
+        thunk.api.post.mockReturnValue(Promise.reject())
         const result = await thunk.callThunk({
             email: 'test@mail.ru',
             password: 'testPassword'
@@ -38,7 +38,7 @@ describe('authLoginThunk.test', () => {
         expect(result.meta.requestStatus)
             .toEqual('rejected')
         expect(result.payload)
-            .toEqual('error')
+            .toEqual('something went wrong')
         expect(thunk.dispatch)
             .toHaveBeenCalledTimes(2)
     })
