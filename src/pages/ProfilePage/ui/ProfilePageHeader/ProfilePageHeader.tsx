@@ -27,7 +27,7 @@ export const ProfilePageHeader: FC<ProfilePageHeaderProps> = (props) => {
     }, [dispatch])
 
     const onSaveEditHandler = useCallback(() => {
-        void dispatch(updateUserProfile())
+        void dispatch(updateUserProfile(''))
     }, [dispatch])
 
     return (

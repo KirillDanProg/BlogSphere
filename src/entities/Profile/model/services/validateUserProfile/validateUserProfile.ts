@@ -21,7 +21,7 @@ export const validateUserProfile = (profile: ProfileTypePartial) => {
     if (firstName && (firstName.trim().length < 2 || firstName.trim().length > 30)) {
         errors.push(ValidateProfileErrors.INCORRECT_FIRSTNAME)
     }
-    if (!(/[(http(s)?)://(www.)?a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)/.test(instagram ?? ''))) {
+    if (instagram && !(/[(http(s)?)://(www.)?a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)/.test(instagram ?? ''))) {
         errors.push(ValidateProfileErrors.INCORRECT_INSTAGRAM)
     }
     return errors

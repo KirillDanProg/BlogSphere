@@ -28,4 +28,20 @@ describe('fetchUserProfile.test', () => {
         expect(result.payload)
             .toEqual(data)
     })
+    it('return error when user not found', async () => {
+        const state: DeepPartial<StateSchema> = {
+            user: {
+                authData: {
+                    _id: undefined
+                }
+            }
+        }
+        const thunk = new TestAsyncThunk(fetchUserProfile, state)
+        thunk.api.get.mockReturnValue(Promise.resolve({ data }))
+        const result = await thunk.callThunk('')
+        expect(result.meta.requestStatus)
+            .toEqual('rejected')
+        expect(result.payload)
+            .toEqual('Что-то пошло не так')
+    })
 })
