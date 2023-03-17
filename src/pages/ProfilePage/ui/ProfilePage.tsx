@@ -28,6 +28,7 @@ import { useTranslation } from 'react-i18next'
 import Upload from 'shared/assets/icons/uploadAvatar.svg'
 import { Button } from 'shared/ui'
 import { ButtonVariant } from 'shared/ui/Button/Button'
+import defaultUserPhoto from 'shared/assets/images/defaultUserAvatar.jpg'
 
 const initialReducers: ReducersListType = {
     profile: profileReducer
@@ -93,7 +94,10 @@ const ProfilePage = () => {
                     <div className={ s.profileAvatar }>
                         <Avatar
                             size={ 200 }
-                            src={ `http://localhost:4444${profileForm?.avatar}` }
+                            src={ profileForm?.avatar
+                                ? `http://localhost:4444${profileForm?.avatar}`
+                                : defaultUserPhoto
+                            }
                         />
                         <input onChange={ onAvatarChangeHandler } type="file" id="upload-file"
                             hidden/>
@@ -105,7 +109,8 @@ const ProfilePage = () => {
                                 htmlFor="upload-file">
                                 <Upload
                                     className={ s.avatarIcon }
-                                    width={ '15px' }/>
+                                    width={ '15px' }
+                                />
                                 {t('avatar')}</label>
                         </Button>
                     </div>

@@ -68,8 +68,11 @@ export const profileSlice = createSlice({
                     state.error = action.payload
                 }
             })
-            .addCase(uploadAvatarProfile.pending, (state, action) => {
+            .addCase(uploadAvatarProfile.pending, (state) => {
                 state.status = 'loading'
+            })
+            .addCase(uploadAvatarProfile.fulfilled, (state) => {
+                state.status = 'succeeded'
             })
     }
 })
