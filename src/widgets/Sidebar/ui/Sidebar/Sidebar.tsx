@@ -19,15 +19,23 @@ export const Sidebar: FC<SidebarProps> = memo((props) => {
         setCollapsed(!collapsed)
     }
 
+    const [activePath, setActivePath] = useState(SidebarItemsList[0].path)
+    const setActiveHandler = (path: string) => {
+        setActivePath(path)
+    }
     const itemsList = useMemo(() => {
-        return SidebarItemsList.map((item) => <SidebarItem
-            key={ item.path }
-            text={ item.text }
-            path={ item.path }
-            Icon={ item.Icon }
-            collapsed={ collapsed }
-        />)
-    }, [collapsed])
+        return SidebarItemsList.map((item) => {
+            return <SidebarItem
+                key={ item.path }
+                text={ item.text }
+                path={ item.path }
+                Icon={ item.Icon }
+                collapsed={ collapsed }
+                setActive={ setActiveHandler }
+                active={ activePath === item.path }
+            />
+        })
+    }, [collapsed, activePath])
 
     return (
         <div
