@@ -2,7 +2,8 @@ import { createAsyncThunk, createSlice, type PayloadAction } from '@reduxjs/tool
 import { type IUser, type UserSchema } from '../types/user'
 
 const initialState: UserSchema = {
-    authData: null
+    authData: null,
+    isInit: false
 }
 
 export const userSlice = createSlice({
@@ -14,6 +15,9 @@ export const userSlice = createSlice({
         },
         deleteUserAuthData: (state) => {
             state.authData = null
+        },
+        init: (state) => {
+            state.isInit = true
         }
     }
 })
@@ -25,6 +29,7 @@ export const initAuthUserDataThunk = createAsyncThunk(
     'auth/dataInit',
     (_, { dispatch }) => {
         const authUserData = localStorage.getItem('userData')
+        dispatch(userActions.init())
         if (authUserData) {
             dispatch(userActions.setAuthUserData(JSON.parse(authUserData)))
         }
