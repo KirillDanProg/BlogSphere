@@ -27,6 +27,9 @@ export const useTheme = (): IUseTheme => {
                 newTheme = Theme.BLUE
                 break
             case Theme.BLUE:
+                newTheme = Theme.CORAL
+                break
+            case Theme.CORAL:
                 newTheme = Theme.DARK
                 break
             default:
