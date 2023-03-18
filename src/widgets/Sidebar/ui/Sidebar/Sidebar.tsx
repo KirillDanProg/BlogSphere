@@ -14,12 +14,12 @@ interface SidebarProps {
 }
 
 export const Sidebar: FC<SidebarProps> = memo((props) => {
-    const [collapsed, setCollapsed] = useState(true)
+    const [collapsed, setCollapsed] = useState(false)
     const toggleSidebar = () => {
         setCollapsed(!collapsed)
     }
 
-    const [activePath, setActivePath] = useState(SidebarItemsList[0].path)
+    const [activePath, setActivePath] = useState<string>()
     const setActiveHandler = (path: string) => {
         setActivePath(path)
     }
