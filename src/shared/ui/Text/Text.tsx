@@ -31,7 +31,7 @@ export const Text: FC<TextProps> = (props) => {
         text,
         title,
         variant = TextVariant.DEFAULT,
-        align = TextAlign.LEFT
+        align = TextAlign.CENTER
     } = props
 
     const additionalClasses = [

@@ -12,6 +12,7 @@
     "test:ui:ok": "npx loki approve",
     "test:ui:ci": "npx loki --requireReference --reactUri file:./storybook-static",
     "start": "webpack serve --env port=3003 mode=development",
+    "server": "npm run start --prefix ../server",
     "start:dev": "concurrently \"webpack serve --env port=3003 mode=development\" \"npm run start --prefix ../server\"",
     "build:prod": "webpack --env mode=production",
     "build:dev": "webpack --env mode=development",
