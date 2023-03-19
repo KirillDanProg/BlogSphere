@@ -1,0 +1,9 @@
+.ArticleDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    .avatar {
+        margin: 0 auto;
+    }
+}
