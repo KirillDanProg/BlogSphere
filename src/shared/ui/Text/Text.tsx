@@ -13,8 +13,14 @@ export const TextAlign = {
     CENTER: 'center'
 } as const
 
+export const TextSize = {
+    M: 'size_m',
+    L: 'size_l'
+} as const
+
 type TextVariantType = 'primary' | 'error'
 type TextAlignType = 'left' | 'right' | 'center'
+type TextSizeType = 'size_m' | 'size_l'
 
 interface TextProps {
     className?: string
@@ -23,6 +29,7 @@ interface TextProps {
     center?: boolean
     variant?: TextVariantType
     align?: TextAlignType
+    size?: TextSizeType
 }
 
 export const Text: FC<TextProps> = (props) => {
@@ -31,13 +38,15 @@ export const Text: FC<TextProps> = (props) => {
         text,
         title,
         variant = TextVariant.DEFAULT,
-        align = TextAlign.CENTER
+        align = TextAlign.LEFT,
+        size = TextSize.M
     } = props
 
     const additionalClasses = [
         className,
         s[variant],
-        s[align]
+        s[align],
+        s[size]
     ]
     return (
         <div className={ classNames(s.Text, {}, additionalClasses) }>
