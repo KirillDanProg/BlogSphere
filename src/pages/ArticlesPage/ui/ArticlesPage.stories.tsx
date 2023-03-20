@@ -2,7 +2,7 @@ import { type ComponentStory } from '@storybook/react'
 import ArticlesPage from './ArticlesPage'
 
 export default {
-    title: '',
+    title: 'pages/ArticlesPage',
     component: ArticlesPage
 }
 

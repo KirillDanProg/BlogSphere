@@ -24,6 +24,6 @@ export interface ArticleType {
     tags: string[]
     userId: string
     viewCount: number
-    createdA: string
+    createdAt: string
     blocks: ArticleBlockType[]
 }

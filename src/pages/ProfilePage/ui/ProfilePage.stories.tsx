@@ -6,7 +6,7 @@ import { Theme } from 'app/providers/ThemeProvider'
 import { ValidateProfileErrors } from 'entities/Profile/model/types/profile'
 
 export default {
-    title: 'page/ProfilePage',
+    title: 'pages/ProfilePage',
     component: ProfilePage
 }
 const Template: ComponentStory<typeof ProfilePage> = () => <ProfilePage/>
