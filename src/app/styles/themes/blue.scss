@@ -1,6 +1,6 @@
 .app_blue_theme {
     --bg-color-sec: #c3c3ee;
-    --bg-color: rgb(255 255 255 / 61%);
+    --bg-color: rgb(255 255 255);
     --inverted-bg-color: #2517e2;
     --primary-color: #2517e2;
     --primary-color-light: #d2a441;
@@ -11,4 +11,5 @@
     --overlay-color: rgb(101 101 101 / 50%);
     --skeleton-color: #cdc9f8;
     --skeleton-shadow: #a9baf3;
+    --code-bg: rgb(240 240 253);
 }

@@ -3,10 +3,12 @@ import { type StateSchema, StoreProvider } from 'app/providers/StoreProvider'
 import { type ReducersMapObject } from '@reduxjs/toolkit'
 import { authReducer } from 'features/AuthByUserName'
 import { profileReducer } from 'entities/Profile'
+import { articleDetailsReducer } from 'entities/Arcticle'
 
 const initialAsyncReducers: DeepPartial<ReducersMapObject<StateSchema>> = {
     auth: authReducer,
-    profile: profileReducer
+    profile: profileReducer,
+    articleDetails: articleDetailsReducer
 }
 
 export const StoreDecorator = (

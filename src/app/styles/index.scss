@@ -8,7 +8,7 @@
 
 body {
     font: var(--font-m);
-    color: var(--inverted-bg-color);
+    color: var(--text-color);
 }
 
 .app {
@@ -23,8 +23,8 @@ body {
 }
 
 .page-content {
+    width: 100%;
     height: calc(100vh - var(--navbar-height));
-    overflow-y: auto;
-    padding: 20px 40px;
+    padding: 20px 40px 60px 60px;
     flex-grow: 1;
 }

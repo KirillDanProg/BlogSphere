@@ -4,7 +4,7 @@ import s from './Icon.module.scss'
 
 interface IconProps {
     className?: string
-    Svg: React.FunctionComponent<React.SVGAttributes<SVGElement>>
+    Svg: React.FC<React.SVGProps<SVGSVGElement>>
 }
 
 export const Icon: FC<IconProps> = (props) => {

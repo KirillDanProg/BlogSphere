@@ -1,21 +1,32 @@
 export enum ArticleBlockVariant {
-    IMAGE = 'image',
-    TEXT = 'text'
+    IMAGE = 'IMAGE',
+    TEXT = 'TEXT',
+    CODE = 'CODE'
 }
 
-interface ArticleImageBlockType {
+interface ArticleBaseType {
+    type: ArticleBlockVariant
+    id: string
+}
+
+export interface ArticleImageBlockType extends ArticleBaseType {
     type: ArticleBlockVariant.IMAGE
     src: string
     title?: string
 }
 
-interface ArticleTextBlockType {
+export interface ArticleTextBlockType extends ArticleBaseType {
     type: ArticleBlockVariant.TEXT
     paragraphs: string[]
     title?: string
 }
 
-export type ArticleBlockType = ArticleImageBlockType | ArticleTextBlockType
+export interface ArticleCodeBlockType extends ArticleBaseType {
+    type: ArticleBlockVariant.CODE
+    code: string
+}
+
+export type ArticleBlockType = ArticleImageBlockType | ArticleTextBlockType | ArticleCodeBlockType
 
 export interface ArticleType {
     id: string
