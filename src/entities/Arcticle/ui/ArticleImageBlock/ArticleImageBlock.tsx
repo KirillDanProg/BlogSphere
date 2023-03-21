@@ -4,13 +4,19 @@ import s from './ArticleImageBlock.module.scss'
 
 interface ArticleImageBlockProps {
     className?: string
+    src: string
 }
 
 export const ArticleImageBlock: FC<ArticleImageBlockProps> = (props) => {
-    // const { t } = useTranslation()
-
+    const {
+        src,
+        className
+    } = props
     return (
-        <div className={ classNames(s.ArticleImageBlock) }>
-        </div>
+        <img
+            alt={ 'article image' }
+            src={ src }
+            className={ classNames(s.ArticleImageBlock, {}, [className]) }
+        />
     )
 }

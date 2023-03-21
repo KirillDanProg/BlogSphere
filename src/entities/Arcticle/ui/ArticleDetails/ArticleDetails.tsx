@@ -1,4 +1,4 @@
-import { type FC, memo, useEffect } from 'react'
+import { type FC, memo, useCallback, useEffect } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import s from './ArticleDetails.module.scss'
 import { useTranslation } from 'react-i18next'
@@ -20,6 +20,13 @@ import { Skeleton } from 'shared/ui/Skeleton/ui/Skeleton'
 import { Icon } from 'shared/ui/Icon/Icon'
 import EyeIcon from 'shared/assets/icons/eye-solid.svg'
 import CalendarIcon from 'shared/assets/icons/calendar-days-regular.svg'
+import { blocks } from 'data/db'
+import { type ArticleBlockType, ArticleBlockVariant } from 'entities/Arcticle/model/types/article'
+import { ArticleTextBlock } from '../ArticleTextBlock/ArticleTextBlock'
+import { ArticleImageBlock } from '../ArticleImageBlock/ArticleImageBlock'
+import { ArticleCodeBlock } from '../ArticleCodeBlock/ArticleCodeBlock'
+
+const articleBlocks = blocks as ArticleBlockType[]
 
 interface ArticleDetailsProps {
     className?: string
@@ -51,6 +58,30 @@ export const ArticleDetails: FC<ArticleDetailsProps> = memo((props) => {
         convertedDate = new Date(articleData?.createdAt || '').toUTCString()
             .slice(5, 16)
     }
+
+    const renderBlocks = useCallback((block: ArticleBlockType) => {
+        switch (block.type) {
+            case ArticleBlockVariant.TEXT:
+                return <ArticleTextBlock
+                    key={ block.id }
+                    block={ block }
+                    className={ s.block }
+                />
+            case ArticleBlockVariant.IMAGE:
+                return <ArticleImageBlock
+                    className={ s.imageBlock }
+                    src={ block.src }
+                    key={ block.id }/>
+            case ArticleBlockVariant.CODE:
+                return <ArticleCodeBlock
+                    key={ block.id }
+                    className={ s.block }
+                    block={ block }
+                />
+            default:
+                return null
+        }
+    }, [])
 
     let content
     if (status === 'loading') {
@@ -95,7 +126,9 @@ export const ArticleDetails: FC<ArticleDetailsProps> = memo((props) => {
                     Svg={ CalendarIcon }/>
                 <Text text={ convertedDate }/>
             </div>
-
+            <div className={ s.blocks }>
+                {articleBlocks.map(renderBlocks)}
+            </div>
         </div>
     }
     return (
