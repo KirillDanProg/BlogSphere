@@ -12,6 +12,7 @@ import { type AxiosInstance } from 'axios'
 import { type To } from '@remix-run/router'
 import { type NavigateOptions } from 'react-router/dist/lib/context'
 import { type ArticleSchema } from 'entities/Arcticle/model/types/articleSchema'
+import { type ArticleDetailsCommentSchema } from 'pages/ArticleDetailsPage'
 
 export interface StateSchema {
     user: UserSchema
@@ -20,6 +21,7 @@ export interface StateSchema {
     auth?: LoginSchema
     profile?: ProfileSchema
     articleDetails?: ArticleSchema
+    articleDetailsComments?: ArticleDetailsCommentSchema
 
 }
 

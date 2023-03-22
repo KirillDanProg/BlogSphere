@@ -1,0 +1,12 @@
+.CommentItem {
+    border: 2px solid var(--inverted-bg-color);
+    margin-bottom: 12px;
+    padding: 12px;
+
+    .header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 5px;
+    }
+}
