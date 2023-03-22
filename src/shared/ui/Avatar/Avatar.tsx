@@ -2,8 +2,6 @@ import { type FC, useMemo } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import s from './Avatar.module.scss'
 import DefaultUserAvatar from '../../assets/images/defaultUserAvatar.jpg'
-import { useSelector } from 'react-redux'
-import { getProfileForm } from 'entities/Profile/model/selectors/getProfileForm/getProfileForm'
 
 interface AvatarProps {
     className?: string
@@ -29,14 +27,14 @@ export const Avatar: FC<AvatarProps> = (props) => {
         }
     }, [size])
 
-    const profileData = useSelector(getProfileForm)
-    const avatar = profileData?.avatar
+    // const profileData = useSelector(getProfileForm)
+    // const avatar = profileData?.avatar
 
     return (
         <img
             alt={ alt }
             style={ style }
-            src={ avatar ? src : DefaultUserAvatar }
+            src={ src || DefaultUserAvatar }
             className={ classNames(s.Avatar, { [s.circle]: circle }, [className]) }
         />
     )

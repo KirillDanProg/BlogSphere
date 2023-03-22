@@ -24,7 +24,8 @@ body {
 
 .page-content {
     width: 100%;
-    height: calc(100vh - var(--navbar-height));
-    padding: 20px 40px 60px 60px;
+    padding: 20px 0 60px 60px;
     flex-grow: 1;
+    height: calc(100vh - var(--navbar-height));
+    overflow: auto;
 }

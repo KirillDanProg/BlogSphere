@@ -37,7 +37,7 @@ const asyncReducers: ReducersListType = {
     articleDetails: articleDetailsReducer
 }
 export const ArticleDetails: FC<ArticleDetailsProps> = memo((props) => {
-    const { t } = useTranslation()
+    const { t } = useTranslation('articleDetails')
 
     const {
         articleId,
