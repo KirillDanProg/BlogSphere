@@ -1,6 +1,6 @@
 import { type DeepPartial } from '@reduxjs/toolkit'
 import { type StateSchema } from 'app/providers/StoreProvider'
-import { getAuthStatus } from 'features/AuthByUserName/model/selectors/getAuthStatus/getAuthStatus'
+import { getAuthStatus } from 'features/authByUserName/model/selectors/getAuthStatus/getAuthStatus'
 
 describe('getAuthStatus.test', () => {
     it('return auth status', () => {

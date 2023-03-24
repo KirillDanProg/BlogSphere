@@ -29,6 +29,7 @@ import Upload from 'shared/assets/icons/uploadAvatar.svg'
 import { Button } from 'shared/ui'
 import { ButtonVariant } from 'shared/ui/Button/Button'
 import defaultUserPhoto from 'shared/assets/images/defaultUserAvatar.jpg'
+import { useParams } from 'react-router-dom'
 
 const initialReducers: ReducersListType = {
     profile: profileReducer
@@ -41,6 +42,7 @@ const ProfilePage = () => {
     const error = useSelector(getProfileError)
     const readonly = useSelector(getProfileReadonly)
     const validationErrors = useSelector(getValidationErrors)
+    const { id } = useParams()
     const onFirstNameChangeHandler = (value: string) => {
         dispatch(profileActions.updateProfileForm({ firstName: value }))
     }
@@ -81,9 +83,9 @@ const ProfilePage = () => {
 
     useEffect(() => {
         if (__PROJECT__ !== 'storybook') {
-            void dispatch(fetchUserProfile(''))
+            void dispatch(fetchUserProfile(id))
         }
-    }, [dispatch])
+    }, [dispatch, id])
 
     return (
         <DynamicModuleLoader reducers={ initialReducers }>

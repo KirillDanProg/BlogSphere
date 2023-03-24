@@ -1,4 +1,4 @@
-import { authLoginThunk } from 'features/AuthByUserName/model/services/AuthLogin/authLoginThunk'
+import { authLoginThunk } from 'features/authByUserName/model/services/AuthLogin/authLoginThunk'
 import { userActions } from 'entities/User'
 import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk'
 

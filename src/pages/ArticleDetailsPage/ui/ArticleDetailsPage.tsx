@@ -1,22 +1,25 @@
-import { type FC, memo, useEffect } from 'react'
-import { classNames } from 'shared/lib/classNames/classNames'
+import { type FC, memo, useCallback, useEffect } from 'react'
+
 import s from './ArticleDetailsPage.module.scss'
 import { ArticleDetails } from 'entities/Arcticle'
 import { useParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { Text } from 'shared/ui/Text/Text'
 import { CommentsList } from 'entities/Comment'
-import {
-    DynamicModuleLoader,
-    type ReducersListType
-} from 'shared/lib/components/DynamicModuleLoader'
+import { useSelector } from 'react-redux'
 import {
     articleDetailsCommentsReducer,
     getArticleComments
 } from '../model/slice/articleDetailsCommentsSlice'
-import { useSelector } from 'react-redux'
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch'
 import { fetchArticleComments } from '../model/services/fetchArticleComments'
+import { addNewCommentForArticle } from '../model/services/addNewCommentForArticle'
+import { AddNewCommentForm } from 'features/addNewComment'
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch'
+import { classNames } from 'shared/lib/classNames/classNames'
+import { Text } from 'shared/ui/Text/Text'
+import {
+    DynamicModuleLoader,
+    type ReducersListType
+} from 'shared/lib/components/DynamicModuleLoader'
 
 interface ArticleDetailsPageProps {
     className?: string
@@ -31,6 +34,10 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = (props) => {
     const { id } = useParams<{ id: string }>()
     const comments = useSelector(getArticleComments.selectAll)
     const dispatch = useAppDispatch()
+
+    const onSendArticleComment = useCallback((text) => {
+        void dispatch(addNewCommentForArticle(text))
+    }, [dispatch])
 
     useEffect(() => {
         void dispatch(fetchArticleComments(id))
@@ -52,7 +59,12 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = (props) => {
                 <ArticleDetails
                     articleId={ id }
                 />
-                <Text title={ t('comments') }/>
+                <Text
+                    className={ s.title }
+                    title={ t('comments') }/>
+                <AddNewCommentForm
+                    onSendComment={ onSendArticleComment }
+                />
                 <CommentsList
                     comments={ comments }/>
             </div>

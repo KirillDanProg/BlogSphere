@@ -14,7 +14,7 @@ import {
     DynamicModuleLoader,
     type ReducersListType
 } from 'shared/lib/components/DynamicModuleLoader'
-import { authReducer } from 'features/AuthByUserName'
+import { authReducer } from 'features/authByUserName'
 
 const initialReducers: ReducersListType = {
     auth: authReducer

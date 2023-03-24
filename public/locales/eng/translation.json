@@ -1,5 +1,6 @@
 {
   "cancel": "Cancel",
+  "comment": "leave a comment...",
   "edit": "edit",
   "info": "Info",
   "lang": "English",
@@ -7,5 +8,6 @@
   "not-found": "Page not found",
   "pageError": "Something went wrong",
   "profile": "Profile",
-  "save": "Save"
+  "save": "Save",
+  "send": "Send"
 }

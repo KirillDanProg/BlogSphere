@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { type LoginSchema } from '../types/loginSchema'
 import { authRegisterThunk } from '../services/AuthRegister/authRegisterThunk'
-import { authLoginThunk } from 'features/AuthByUserName/model/services/AuthLogin/authLoginThunk'
+import { authLoginThunk } from 'features/authByUserName/model/services/AuthLogin/authLoginThunk'
 
 const initialState: LoginSchema = {
     email: '',
