@@ -7,7 +7,7 @@ import { ThemeProvider } from 'app/providers/ThemeProvider'
 export const ThemeDecorator = (theme: ThemeType) => (Story: StoryFn) => {
     return (
         <ThemeProvider initialTheme={ theme }>
-            <div style={ { padding: '20px' } } className={ `app ${theme}` }>
+            <div className={ `app ${theme} page-content` }>
                 <Story/>
             </div>
         </ThemeProvider>

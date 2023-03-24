@@ -45,7 +45,9 @@ export const ButtonVariant = {
     DEFAULT: 'default',
     INVERTED: 'inverted',
     OUTLINED: 'outlined',
-    NO_HOVER: 'noHover'
+    INVERTED_OUTLINED: 'invertedOutlined',
+    NO_HOVER: 'noHover',
+    RED: 'red'
 } as const
 
 export const ButtonSize = {
@@ -54,5 +56,13 @@ export const ButtonSize = {
     XL: 'size_xl'
 } as const
 
-type Variants = 'primary' | 'default' | 'inverted' | 'outlined' | 'noHover'
+type Variants =
+    'primary'
+    | 'default'
+    | 'inverted'
+    | 'outlined'
+    | 'invertedOutlined'
+    | 'noHover'
+    | 'red'
+
 type Sizes = 'size_m' | 'size_l' | 'size_xl'

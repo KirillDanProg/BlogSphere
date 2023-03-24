@@ -8,13 +8,13 @@ import './app/styles/index.scss'
 import { StoreProvider } from 'app/providers/StoreProvider'
 
 render(
-    <StoreProvider>
-        <BrowserRouter>
+    <BrowserRouter>
+        <StoreProvider>
             <ThemeProvider>
                 <ErrorBoundary>
                     <App/>
                 </ErrorBoundary>
             </ThemeProvider>
-        </BrowserRouter>
-    </StoreProvider>,
+        </StoreProvider>
+    </BrowserRouter>,
     document.getElementById('root'))

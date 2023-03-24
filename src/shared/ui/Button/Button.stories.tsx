@@ -41,13 +41,22 @@ Outlined.args = {
     children: 'outlined',
     variant: ButtonVariant.OUTLINED
 }
+export const InvertedOutlined = Template.bind({})
+InvertedOutlined.args = {
+    children: 'inverted outlined',
+    variant: ButtonVariant.INVERTED_OUTLINED
+}
 export const OutlinedDark = Template.bind({})
 OutlinedDark.decorators = [ThemeDecorator(Theme.DARK)]
 OutlinedDark.args = {
     children: 'outlined dark',
     variant: ButtonVariant.OUTLINED
 }
-
+export const Red = Template.bind({})
+Red.args = {
+    children: 'red',
+    variant: ButtonVariant.RED
+}
 export const PrimaryM = Template.bind({})
 PrimaryM.args = {
     children: 'primary',

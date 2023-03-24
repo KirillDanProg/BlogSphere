@@ -14,20 +14,28 @@ interface SidebarProps {
 }
 
 export const Sidebar: FC<SidebarProps> = memo((props) => {
-    const [collapsed, setCollapsed] = useState(true)
+    const [collapsed, setCollapsed] = useState(false)
     const toggleSidebar = () => {
         setCollapsed(!collapsed)
     }
 
+    const [activePath, setActivePath] = useState<string>()
+    const setActiveHandler = (path: string) => {
+        setActivePath(path)
+    }
     const itemsList = useMemo(() => {
-        return SidebarItemsList.map((item) => <SidebarItem
-            key={ item.path }
-            text={ item.text }
-            path={ item.path }
-            Icon={ item.Icon }
-            collapsed={ collapsed }
-        />)
-    }, [collapsed])
+        return SidebarItemsList.map((item) => {
+            return <SidebarItem
+                key={ item.path }
+                text={ item.text }
+                path={ item.path }
+                Icon={ item.Icon }
+                collapsed={ collapsed }
+                setActive={ setActiveHandler }
+                active={ activePath === item.path }
+            />
+        })
+    }, [collapsed, activePath])
 
     return (
         <div

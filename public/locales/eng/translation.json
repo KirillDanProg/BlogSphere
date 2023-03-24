@@ -1,5 +1,13 @@
 {
+  "cancel": "Cancel",
+  "comment": "leave a comment...",
+  "edit": "edit",
+  "info": "Info",
   "lang": "English",
+  "main": "Home",
   "not-found": "Page not found",
-  "pageError": "Something went wrong"
+  "pageError": "Something went wrong",
+  "profile": "Profile",
+  "save": "Save",
+  "send": "Send"
 }

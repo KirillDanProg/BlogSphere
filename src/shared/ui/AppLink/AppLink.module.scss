@@ -28,5 +28,10 @@
 }
 
 .active {
-    transition: 0.4s;
+    transform: scale(1.5);
+}
+
+.without-styles {
+    all: unset;
+    cursor: pointer;
 }

@@ -3,6 +3,10 @@
     "browser": true,
     "es2021": true
   },
+  "globals": {
+    "__API__": true,
+    "__IS_DEV__": true
+  },
   "extends": [
     "plugin:react/recommended",
     "standard-with-typescript",
@@ -40,6 +44,7 @@
       4
     ],
     "@typescript-eslint/strict-boolean-expressions": "off",
+    "@typescript-eslint/restrict-template-expressions": "off",
     "@typescript-eslint/prefer-nullish-coalescing": "warn",
     "@typescript-eslint/explicit-function-return-type": "off",
     "react/react-in-jsx-scope": "off",
@@ -56,10 +61,12 @@
         "ignoreAttribute": [
           "data-testid",
           "to",
+          "align",
           "alt",
           "fill",
           "autoComplete",
-          "name"
+          "name",
+          "label"
         ]
       }
     ],

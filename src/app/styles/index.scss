@@ -2,11 +2,13 @@
 @import "./variables/global";
 @import "./themes/dark";
 @import "./themes/light";
+@import "./themes/blue";
+@import "./themes/coral";
 @import "./mixins/mixins";
 
 body {
     font: var(--font-m);
-    color: var(--inverted-bg-color);
+    color: var(--text-color);
 }
 
 .app {
@@ -21,5 +23,9 @@ body {
 }
 
 .page-content {
+    width: 100%;
+    padding: 20px 0 60px 60px;
     flex-grow: 1;
+    height: calc(100vh - var(--navbar-height));
+    overflow: auto;
 }

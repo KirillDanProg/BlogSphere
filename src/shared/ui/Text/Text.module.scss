@@ -1,14 +1,8 @@
 .Text {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
     color: var(--text-color);
-
-    .title {
-        font: var(--font-l);
-        margin-bottom: 10px;
-    }
-
-    .text {
-        font: var(--font-m);
-    }
 }
 
 .error {
@@ -17,4 +11,32 @@
 
 .center {
     text-align: center;
+}
+
+.left {
+    text-align: left;
+}
+
+.right {
+    text-align: right;
+}
+
+.size_m {
+    .title {
+        font: var(--font-l);
+    }
+
+    .text {
+        font: var(--font-m);
+    }
+}
+
+.size_l {
+    .title {
+        font: var(--font-xl);
+    }
+
+    .text {
+        font: var(--font-l);
+    }
 }

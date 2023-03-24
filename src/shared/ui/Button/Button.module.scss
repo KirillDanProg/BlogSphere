@@ -39,15 +39,25 @@
     @include gradient-color(var(--secondary-color), var(--secondary-color-bright));
 }
 
-.outlined {
+.outlined,
+.invertedOutlined,
+.red {
     border: 2px solid var(--primary-color-light);
     border-radius: 10px;
+}
+
+.invertedOutlined {
+    border-color: var(--inverted-bg-color);
 }
 
 .primary {
     @include gradient-bg-color(var(--secondary-color), var(--secondary-color-bright));
 
     border-radius: 10px;
+}
+
+.red {
+    border-color: var(--error-color);
 }
 
 .square.size_m {
