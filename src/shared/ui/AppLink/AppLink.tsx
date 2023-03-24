@@ -7,7 +7,8 @@ export enum AppLinkVariant {
     PRIMARY = 'primary',
     DEFAULT = 'default',
     INVERTED = 'inverted',
-    OUTLINED = 'outlined'
+    OUTLINED = 'outlined',
+    WITHOUT_STYLE = 'without-styles'
 }
 
 interface AppLinkProps extends LinkProps {

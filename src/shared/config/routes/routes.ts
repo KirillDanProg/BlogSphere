@@ -12,7 +12,7 @@ export type RoutesType = Record<AppRoutes, string>
 export const RoutePath: RoutesType = {
     [AppRoutes.MAIN]: '/',
     [AppRoutes.ABOUT]: '/about',
-    [AppRoutes.PROFILE]: '/profile',
+    [AppRoutes.PROFILE]: '/profile/',
     [AppRoutes.ARTICLES]: '/articles',
     [AppRoutes.ARTICLE_DETAILS_PAGE]: '/articles/',
     [AppRoutes.NOT_FOUND]: '*'
