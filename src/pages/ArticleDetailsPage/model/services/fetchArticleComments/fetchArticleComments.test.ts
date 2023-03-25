@@ -9,14 +9,18 @@ const data: CommentType[] = [
         text: 'some comment',
         userName: 'Alex',
         avatar: defaultAvatar,
-        _id: '1'
+        _id: '1',
+        createdAt: '01.01.2001',
+        postId: '1'
     },
     {
         userId: '2',
         text: 'comment 2',
         userName: 'Bob',
         avatar: defaultAvatar,
-        _id: '2'
+        _id: '2',
+        createdAt: '01.01.2001',
+        postId: '1'
     }
 ]
 

@@ -9,6 +9,8 @@ import { Skeleton } from 'shared/ui/Skeleton/ui/Skeleton'
 import { AppLink } from 'shared/ui'
 import { RoutePath } from 'shared/config/routes/routes'
 import { AppLinkVariant } from 'shared/ui/AppLink/AppLink'
+import { Card } from 'shared/ui/Card/Card'
+import { convertDate } from 'shared/lib/helpers/convertDate'
 
 interface CommentItemProps {
     className?: string
@@ -22,6 +24,8 @@ export const CommentItem: FC<CommentItemProps> = (props) => {
         className,
         status
     } = props
+
+    const convertedDate = convertDate(comment?.createdAt)
 
     const mods = {
         [s.loading]: status === 'loading'
@@ -42,7 +46,7 @@ export const CommentItem: FC<CommentItemProps> = (props) => {
     }
 
     return (
-        <div
+        <Card
             className={ classNames(s.CommentItem, mods, [className]) }>
             <div className={ s.header }>
                 <AppLink
@@ -52,18 +56,20 @@ export const CommentItem: FC<CommentItemProps> = (props) => {
                 >
                     <Avatar
                         src={ comment.avatar }
-                        size={ 35 }
+                        size={ 30 }
                     />
                     <Text
-                        size={ TextSize.L }
+                        size={ TextSize.M }
                         text={ comment.userName }
                     />
                 </AppLink>
-
+                <div className={ s.addedDate }>
+                    {convertedDate}
+                </div>
             </div>
             <Text
                 text={ comment.text }
             />
-        </div>
+        </Card>
     )
 }

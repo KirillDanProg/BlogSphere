@@ -13,21 +13,27 @@ const comments: CommentType[] = [
         text: 'some comment',
         userName: 'Alex',
         avatar: defaultAvatar,
-        _id: '1'
+        _id: '1',
+        createdAt: '01.01.2001',
+        postId: '1'
     },
     {
         userId: '2',
         text: 'another comment',
         userName: 'Bob',
         avatar: defaultAvatar,
-        _id: '2'
+        _id: '2',
+        createdAt: '01.01.2001',
+        postId: '2'
     },
     {
         userId: '3',
         text: 'Hello world!!!',
         userName: 'John',
         avatar: defaultAvatar,
-        _id: '3'
+        _id: '3',
+        createdAt: '01.01.2001',
+        postId: '3'
     }
 ]
 

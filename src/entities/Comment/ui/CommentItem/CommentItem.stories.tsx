@@ -18,7 +18,9 @@ Default.args = {
         avatar: Avatar,
         userId: '1',
         userName: 'Kirill',
-        text: 'Some test comment'
+        text: 'Some test comment',
+        createdAt: '01.01.2001',
+        postId: '1'
     }
 }
 
@@ -30,7 +32,9 @@ Dark.args = {
         avatar: Avatar,
         userId: '1',
         userName: 'Kirill',
-        text: 'Some test comment'
+        text: 'Some test comment',
+        createdAt: '01.01.2001',
+        postId: '2'
     }
 }
 

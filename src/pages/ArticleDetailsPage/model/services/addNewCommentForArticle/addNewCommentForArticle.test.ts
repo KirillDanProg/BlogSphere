@@ -9,14 +9,18 @@ const data: CommentType[] = [
         text: 'some comment',
         userName: 'Alex',
         avatar: '',
-        _id: '1'
+        _id: '1',
+        createdAt: '01.01.2001',
+        postId: '2'
     },
     {
         userId: '2',
         text: 'comment 2',
         userName: 'Bob',
         avatar: '',
-        _id: '2'
+        _id: '2',
+        createdAt: '01.01.2001',
+        postId: '2'
     }
 ]
 
@@ -30,14 +34,14 @@ describe('addNewCommentForArticle', () => {
             }
         }
         const thunk = new TestAsyncThunk(addNewCommentForArticle, state)
-        thunk.api.post.mockReturnValue(Promise.resolve({ data }))
+        thunk.api.post.mockReturnValue(Promise.resolve())
         const result = await thunk.callThunk('some text')
         expect(thunk.api.post)
             .toHaveBeenCalled()
         expect(result.meta.requestStatus)
             .toEqual('fulfilled')
         expect(result.payload)
-            .toEqual(data)
+            .toEqual(true)
     })
 
     it('catch error if article is undefined', async () => {

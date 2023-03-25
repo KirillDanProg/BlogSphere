@@ -2,9 +2,7 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-    border: 2px solid var(--inverted-bg-color);
-    margin-bottom: 12px;
-    padding: 12px;
+    margin-bottom: 24px;
 
     .header {
         .link {
@@ -12,6 +10,12 @@
             align-items: center;
             gap: 12px;
         }
+    }
+
+    .addedDate {
+        font-size: 12px;
+        opacity: 0.85;
+        padding-left: 6px;
     }
 }
 

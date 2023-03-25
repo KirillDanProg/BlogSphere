@@ -7,7 +7,7 @@ export const fetchArticleComments = createAsyncThunk<CommentType[], string | und
     async (articleId, thunkAPI) => {
         try {
             if (articleId) {
-                const response = await thunkAPI.extra.api.get<CommentType[]>(`posts/${articleId}/comments`)
+                const response = await thunkAPI.extra.api.get<CommentType[]>(`comments/${articleId}`)
                 return response.data
             } else {
                 return thunkAPI.rejectWithValue('Не удалось загрузить комментарии')
