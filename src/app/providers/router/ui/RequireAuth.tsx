@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux'
-import { getUserId } from 'entities/User/model/selectors/getUserId/getUserId'
+import { getUserId } from 'entities/User/model/selectors/userSelectors'
 import { Navigate, useLocation } from 'react-router-dom'
 import { RoutePath } from 'shared/config/routes/routes'
 

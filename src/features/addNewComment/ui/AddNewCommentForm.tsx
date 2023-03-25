@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next'
 import Input from 'shared/ui/Input/Input'
 import { Button } from 'shared/ui'
 import { useSelector } from 'react-redux'
-import { index } from '../model/selectors/getCommentText'
+import { getCommentText } from '../model/selectors'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch'
 import { addNewCommentActions, addNewCommentReducer } from '../model/slice/addNewCommentSlice'
 import { ButtonVariant } from 'shared/ui/Button/Button'
@@ -30,7 +30,7 @@ const AddNewCommentForm: FC<AddNewCommentFormProps> = (props) => {
     const { t } = useTranslation()
     const dispatch = useAppDispatch()
 
-    const commentText = useSelector(index)
+    const commentText = useSelector(getCommentText)
     const onCommentTextChange = (value: string) => {
         dispatch(addNewCommentActions.setCommentText(value))
     }

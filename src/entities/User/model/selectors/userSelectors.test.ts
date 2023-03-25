@@ -1,5 +1,5 @@
 import { type StateSchema } from 'app/providers/StoreProvider'
-import { getUserId } from 'entities/User/model/selectors/getUserId/getUserId'
+import { getUserId } from './userSelectors'
 
 describe('getUserId.test', () => {
     it('return user id', () => {

@@ -7,7 +7,7 @@ import CloseModal from 'shared/assets/icons/close-icon.svg'
 import s from './LoginModal.module.scss'
 import { getAuthStatus } from '../../model/selectors/getAuthStatus/getAuthStatus'
 import { useSelector } from 'react-redux'
-import { getUserId } from 'entities/User/model/selectors/getUserId/getUserId'
+import { getUserId } from 'entities/User/model/selectors/userSelectors'
 import { LoginFormLazy } from 'features/authByUserName/ui/LoginForm/LoginFormLazy'
 import { Loader } from 'shared/ui/Loader/Loader'
 

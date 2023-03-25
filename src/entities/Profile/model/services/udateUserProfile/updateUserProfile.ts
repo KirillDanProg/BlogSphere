@@ -3,8 +3,8 @@ import { type ProfileType, ValidateProfileErrors } from '../../types/profile'
 import { profileActions } from '../../slice/profileSlice'
 import { type ThunkConfig } from 'app/providers/StoreProvider/config/StateSchema'
 import { validateUserProfile } from '../../services/validateUserProfile/validateUserProfile'
-import { getUserId } from 'entities/User/model/selectors/getUserId/getUserId'
-import { getProfileForm } from 'entities/Profile/model/selectors/getProfileForm/getProfileForm'
+import { getUserId } from 'entities/User/model/selectors/userSelectors'
+import { getProfileForm } from '../../selectors/getProfileForm/getProfileForm'
 
 export const updateUserProfile = createAsyncThunk<ProfileType, string, ThunkConfig<ValidateProfileErrors[]>>(
     'profile/updateProfile',

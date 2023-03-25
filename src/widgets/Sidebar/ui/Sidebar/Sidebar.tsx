@@ -6,8 +6,9 @@ import s from './Sidebar.module.scss'
 import { ThemeSwitcher } from 'shared/ui'
 import AngleLeft from 'shared/assets/icons/angles-left-solid.svg'
 import AngleRight from 'shared/assets/icons/angles-right-solid.svg'
-import { SidebarItemsList } from 'widgets/Sidebar/model/items'
 import { SidebarItem } from 'widgets/Sidebar/ui/SidebarItem/SidebarItem'
+import { useSelector } from 'react-redux'
+import { getSidebarItems } from 'widgets/Sidebar/model/selectors/sidebarSelectors'
 
 interface SidebarProps {
     className?: string
@@ -15,6 +16,7 @@ interface SidebarProps {
 
 export const Sidebar: FC<SidebarProps> = memo((props) => {
     const [collapsed, setCollapsed] = useState(false)
+    const sidebarItemsList = useSelector(getSidebarItems)
     const toggleSidebar = () => {
         setCollapsed(!collapsed)
     }
@@ -24,7 +26,7 @@ export const Sidebar: FC<SidebarProps> = memo((props) => {
         setActivePath(path)
     }
     const itemsList = useMemo(() => {
-        return SidebarItemsList.map((item) => {
+        return sidebarItemsList.map((item: any) => {
             return <SidebarItem
                 key={ item.path }
                 text={ item.text }
@@ -35,7 +37,7 @@ export const Sidebar: FC<SidebarProps> = memo((props) => {
                 active={ activePath === item.path }
             />
         })
-    }, [collapsed, activePath])
+    }, [collapsed, activePath, sidebarItemsList])
 
     return (
         <div
