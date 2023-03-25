@@ -9,8 +9,10 @@ import {
     articleDetailsCommentsReducer,
     getArticleComments
 } from '../model/slice/articleDetailsCommentsSlice'
-import { fetchArticleComments } from '../model/services/fetchArticleComments'
-import { addNewCommentForArticle } from '../model/services/addNewCommentForArticle'
+import { fetchArticleComments } from '../model/services/fetchArticleComments/fetchArticleComments'
+import {
+    addNewCommentForArticle
+} from '../model/services/addNewCommentForArticle/addNewCommentForArticle'
 import { AddNewCommentForm } from 'features/addNewComment'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch'
 import { classNames } from 'shared/lib/classNames/classNames'

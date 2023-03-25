@@ -17,7 +17,7 @@ export const addNewCommentForArticle = createAsyncThunk<CommentType[], string, T
                 return thunkAPI.rejectWithValue('Не удалось добавить комментарий')
             }
         } catch (e) {
-            return thunkAPI.rejectWithValue('Не удалось добавить комментарий')
+            return thunkAPI.rejectWithValue('Что-то пошло не так')
         }
     }
 )
