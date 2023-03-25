@@ -25,6 +25,7 @@ import { type ArticleBlockType, ArticleBlockVariant } from 'entities/Arcticle/mo
 import { ArticleTextBlock } from '../ArticleTextBlock/ArticleTextBlock'
 import { ArticleImageBlock } from '../ArticleImageBlock/ArticleImageBlock'
 import { ArticleCodeBlock } from '../ArticleCodeBlock/ArticleCodeBlock'
+import { convertDate } from 'shared/lib/helpers/convertDate'
 
 const articleBlocks = blocks as ArticleBlockType[]
 
@@ -55,8 +56,7 @@ export const ArticleDetails: FC<ArticleDetailsProps> = memo((props) => {
     }, [dispatch, articleId])
     let convertedDate
     if (articleData?.createdAt) {
-        convertedDate = new Date(articleData?.createdAt || '').toUTCString()
-            .slice(5, 16)
+        convertedDate = convertDate(articleData?.createdAt)
     }
 
     const renderBlocks = useCallback((block: ArticleBlockType) => {
