@@ -1,4 +1,4 @@
-import { type FC, useEffect } from 'react'
+import { type FC, Suspense, useEffect } from 'react'
 import {
     type StateSchemaKey,
     type StoreWithReducerManager
@@ -46,8 +46,10 @@ export const DynamicModuleLoader: FC<Props> = (props) => {
     }, []);
 
     return (
-        <div>
-            {children}
-        </div>
+        <Suspense fallback={ '' }>
+            <div>
+                {children}
+            </div>
+        </Suspense>
     )
 }

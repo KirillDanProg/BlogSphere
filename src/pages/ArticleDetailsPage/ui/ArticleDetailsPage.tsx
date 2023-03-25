@@ -1,5 +1,4 @@
 import { type FC, memo, useCallback, useEffect } from 'react'
-
 import s from './ArticleDetailsPage.module.scss'
 import { ArticleDetails } from 'entities/Arcticle'
 import { useParams } from 'react-router-dom'
@@ -31,7 +30,7 @@ const asyncReducers: ReducersListType = {
 const ArticleDetailsPage: FC<ArticleDetailsPageProps> = (props) => {
     const { t } = useTranslation('articleDetails')
     const { className } = props
-    const { id } = useParams<{ id: string }>()
+    const { id = '1' } = useParams<{ id: string }>()
     const comments = useSelector(getArticleComments.selectAll)
     const dispatch = useAppDispatch()
 

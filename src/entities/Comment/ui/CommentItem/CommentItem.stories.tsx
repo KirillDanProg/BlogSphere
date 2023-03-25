@@ -5,14 +5,14 @@ import { ThemeDecorator } from '../../../../shared/config/storybook/decorators/T
 import { Theme } from '../../../../app/providers/ThemeProvider'
 
 export default {
-    title: 'entities/Comment',
+    title: 'entities/Comment/Item',
     component: CommentItem
 }
 
 const Template: ComponentStory<typeof CommentItem> = (args) => <CommentItem { ...args }/>
 
-export const Light = Template.bind({})
-Light.args = {
+export const Default = Template.bind({})
+Default.args = {
     comment: {
         _id: '1',
         avatar: Avatar,
@@ -32,4 +32,15 @@ Dark.args = {
         userName: 'Kirill',
         text: 'Some test comment'
     }
+}
+
+export const Loading = Template.bind({})
+Loading.args = {
+    status: 'loading'
+}
+
+export const LoadingDark = Template.bind({})
+LoadingDark.decorators = [ThemeDecorator(Theme.DARK)]
+LoadingDark.args = {
+    status: 'loading'
 }
