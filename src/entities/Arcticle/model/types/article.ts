@@ -4,9 +4,9 @@ export enum ArticleBlockVariant {
     CODE = 'CODE'
 }
 
-export enum ArticleViewType {
-    BIG = 'BIG',
-    SMALL = 'SMALL'
+export enum ArticleView {
+    LIST = 'LIST',
+    GRID = 'GRID'
 }
 
 interface ArticleBaseType {

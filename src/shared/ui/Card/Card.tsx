@@ -1,8 +1,8 @@
-import { type FC } from 'react'
+import { type FC, type HTMLAttributes } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import s from './Card.module.scss'
 
-interface CardProps {
+interface CardProps extends HTMLAttributes<HTMLDivElement> {
     className?: string
 }
 

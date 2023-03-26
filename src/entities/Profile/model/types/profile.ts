@@ -5,7 +5,7 @@ export interface ProfileType {
     age: number
     firstName: string
     instagram: string
-    avatar: any
+    avatar: string
     lastName: string
 }
 

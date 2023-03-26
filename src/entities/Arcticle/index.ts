@@ -1,5 +1,5 @@
 export { ArticleDetails } from './ui/ArticleDetails/ArticleDetails'
-export { type ArticleType, ArticleViewType } from './model/types/article'
+export { type ArticleType, ArticleView } from './model/types/article'
 export {
     articlesDetailsActions,
     articleDetailsReducer

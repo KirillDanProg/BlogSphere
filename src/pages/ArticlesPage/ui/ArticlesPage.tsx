@@ -2,7 +2,7 @@ import { type FC, memo, useEffect, useState } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import s from './ArticlesPage.module.scss'
 import axios from 'axios'
-import { type ArticleType } from 'entities/Arcticle'
+import { type ArticleType, ArticleView } from 'entities/Arcticle'
 import { ArticleList } from 'entities/Arcticle/ui/ArticleList/ArticleList'
 
 interface ArticlesPageProps {
@@ -10,7 +10,6 @@ interface ArticlesPageProps {
 }
 
 const ArticlesPage: FC<ArticlesPageProps> = (props) => {
-    // const { t } = useTranslation()
     const [articles, setArticles] = useState<ArticleType[]>([])
 
     useEffect(() => {
@@ -23,7 +22,9 @@ const ArticlesPage: FC<ArticlesPageProps> = (props) => {
     return (
         // eslint-disable-next-line i18next/no-literal-string
         <div className={ classNames(s.ArticlesPage) }>
-            <ArticleList articles={ articles || [] }/>
+            <ArticleList
+                view={ ArticleView.LIST }
+                articles={ articles || [] }/>
         </div>
     )
 }
