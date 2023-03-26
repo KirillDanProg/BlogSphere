@@ -9,9 +9,11 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch'
 
 interface ProfilePageHeaderProps {
     className?: string
+    isOwner?: boolean
 }
 
 export const ProfilePageHeader: FC<ProfilePageHeaderProps> = (props) => {
+    const { isOwner } = props
     const { t } = useTranslation()
 
     const readonly = useSelector(getProfileReadonly)
@@ -33,36 +35,39 @@ export const ProfilePageHeader: FC<ProfilePageHeaderProps> = (props) => {
     return (
         <div className={ s.header }>
             <Text title={ t('profile') }/>
-            <div className={ s.btnsGroup }>
-                {
-                    !readonly &&
-                    <Button
-                        variant={ ButtonVariant.INVERTED_OUTLINED }
-                        onClick={ onSaveEditHandler }
-                    >
-                        {t('save')}
-                    </Button>
-                }
-                <Button
-                    onClick={
-                        readonly
-                            ? onEditHandler
-                            : onCancelEditHandler
-                    }
-                    variant={
-                        readonly
-                            ? ButtonVariant.INVERTED_OUTLINED
-                            : ButtonVariant.RED
-
-                    }
-                >
+            {
+                isOwner && <div className={ s.btnsGroup }>
                     {
-                        readonly
-                            ? t('edit')
-                            : t('cancel')
+                        !readonly &&
+                        <Button
+                            variant={ ButtonVariant.INVERTED_OUTLINED }
+                            onClick={ onSaveEditHandler }
+                        >
+                            {t('save')}
+                        </Button>
                     }
-                </Button>
-            </div>
+                    <Button
+                        onClick={
+                            readonly
+                                ? onEditHandler
+                                : onCancelEditHandler
+                        }
+                        variant={
+                            readonly
+                                ? ButtonVariant.INVERTED_OUTLINED
+                                : ButtonVariant.RED
+
+                        }
+                    >
+                        {
+                            readonly
+                                ? t('edit')
+                                : t('cancel')
+                        }
+                    </Button>
+                </div>
+            }
+
         </div>
     )
 }

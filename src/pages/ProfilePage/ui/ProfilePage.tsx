@@ -30,6 +30,7 @@ import { Button } from 'shared/ui'
 import { ButtonVariant } from 'shared/ui/Button/Button'
 import defaultUserPhoto from 'shared/assets/images/defaultUserAvatar.jpg'
 import { useParams } from 'react-router-dom'
+import { getUserId } from 'entities/User/model/selectors/userSelectors'
 
 const initialReducers: ReducersListType = {
     profile: profileReducer
@@ -37,12 +38,14 @@ const initialReducers: ReducersListType = {
 const ProfilePage = () => {
     const { t } = useTranslation('profile')
     const dispatch = useAppDispatch()
-    const profileForm = useSelector(getProfileForm)
+    const profileData = useSelector(getProfileForm)
     const status = useSelector(getProfileStatus)
     const error = useSelector(getProfileError)
     const readonly = useSelector(getProfileReadonly)
     const validationErrors = useSelector(getValidationErrors)
+    const authUserId = useSelector(getUserId)
     const { id } = useParams()
+    const isOwner = id === authUserId
     const onFirstNameChangeHandler = (value: string) => {
         dispatch(profileActions.updateProfileForm({ firstName: value }))
     }
@@ -90,14 +93,14 @@ const ProfilePage = () => {
     return (
         <DynamicModuleLoader reducers={ initialReducers }>
             <div className={ s.container }>
-                <ProfilePageHeader/>
+                <ProfilePageHeader isOwner={ isOwner }/>
                 {errors}
                 <div className={ s.profileWrapper }>
                     <div className={ s.profileAvatar }>
                         <Avatar
                             size={ 200 }
-                            src={ profileForm?.avatar
-                                ? `http://localhost:4444${profileForm?.avatar}`
+                            src={ profileData?.avatar
+                                ? `http://localhost:4444${profileData?.avatar}`
                                 : defaultUserPhoto
                             }
                         />
@@ -124,7 +127,7 @@ const ProfilePage = () => {
                             onCountryChange={ onCountryChangeHandler }
                             onInstagramChange={ onInstagramChangeHandler }
                             readonly={ readonly }
-                            profileData={ profileForm }
+                            profileData={ profileData }
                             profileStatus={ status }
                             profileError={ error }
                         />
