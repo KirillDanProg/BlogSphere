@@ -1,0 +1,7 @@
+.ArticleList {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 350px));
+    grid-gap: 12px;
+    grid-row-gap: 56px;
+    justify-content: space-evenly;
+}
