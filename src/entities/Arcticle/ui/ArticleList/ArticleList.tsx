@@ -1,14 +1,14 @@
 import { type FC } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import s from './ArticleList.module.scss'
-import { type ArticleType, type ArticleViewType } from '../../model/types/article'
+import { type ArticleType, ArticleView } from '../../model/types/article'
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem'
 import { type StatusType } from 'app/types/global'
 
 interface ArticleListProps {
     className?: string
     articles: ArticleType[]
-    view?: ArticleViewType
+    view?: ArticleView
     status?: StatusType
 }
 
@@ -16,13 +16,14 @@ export const ArticleList: FC<ArticleListProps> = (props) => {
     const {
         articles,
         className,
-        view,
+        view = ArticleView.GRID,
         status
     } = props
 
     const renderArticles = (article: ArticleType) => {
         return (
             <ArticleListItem
+                key={ article._id }
                 status={ status }
                 article={ article }
                 view={ view }
@@ -31,7 +32,7 @@ export const ArticleList: FC<ArticleListProps> = (props) => {
     }
 
     return (
-        <div className={ classNames(s.ArticleList, {}, [className]) }>
+        <div className={ classNames(s.ArticleList, {}, [className, s[view]]) }>
             {
                 articles.map(renderArticles)
             }

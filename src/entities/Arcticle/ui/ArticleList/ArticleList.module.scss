@@ -1,7 +1,16 @@
-.ArticleList {
+.GRID {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 350px));
     grid-gap: 12px;
     grid-row-gap: 56px;
     justify-content: space-evenly;
+}
+
+.LIST {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    width: 90%;
+    margin: 0 auto;
+    gap: 40px;
 }
