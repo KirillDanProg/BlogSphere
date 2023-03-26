@@ -50,8 +50,8 @@ export const Text: FC<TextProps> = (props) => {
     ]
     return (
         <div className={ classNames(s.Text, {}, additionalClasses) }>
-            {title && <p className={ s.title }>{title}</p>}
-            {text && <p className={ s.text }>{text}</p>}
+            {title && <p className={ classNames(s.title, {}, additionalClasses) }>{title}</p>}
+            {text && <p className={ classNames(s.text, {}, additionalClasses) }>{text}</p>}
         </div>
     )
 }

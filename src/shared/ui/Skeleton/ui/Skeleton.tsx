@@ -6,7 +6,7 @@ interface SkeletonProps {
     className?: string
     width?: string | number
     height?: string | number
-    borderRadius?: string
+    borderRadius?: string | number
 }
 
 export const Skeleton: FC<SkeletonProps> = (props) => {

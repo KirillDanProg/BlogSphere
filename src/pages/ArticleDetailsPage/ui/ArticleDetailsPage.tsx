@@ -1,7 +1,7 @@
 import { type FC, memo, useCallback, useEffect } from 'react'
 import s from './ArticleDetailsPage.module.scss'
 import { ArticleDetails } from 'entities/Arcticle'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { CommentsList } from 'entities/Comment'
 import { useSelector } from 'react-redux'
@@ -21,6 +21,10 @@ import {
     DynamicModuleLoader,
     type ReducersListType
 } from 'shared/lib/components/DynamicModuleLoader'
+import { Button } from 'shared/ui'
+import { RoutePath } from 'shared/config/routes/routes'
+import BackToIcon from 'shared/assets/icons/arrow-left.svg'
+import { Icon } from 'shared/ui/Icon/Icon'
 
 interface ArticleDetailsPageProps {
     className?: string
@@ -35,11 +39,15 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = (props) => {
     const { id = '1' } = useParams<{ id: string }>()
     const comments = useSelector(getArticleComments.selectAll)
     const dispatch = useAppDispatch()
+    const navigate = useNavigate()
 
     const onSendArticleComment = useCallback((text) => {
         void dispatch(addNewCommentForArticle(text))
     }, [dispatch])
 
+    const backToArticleListHandler = () => {
+        navigate(RoutePath.articles)
+    }
     useEffect(() => {
         void dispatch(fetchArticleComments(id))
     }, [id, dispatch])
@@ -57,6 +65,12 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = (props) => {
             removeAfterUnmount={ true }
             reducers={ asyncReducers }>
             <div className={ classNames(s.ArticleDetailsPage, {}, [className]) }>
+                <Button
+                    className={ s.backToBtn }
+                    onClick={ backToArticleListHandler }
+                >
+                    <Icon Svg={ BackToIcon }/>
+                </Button>
                 <ArticleDetails
                     articleId={ id }
                 />
