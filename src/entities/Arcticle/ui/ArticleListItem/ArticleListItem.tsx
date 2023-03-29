@@ -46,8 +46,9 @@ export const ArticleListItem: FC<ArticleListItemProps> = (props) => {
         .join(', ')
 
     if (status === 'loading') {
-        return <ArticleListItemSkeleton/>
+        return <ArticleListItemSkeleton view={ view }/>
     }
+
     if (view === ArticleView.LIST) {
         return (
             <Card className={ classNames(s.ArticleListItem, {}, [className, s[view]]) }>
