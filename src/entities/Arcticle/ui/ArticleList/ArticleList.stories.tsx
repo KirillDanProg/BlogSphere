@@ -1,12 +1,12 @@
 import { type ComponentStory } from '@storybook/react'
-import { ArticleList } from 'entities/Arcticle/ui/ArticleList/ArticleList'
+import { ArticlesList } from 'entities/Arcticle/ui/ArticleList/ArticlesList'
 
 export default {
     title: '',
-    component: ArticleList
+    component: ArticlesList
 }
 
-const Template: ComponentStory<typeof ArticleList> = (args) => <ArticleList { ...args }/>
+const Template: ComponentStory<typeof ArticlesList> = (args) => <ArticlesList { ...args }/>
 
 export const Light = Template.bind({})
 Light.args = {}

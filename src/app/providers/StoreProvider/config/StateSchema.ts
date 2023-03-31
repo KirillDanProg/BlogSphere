@@ -14,6 +14,7 @@ import { type NavigateOptions } from 'react-router/dist/lib/context'
 import { type ArticleSchema } from 'entities/Arcticle/model/types/articleSchema'
 import { type ArticleDetailsCommentSchema } from 'pages/ArticleDetailsPage'
 import { type AddNewCommentSchema } from 'features/addNewComment'
+import { type ArticlesPageSchema } from 'pages/ArticlesPage'
 
 export interface StateSchema {
     user: UserSchema
@@ -24,6 +25,7 @@ export interface StateSchema {
     articleDetails?: ArticleSchema
     articleDetailsComments?: ArticleDetailsCommentSchema
     addNewComment?: AddNewCommentSchema
+    articlesPage?: ArticlesPageSchema
 }
 
 export interface IReducerManager {

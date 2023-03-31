@@ -12,7 +12,7 @@ interface ArticleListProps {
     status?: StatusType
 }
 
-export const ArticleList: FC<ArticleListProps> = (props) => {
+export const ArticlesList: FC<ArticleListProps> = (props) => {
     const {
         articles,
         className,
