@@ -1,31 +1,58 @@
-import { type FC, memo, useEffect, useState } from 'react'
+import { type FC, memo, useEffect } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch'
+import { ArticlesList } from 'entities/Arcticle/ui/ArticleList/ArticlesList'
+import { type ArticleView } from 'entities/Arcticle'
+
+import {
+    DynamicModuleLoader,
+    type ReducersListType
+} from 'shared/lib/components/DynamicModuleLoader'
+import {
+    ArticlesViewModeSwitcher
+} from 'features/switchArticlesViewMode/ui/ArticlesViewSwitcher/ArticlesViewModeSwitcher'
+import { useSelector } from 'react-redux'
+import { getViewModeFromLS, saveViewModeToLS } from '../model/services/saveViewModeToLS'
+import { articlesPageReducer, getArticles } from '../model/slice/articlesPageSlice'
+import { getArticlesPageViewMode } from '../model/selectors'
+import { fetchArticles } from '../model/services/fetchArticles'
 import s from './ArticlesPage.module.scss'
-import axios from 'axios'
-import { type ArticleType, ArticleView } from 'entities/Arcticle'
-import { ArticleList } from 'entities/Arcticle/ui/ArticleList/ArticleList'
 
 interface ArticlesPageProps {
     className?: string
 }
 
+const asyncReducers: ReducersListType = {
+    articlesPage: articlesPageReducer
+}
+
 const ArticlesPage: FC<ArticlesPageProps> = (props) => {
-    const [articles, setArticles] = useState<ArticleType[]>([])
+    const dispatch = useAppDispatch()
+    const currentArticlesViewMode = useSelector(getArticlesPageViewMode)
+    const articles = useSelector(getArticles.selectAll)
+
+    const onChangeViewMode = (mode: ArticleView) => {
+        void dispatch(saveViewModeToLS(mode))
+    }
 
     useEffect(() => {
-        void axios.get<ArticleType[]>('http://localhost:4444/posts')
-            .then(data => {
-                setArticles(data.data)
-            })
-    }, [])
+        void dispatch(fetchArticles())
+        void dispatch(getViewModeFromLS())
+    }, [dispatch])
 
     return (
-        // eslint-disable-next-line i18next/no-literal-string
-        <div className={ classNames(s.ArticlesPage) }>
-            <ArticleList
-                view={ ArticleView.LIST }
-                articles={ articles || [] }/>
-        </div>
+        <DynamicModuleLoader reducers={ asyncReducers }>
+            <div className={ classNames(s.ArticlesPage) }>
+                <ArticlesViewModeSwitcher
+                    view={ currentArticlesViewMode }
+                    onChangeViewMode={ onChangeViewMode }
+                />
+                <ArticlesList
+                    view={ currentArticlesViewMode }
+                    articles={ articles || [] }
+                />
+            </div>
+        </DynamicModuleLoader>
     )
 }
 
