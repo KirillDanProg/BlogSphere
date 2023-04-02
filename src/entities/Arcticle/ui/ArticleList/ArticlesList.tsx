@@ -4,6 +4,9 @@ import s from './ArticleList.module.scss'
 import { type ArticleType, ArticleView } from '../../model/types/article'
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem'
 import { type StatusType } from 'app/types/global'
+import {
+    ArticleListItemSkeleton
+} from 'entities/Arcticle/ui/ArticleListItemSkeleton/ArticleListItemSkeleton'
 
 interface ArticleListProps {
     className?: string
@@ -12,6 +15,12 @@ interface ArticleListProps {
     status?: StatusType
 }
 
+const renderSkeletons = (view: ArticleView) => {
+    return new Array(view === ArticleView.LIST ? 3 : 9).fill(0)
+        .map((el, index) => <ArticleListItemSkeleton
+            key={ index }
+            view={ view }/>)
+}
 export const ArticlesList: FC<ArticleListProps> = (props) => {
     const {
         articles,
@@ -24,7 +33,6 @@ export const ArticlesList: FC<ArticleListProps> = (props) => {
         return (
             <ArticleListItem
                 key={ article._id }
-                status={ status }
                 article={ article }
                 view={ view }
             />
@@ -34,7 +42,13 @@ export const ArticlesList: FC<ArticleListProps> = (props) => {
     return (
         <div className={ classNames(s.ArticleList, {}, [className, s[view]]) }>
             {
-                articles.map(renderArticles)
+                articles.length > 0
+                    ? articles.map(renderArticles)
+                    : null
+            }
+            {
+                status === 'loading' &&
+                renderSkeletons(view)
             }
         </div>
     )

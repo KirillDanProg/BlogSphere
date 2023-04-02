@@ -8,14 +8,12 @@ import { Text } from 'shared/ui/Text/Text'
 import { AppLink } from 'shared/ui'
 import { RoutePath } from 'shared/config/routes/routes'
 import { AppLinkVariant } from 'shared/ui/AppLink/AppLink'
-import { type StatusType } from 'app/types/global'
 import {
     ArticleBlockVariant,
     type ArticleTextBlockType,
     type ArticleType,
     ArticleView
 } from '../../model/types/article'
-import { ArticleListItemSkeleton } from '../ArticleListItemSkeleton/ArticleListItemSkeleton'
 import s from './ArticleListItem.module.scss'
 import { Avatar } from 'shared/ui/Avatar/Avatar'
 import { ArticleTextBlock } from '../ArticleTextBlock/ArticleTextBlock'
@@ -28,15 +26,13 @@ interface ArticleListItemProps {
     className?: string
     view?: ArticleView
     article: ArticleType
-    status?: StatusType
 }
 
 export const ArticleListItem: FC<ArticleListItemProps> = (props) => {
     const {
         view = ArticleView.GRID,
         article,
-        className,
-        status
+        className
     } = props
     const { t } = useTranslation('articleDetails')
     const convertedDate = convertDate(article.createdAt)
@@ -44,10 +40,6 @@ export const ArticleListItem: FC<ArticleListItemProps> = (props) => {
     const tags = article.tags
         .map(tag => tag.toUpperCase())
         .join(', ')
-
-    if (status === 'loading') {
-        return <ArticleListItemSkeleton view={ view }/>
-    }
 
     if (view === ArticleView.LIST) {
         return (
