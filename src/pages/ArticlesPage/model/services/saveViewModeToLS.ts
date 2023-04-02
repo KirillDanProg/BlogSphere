@@ -9,6 +9,7 @@ export const saveViewModeToLS = createAsyncThunk(
         try {
             localStorage.setItem(LOCAL_STORAGE_ARTICLE_VIEW_MODE, JSON.stringify(mode))
             thunkAPI.dispatch(articlesPageActions.setArticleViewMode(mode))
+            thunkAPI.dispatch(articlesPageActions.setArticlesLimit())
         } catch (e) {
             return thunkAPI.rejectWithValue('Не удалось загрузить статьи')
         }
@@ -22,6 +23,7 @@ export const getViewModeFromLS = createAsyncThunk(
             if (mode) {
                 const currentMode = JSON.parse(mode)
                 thunkAPI.dispatch(articlesPageActions.setArticleViewMode(currentMode))
+                thunkAPI.dispatch(articlesPageActions.setArticlesLimit())
             }
         } catch (e) {
             return thunkAPI.rejectWithValue('Не удалось загрузить статьи')
