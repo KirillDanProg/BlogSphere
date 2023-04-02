@@ -11,7 +11,7 @@ import {
     profileReducer,
     uploadAvatarProfile
 } from 'entities/Profile'
-import { type ChangeEvent, useEffect } from 'react'
+import { type ChangeEvent } from 'react'
 import { ProfileCard } from 'entities/Profile/ui/ProfileCard'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch'
 import { useSelector } from 'react-redux'
@@ -31,6 +31,8 @@ import { ButtonVariant } from 'shared/ui/Button/Button'
 import defaultUserPhoto from 'shared/assets/images/defaultUserAvatar.jpg'
 import { useParams } from 'react-router-dom'
 import { getUserId } from 'entities/User/model/selectors/userSelectors'
+import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect'
+import { Page } from 'shared/ui/Page/Page'
 
 const initialReducers: ReducersListType = {
     profile: profileReducer
@@ -84,15 +86,13 @@ const ProfilePage = () => {
             variant={ TextVariant.ERROR }/>
     })
 
-    useEffect(() => {
-        if (__PROJECT__ !== 'storybook') {
-            void dispatch(fetchUserProfile(id))
-        }
-    }, [dispatch, id])
+    useInitialEffect(() => {
+        void dispatch(fetchUserProfile(id))
+    })
 
     return (
         <DynamicModuleLoader reducers={ initialReducers }>
-            <div className={ s.container }>
+            <Page className={ s.container }>
                 <ProfilePageHeader isOwner={ isOwner }/>
                 {errors}
                 <div className={ s.profileWrapper }>
@@ -133,7 +133,7 @@ const ProfilePage = () => {
                         />
                     </Wrapper>
                 </div>
-            </div>
+            </Page>
         </DynamicModuleLoader>
     )
 }
