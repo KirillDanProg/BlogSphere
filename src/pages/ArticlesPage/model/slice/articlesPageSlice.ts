@@ -18,26 +18,39 @@ export const articlesPageSlice = createSlice(
             error: null,
             status: 'idle',
             view: ArticleView.GRID,
+            page: 1,
+            hasMore: true,
             ids: [],
             entities: {}
         }),
         reducers: {
             setArticleViewMode: (state, action: PayloadAction<ArticleView>) => {
                 state.view = action.payload
+            },
+            setArticlesPageNum: (state, action: PayloadAction<number>) => {
+                state.page = action.payload
+            },
+            setArticlesLimit: (state, action: PayloadAction<number | undefined>) => {
+                if (action.payload) {
+                    state.limit = action.payload
+                } else {
+                    state.limit = state.view === ArticleView.LIST ? 3 : 5
+                }
             }
         },
         extraReducers: builder =>
             builder
                 .addCase(fetchArticles.fulfilled, (state, action) => {
-                    articlesAdapter.setAll(state, action.payload)
+                    articlesAdapter.addMany(state, action.payload)
+                    state.hasMore = action.payload.length > 0
                     state.status = 'succeeded'
                 })
                 .addCase(fetchArticles.rejected, (state, action) => {
                     state.error = action.payload
-                    state.status = 'loading'
+                    state.status = 'failed'
                 })
                 .addCase(fetchArticles.pending, (state) => {
-                    state.status = 'failed'
+                    state.status = 'loading'
                 })
     }
 )
