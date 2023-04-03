@@ -1,10 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { type ThunkConfig } from 'app/providers/StoreProvider/config/StateSchema'
 import { articlesPageActions } from 'pages/ArticlesPage/model/slice/articlesPageSlice'
-import { getArticlesPageHasMore, getArticlesPageNum, getArticlesPageStatus } from '../selectors'
-import { fetchArticles } from '../services/fetchArticles'
+import { getArticlesPageHasMore, getArticlesPageNum, getArticlesPageStatus } from '../../selectors'
+import { fetchArticles } from '../fetchArticles/fetchArticles'
 
-export const fetchNextArticlesPage = createAsyncThunk<undefined, undefined, ThunkConfig<string>>(
+export const fetchNextArticlesPage = createAsyncThunk<void, void, ThunkConfig<string>>(
     'articles/fetchNextArticlesPage',
     async (_, thunkAPI) => {
         try {

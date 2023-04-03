@@ -12,18 +12,23 @@ import {
     ArticlesViewModeSwitcher
 } from 'features/switchArticlesViewMode/ui/ArticlesViewSwitcher/ArticlesViewModeSwitcher'
 import { useSelector } from 'react-redux'
-import { getViewModeFromLS, saveViewModeToLS } from '../model/services/saveViewModeToLS'
+import {
+    getViewModeFromLS,
+    saveViewModeToLS
+} from '../model/services/saveViewModeToLS/saveViewModeToLS'
 import { articlesPageReducer, getArticles } from '../model/slice/articlesPageSlice'
 import {
     getArticlesPageNum,
     getArticlesPageStatus,
     getArticlesPageViewMode
 } from '../model/selectors'
-import { fetchArticles } from '../model/services/fetchArticles'
+import { fetchArticles } from '../model/services/fetchArticles/fetchArticles'
 import s from './ArticlesPage.module.scss'
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect'
 import { Page } from 'shared/ui/Page/Page'
-import { fetchNextArticlesPage } from 'pages/ArticlesPage/model/services/fetchNextArticlesPage'
+import {
+    fetchNextArticlesPage
+} from 'pages/ArticlesPage/model/services/fetchNextArticlesPage/fetchNextArticlesPage'
 
 interface ArticlesPageProps {
     className?: string
