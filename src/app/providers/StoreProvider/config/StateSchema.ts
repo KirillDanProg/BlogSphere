@@ -9,8 +9,6 @@ import {
 } from '@reduxjs/toolkit'
 import { type ProfileSchema } from 'entities/Profile'
 import { type AxiosInstance } from 'axios'
-import { type To } from '@remix-run/router'
-import { type NavigateOptions } from 'react-router/dist/lib/context'
 import { type ArticleSchema } from 'entities/Arcticle/model/types/articleSchema'
 import { type ArticleDetailsCommentSchema } from 'pages/ArticleDetailsPage'
 import { type AddNewCommentSchema } from 'features/addNewComment'
@@ -43,7 +41,6 @@ export type StateSchemaKey = keyof StateSchema
 
 export interface ThunkExtraArg {
     api: AxiosInstance
-    navigate?: (to: To, options?: NavigateOptions) => void
 }
 
 export interface ThunkConfig<T> {

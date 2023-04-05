@@ -15,8 +15,8 @@ export const saveViewModeToLS = createAsyncThunk(
         }
     }
 )
-export const getViewModeFromLS = createAsyncThunk(
-    'articles/getViewMode',
+export const init = createAsyncThunk(
+    'articles/init',
     (_, thunkAPI) => {
         try {
             const mode = localStorage.getItem(LOCAL_STORAGE_ARTICLE_VIEW_MODE)
@@ -24,6 +24,7 @@ export const getViewModeFromLS = createAsyncThunk(
                 const currentMode = JSON.parse(mode)
                 thunkAPI.dispatch(articlesPageActions.setArticleViewMode(currentMode))
                 thunkAPI.dispatch(articlesPageActions.setArticlesLimit())
+                thunkAPI.dispatch(articlesPageActions.setInitialized())
             }
         } catch (e) {
             return thunkAPI.rejectWithValue('Не удалось загрузить статьи')

@@ -1,34 +1,26 @@
+import { useSelector } from 'react-redux'
 import { type FC, memo } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch'
-import { ArticlesList } from 'entities/Arcticle/ui/ArticleList/ArticlesList'
-import { type ArticleView } from 'entities/Arcticle'
-
+import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect'
+import { Page } from 'shared/ui/Page/Page'
 import {
     DynamicModuleLoader,
     type ReducersListType
 } from 'shared/lib/components/DynamicModuleLoader'
+import { ArticlesList } from 'entities/Arcticle/ui/ArticleList/ArticlesList'
+import { type ArticleView } from 'entities/Arcticle'
 import {
     ArticlesViewModeSwitcher
 } from 'features/switchArticlesViewMode/ui/ArticlesViewSwitcher/ArticlesViewModeSwitcher'
-import { useSelector } from 'react-redux'
-import {
-    getViewModeFromLS,
-    saveViewModeToLS
-} from '../model/services/saveViewModeToLS/saveViewModeToLS'
+import { saveViewModeToLS } from '../model/services/saveViewModeToLS/saveViewModeToLS'
 import { articlesPageReducer, getArticles } from '../model/slice/articlesPageSlice'
-import {
-    getArticlesPageNum,
-    getArticlesPageStatus,
-    getArticlesPageViewMode
-} from '../model/selectors'
-import { fetchArticles } from '../model/services/fetchArticles/fetchArticles'
+import { getArticlesPageStatus, getArticlesPageViewMode } from '../model/selectors'
 import s from './ArticlesPage.module.scss'
-import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect'
-import { Page } from 'shared/ui/Page/Page'
 import {
     fetchNextArticlesPage
-} from 'pages/ArticlesPage/model/services/fetchNextArticlesPage/fetchNextArticlesPage'
+} from '../model/services/fetchNextArticlesPage/fetchNextArticlesPage'
+import { initArticlesPage } from '../model/services/initArticlesPage/initArticlesPage'
 
 interface ArticlesPageProps {
     className?: string
@@ -43,7 +35,6 @@ const ArticlesPage: FC<ArticlesPageProps> = (props) => {
     const currentArticlesViewMode = useSelector(getArticlesPageViewMode)
     const articles = useSelector(getArticles.selectAll)
     const status = useSelector(getArticlesPageStatus)
-    const page = useSelector(getArticlesPageNum)
     const onChangeViewMode = (mode: ArticleView) => {
         void dispatch(saveViewModeToLS(mode))
     }
@@ -52,14 +43,11 @@ const ArticlesPage: FC<ArticlesPageProps> = (props) => {
     }
 
     useInitialEffect(() => {
-        void dispatch(getViewModeFromLS())
-        void dispatch(fetchArticles({
-            page
-        }))
+        void dispatch(initArticlesPage())
     })
 
     return (
-        <DynamicModuleLoader reducers={ asyncReducers }>
+        <DynamicModuleLoader reducers={ asyncReducers } removeAfterUnmount={ false }>
             <Page
                 onScrollEnd={ onFetchNextPage }
                 className={ classNames(s.ArticlesPage) }
