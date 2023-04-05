@@ -20,34 +20,38 @@ export const DynamicModuleLoader: FC<Props> = (props) => {
     const {
         reducers,
         children,
-        removeAfterUnmount = false
+        removeAfterUnmount = true
     } = props
     const store = useStore() as StoreWithReducerManager
 
     const dispatch = useDispatch()
 
     useEffect(() => {
+        const mountedReducers = store.reducerManager.getReducerMap()
         Object.entries(reducers)
-            .forEach(([reducerKey, reducer]: ReducersListEntry) => {
-                store.reducerManager.add(reducerKey, reducer)
-                dispatch({ type: `@INIT_${reducerKey}` })
+            .forEach(([reducerKey, reducer]) => {
+                const mounted = mountedReducers[reducerKey as StateSchemaKey]
+                if (!mounted) {
+                    store.reducerManager.add(reducerKey as StateSchemaKey, reducer)
+                    dispatch({ type: `@INIT_${reducerKey}` })
+                }
             })
 
         return () => {
-            Object.entries(reducers)
-                .forEach(([reducerKey, reducer]: ReducersListEntry) => {
-                    if (removeAfterUnmount) {
-                        store.reducerManager.remove(reducerKey)
+            if (removeAfterUnmount) {
+                Object.entries(reducers)
+                    .forEach(([reducerKey, reducer]) => {
+                        store.reducerManager.remove(reducerKey as StateSchemaKey)
                         dispatch({ type: `@DESTROY_${reducerKey}` })
-                    }
-                })
+                    })
+            }
         }
         // eslint-disable-next-line
     }, []);
 
     return (
-        <div>
+        <>
             {children}
-        </div>
+        </>
     )
 }

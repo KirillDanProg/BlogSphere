@@ -6,6 +6,7 @@
         "./src/*"
       ]
     },
+    "strict": true,
     "strictNullChecks": true,
     "outDir": "./dist/",
     "noImplicitAny": true,

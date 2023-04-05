@@ -1,0 +1,24 @@
+.CommentItem {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 24px;
+
+    .header {
+        .link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+    }
+
+    .addedDate {
+        font-size: 12px;
+        opacity: 0.85;
+        padding-left: 6px;
+    }
+}
+
+.loading {
+    border: none;
+}

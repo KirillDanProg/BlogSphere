@@ -1,0 +1,19 @@
+.ArticleDetailsPage {
+    position: relative;
+    padding: 20px 40px;
+
+    .title {
+        margin-bottom: 20px;
+    }
+
+    .backToBtn {
+        position: absolute;
+        left: -50px;
+        top: 0;
+
+        svg {
+            width: 24px;
+            height: 24px;
+        }
+    }
+}

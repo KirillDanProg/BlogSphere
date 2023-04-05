@@ -10,7 +10,7 @@ export default ({ config }: { config: any }) => {
         entry: '',
         src: path.resolve(__dirname, '..', '..', 'src'),
     };
-    config.resolve.modules = [paths.src, "node_modules"];
+    config.resolve.modules = [paths.src, 'node_modules'];
     config.resolve.extensions.push('.ts', '.tsx');
 
     config.module.rules = config.module.rules.map((rule: RuleSetRule) => {
@@ -31,7 +31,9 @@ export default ({ config }: { config: any }) => {
     config.module.rules.push(buildCssLoader(true));
 
     config.plugins.push(new DefinePlugin({
-        __IS_DEV__: true,
+        __IS_DEV__: JSON.stringify(true),
+        __API__: JSON.stringify(''),
+        __PROJECT__: JSON.stringify('storybook'),
     }));
 
     return config;

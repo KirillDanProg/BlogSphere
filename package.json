@@ -12,6 +12,8 @@
     "test:ui:ok": "npx loki approve",
     "test:ui:ci": "npx loki --requireReference --reactUri file:./storybook-static",
     "start": "webpack serve --env port=3003 mode=development",
+    "server": "npm run start --prefix ../server",
+    "start:dev": "concurrently \"webpack serve --env port=3003 mode=development\" \"npm run start --prefix ../server\"",
     "build:prod": "webpack --env mode=production",
     "build:dev": "webpack --env mode=development",
     "lint": "eslint \"**/*.{ts,tsx}\"",
@@ -87,6 +89,7 @@
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.0",
     "axios": "^0.26.1",
+    "concurrently": "^7.6.0",
     "i18next": "^21.6.11",
     "i18next-browser-languagedetector": "^6.1.3",
     "i18next-http-backend": "^1.3.2",

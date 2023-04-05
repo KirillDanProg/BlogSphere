@@ -2,24 +2,22 @@
 @import "./variables/global";
 @import "./themes/dark";
 @import "./themes/light";
+@import "./themes/blue";
+@import "./themes/coral";
 @import "./mixins/mixins";
 
 body {
     font: var(--font-m);
-    color: var(--inverted-bg-color);
+    color: var(--text-color);
 }
 
 .app {
     @include gradient-bg-color(var(--bg-color), var(--bg-color-sec));
 
     height: 100vh;
-    transition: 0.6s;
+    transition: 0.4s;
 }
 
 .page-wrapper {
     display: flex;
-}
-
-.page-content {
-    flex-grow: 1;
 }
