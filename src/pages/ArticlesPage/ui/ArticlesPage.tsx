@@ -3,7 +3,7 @@ import { type FC, memo } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch'
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect'
-import { Page } from 'shared/ui/Page/Page'
+import { Page } from 'widgets/Page/ui/Page'
 import {
     DynamicModuleLoader,
     type ReducersListType
@@ -15,7 +15,11 @@ import {
 } from 'features/switchArticlesViewMode/ui/ArticlesViewSwitcher/ArticlesViewModeSwitcher'
 import { saveViewModeToLS } from '../model/services/saveViewModeToLS/saveViewModeToLS'
 import { articlesPageReducer, getArticles } from '../model/slice/articlesPageSlice'
-import { getArticlesPageStatus, getArticlesPageViewMode } from '../model/selectors'
+import {
+    getArticlesPageError,
+    getArticlesPageStatus,
+    getArticlesPageViewMode
+} from '../model/selectors'
 import s from './ArticlesPage.module.scss'
 import {
     fetchNextArticlesPage
@@ -35,6 +39,7 @@ const ArticlesPage: FC<ArticlesPageProps> = (props) => {
     const currentArticlesViewMode = useSelector(getArticlesPageViewMode)
     const articles = useSelector(getArticles.selectAll)
     const status = useSelector(getArticlesPageStatus)
+    const error = useSelector(getArticlesPageError)
     const onChangeViewMode = (mode: ArticleView) => {
         void dispatch(saveViewModeToLS(mode))
     }
@@ -46,6 +51,9 @@ const ArticlesPage: FC<ArticlesPageProps> = (props) => {
         void dispatch(initArticlesPage())
     })
 
+    if (error) {
+        // return <Text variant={ TextVariant.ERROR } text={ 'error' }/>
+    }
     return (
         <DynamicModuleLoader reducers={ asyncReducers } removeAfterUnmount={ false }>
             <Page

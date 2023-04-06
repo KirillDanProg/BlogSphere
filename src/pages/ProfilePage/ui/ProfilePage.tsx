@@ -32,7 +32,7 @@ import defaultUserPhoto from 'shared/assets/images/defaultUserAvatar.jpg'
 import { useParams } from 'react-router-dom'
 import { getUserId } from 'entities/User/model/selectors/userSelectors'
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect'
-import { Page } from 'shared/ui/Page/Page'
+import { Page } from 'widgets/Page/ui/Page'
 
 const initialReducers: ReducersListType = {
     profile: profileReducer
