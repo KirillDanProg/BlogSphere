@@ -8,6 +8,7 @@ import { type StateSchema } from './StateSchema'
 import { userReducer } from 'entities/User'
 import { createReducerManager } from 'app/providers/StoreProvider/config/reducerManager'
 import { api } from 'shared/api/api'
+import { scrollReducer } from 'widgets/Page'
 
 export const setupStore = (
     initialState?: StateSchema,
@@ -15,7 +16,8 @@ export const setupStore = (
 ) => {
     const rootReducer: ReducersMapObject<StateSchema> = {
         ...asyncReducers,
-        user: userReducer
+        user: userReducer,
+        scroll: scrollReducer
     }
 
     const reducerManager = createReducerManager(rootReducer)

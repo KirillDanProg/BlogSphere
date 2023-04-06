@@ -13,9 +13,11 @@ import { type ArticleSchema } from 'entities/Arcticle/model/types/articleSchema'
 import { type ArticleDetailsCommentSchema } from 'pages/ArticleDetailsPage'
 import { type AddNewCommentSchema } from 'features/addNewComment'
 import { type ArticlesPageSchema } from 'pages/ArticlesPage'
+import { type ScrollSchema } from 'widgets/Page'
 
 export interface StateSchema {
     user: UserSchema
+    scroll: ScrollSchema
 
     // async reducers
     auth?: LoginSchema
