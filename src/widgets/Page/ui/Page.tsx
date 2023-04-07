@@ -33,7 +33,6 @@ export const Page: FC<PageProps> = (props) => {
             path: pathname,
             position: e.currentTarget.scrollTop
         }
-        console.log('test')
         dispatch(scrollActions.setScrollPosition(payload))
     }
 
