@@ -1,0 +1,18 @@
+.wrapper {
+    .select {
+        padding: 4px 8px;
+        background: none;
+        color: var(--primary-color);
+        border: 1px solid var(--primary-color);
+        border-radius: 5px;
+        outline: none;
+        letter-spacing: 1px;
+        cursor: pointer;
+        transition: 0.3s;
+        font-family: Montserrat, serif;
+
+        &:hover {
+            opacity: 0.6;
+        }
+    }
+}
