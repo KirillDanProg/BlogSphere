@@ -25,6 +25,7 @@ import { Button } from 'shared/ui'
 import { RoutePath } from 'shared/config/routes/routes'
 import BackToIcon from 'shared/assets/icons/arrow-left.svg'
 import { Icon } from 'shared/ui/Icon/Icon'
+import { Page } from 'widgets/Page/ui/Page'
 
 interface ArticleDetailsPageProps {
     className?: string
@@ -64,7 +65,7 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = (props) => {
         <DynamicModuleLoader
             removeAfterUnmount={ true }
             reducers={ asyncReducers }>
-            <div className={ classNames(s.ArticleDetailsPage, {}, [className]) }>
+            <Page className={ classNames(s.ArticleDetailsPage, {}, [className]) }>
                 <Button
                     className={ s.backToBtn }
                     onClick={ backToArticleListHandler }
@@ -82,7 +83,7 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = (props) => {
                 />
                 <CommentsList
                     comments={ comments }/>
-            </div>
+            </Page>
         </DynamicModuleLoader>
     )
 }

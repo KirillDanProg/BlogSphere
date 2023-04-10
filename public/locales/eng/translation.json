@@ -1,6 +1,9 @@
 {
+  "articles": "Articles",
+  "asc": "ascending",
   "cancel": "Cancel",
   "comment": "leave a comment...",
+  "desc": "descending",
   "edit": "edit",
   "info": "Info",
   "lang": "English",
@@ -9,5 +12,9 @@
   "pageError": "Something went wrong",
   "profile": "Profile",
   "save": "Save",
-  "send": "Send"
+  "search": "Search",
+  "send": "Send",
+  "sort-date": "date",
+  "sort-title": "title",
+  "sort-views": "views"
 }

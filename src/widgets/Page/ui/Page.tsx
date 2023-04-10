@@ -53,7 +53,9 @@ export const Page: FC<PageProps> = (props) => {
             onScroll={ throttledScroll }
             className={ classNames(s.Page, {}, [className]) }>
             {children}
-            <div ref={ triggerRef }/>
+            <div
+                className={ s.trigger }
+                ref={ triggerRef }/>
         </section>
     )
 }
