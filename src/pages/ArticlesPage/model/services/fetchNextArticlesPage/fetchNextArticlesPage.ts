@@ -13,9 +13,7 @@ export const fetchNextArticlesPage = createAsyncThunk<void, void, ThunkConfig<st
             const status = getArticlesPageStatus(thunkAPI.getState())
             if (hasMore && status !== 'loading') {
                 thunkAPI.dispatch(articlesPageActions.setArticlesPageNum(page + 1))
-                void thunkAPI.dispatch(fetchArticles({
-                    page: page + 1
-                }))
+                void thunkAPI.dispatch(fetchArticles({ replace: false }))
             }
         } catch (e) {
             return thunkAPI.rejectWithValue('Не удалось загрузить статьи')

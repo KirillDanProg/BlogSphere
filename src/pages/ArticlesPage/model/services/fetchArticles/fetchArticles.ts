@@ -2,31 +2,56 @@ import { createAsyncThunk } from '@reduxjs/toolkit'
 import { type ArticleType } from 'entities/Arcticle'
 import { type ThunkConfig } from 'app/providers/StoreProvider/config/StateSchema'
 import { articlesPageActions } from 'pages/ArticlesPage/model/slice/articlesPageSlice'
-import { getArticlesPageLimit } from 'pages/ArticlesPage/model/selectors'
+import {
+    getArticlesPageLimit,
+    getArticlesPageNum,
+    getOrder,
+    getSearch,
+    getSort
+} from 'pages/ArticlesPage/model/selectors'
 
-interface ParamsType {
-    page?: number
-    limit?: number
+interface FetchArticlesProps {
+    replace?: boolean
+    params?: URLSearchParams
+    setParams?: (params: Record<string, string>) => void
 }
 
-export const fetchArticles = createAsyncThunk<ArticleType[], ParamsType, ThunkConfig<string>>(
+export const fetchArticles = createAsyncThunk<ArticleType[], FetchArticlesProps, ThunkConfig<string>>(
     'articles/fetchArticles',
-    async (params, thunkAPI) => {
+    async (args, thunkAPI) => {
         const {
-            page = 1
-        } = params
+            getState,
+            extra,
+            rejectWithValue,
+            dispatch
+        } = thunkAPI
+
+        const sort = getSort(getState()) || args.params?.get('sort')
+        const order = getOrder(getState()) || args.params?.get('order')
+        const search = getSearch(getState()) || args.params?.get('search') as string
+        const limit = getArticlesPageLimit(getState())
+        const page = getArticlesPageNum(getState())
+
+        args.setParams?.({
+            order,
+            sort,
+            search
+        })
+
         try {
-            const limit = getArticlesPageLimit(thunkAPI.getState())
-            thunkAPI.dispatch(articlesPageActions.setArticlesLimit())
-            const response = await thunkAPI.extra.api.get<ArticleType[]>('/posts', {
+            dispatch(articlesPageActions.setArticlesLimit())
+            const response = await extra.api.get<ArticleType[]>('/posts', {
                 params: {
                     page,
-                    limit
+                    limit,
+                    sort,
+                    order,
+                    search
                 }
             })
             return response.data
         } catch (e) {
-            return thunkAPI.rejectWithValue('Не удалось загрузить статьи')
+            return rejectWithValue('Не удалось загрузить статьи')
         }
     }
 )
