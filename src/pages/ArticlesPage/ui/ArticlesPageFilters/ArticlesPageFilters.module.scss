@@ -1,0 +1,26 @@
+.ArticlesPageFilters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 16px;
+    margin: 20px;
+
+    .searchFieldWrapper {
+        position: relative;
+        width: 100%;
+
+        .searchInput {
+            width: 100%;
+        }
+
+        .searchIcon {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 10px;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+    }
+}
