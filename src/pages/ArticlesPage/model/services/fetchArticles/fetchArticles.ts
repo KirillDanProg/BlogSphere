@@ -28,7 +28,7 @@ export const fetchArticles = createAsyncThunk<ArticleType[], FetchArticlesProps,
 
         const sort = getSort(getState()) || args.params?.get('sort')
         const order = getOrder(getState()) || args.params?.get('order')
-        const search = getSearch(getState()) || args.params?.get('search') as string
+        const search = args.params?.get('search') || getSearch(getState())
         const limit = getArticlesPageLimit(getState())
         const page = getArticlesPageNum(getState())
 

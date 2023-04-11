@@ -5,14 +5,14 @@ import { authReducer } from 'features/authByUserName'
 import { profileReducer } from 'entities/Profile'
 import { articleDetailsReducer } from 'entities/Arcticle'
 import { addNewCommentReducer } from 'features/addNewComment/model/slice/addNewCommentSlice'
-import { articlesPageReducer } from 'pages/ArticlesPage/model/slice/articlesPageSlice'
+import { articleDetailsPageReducer } from 'pages/ArticleDetailsPage/model/slice'
 
 const initialAsyncReducers: DeepPartial<ReducersMapObject<StateSchema>> = {
     auth: authReducer,
     profile: profileReducer,
     articleDetails: articleDetailsReducer,
     addNewComment: addNewCommentReducer,
-    articlesPage: articlesPageReducer
+    articleDetailsPage: articleDetailsPageReducer
 }
 
 export const StoreDecorator = (

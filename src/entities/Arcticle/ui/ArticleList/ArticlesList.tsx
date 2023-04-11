@@ -13,6 +13,7 @@ interface ArticleListProps {
     articles: ArticleType[]
     view?: ArticleView
     status?: StatusType
+    target?: string
 }
 
 const renderSkeletons = (view: ArticleView) => {
@@ -26,7 +27,8 @@ export const ArticlesList: FC<ArticleListProps> = (props) => {
         articles,
         className,
         view = ArticleView.GRID,
-        status
+        status,
+        target
     } = props
 
     const renderArticles = (article: ArticleType) => {
@@ -35,6 +37,7 @@ export const ArticlesList: FC<ArticleListProps> = (props) => {
                 key={ article._id }
                 article={ article }
                 view={ view }
+                target={ target }
             />
         )
     }

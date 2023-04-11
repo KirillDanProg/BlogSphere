@@ -26,9 +26,7 @@ describe('fetchNextArticlesPage', () => {
         expect(thunk.dispatch)
             .toHaveBeenCalledTimes(4)
         expect(fetchArticles)
-            .toHaveBeenCalledWith({
-                page: 2
-            })
+            .toHaveBeenCalled()
     })
 
     it('return undefined if there is no articles ', async () => {

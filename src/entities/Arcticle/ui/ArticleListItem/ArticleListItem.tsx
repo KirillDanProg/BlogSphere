@@ -26,13 +26,15 @@ interface ArticleListItemProps {
     className?: string
     view?: ArticleView
     article: ArticleType
+    target?: string
 }
 
 export const ArticleListItem: FC<ArticleListItemProps> = (props) => {
     const {
         view = ArticleView.GRID,
         article,
-        className
+        className,
+        target
     } = props
     const { t } = useTranslation('articleDetails')
     const convertedDate = convertDate(article.createdAt)
@@ -85,7 +87,9 @@ export const ArticleListItem: FC<ArticleListItemProps> = (props) => {
         <Card className={ classNames(s.ArticleListItem, {}, [className, s[view]]) }>
             <AppLink
                 variant={ AppLinkVariant.WITHOUT_STYLE }
-                to={ RoutePath.article_details_page + article._id }>
+                to={ RoutePath.article_details_page + article._id }
+                target={ target }
+            >
                 <div className={ s.imgWrapper }>
                     <img
                         src={ 'https://img-19.commentcamarche.net/cI8qqj-finfDcmx6jMK6Vr-krEw=/1500x/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg' }
