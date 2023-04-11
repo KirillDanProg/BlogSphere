@@ -1,14 +1,11 @@
 import { type FC, memo, useCallback, useEffect } from 'react'
 import s from './ArticleDetailsPage.module.scss'
-import { ArticleDetails } from 'entities/Arcticle'
+import { ArticleDetails, ArticlesList, ArticleView } from 'entities/Arcticle'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { CommentsList } from 'entities/Comment'
 import { useSelector } from 'react-redux'
-import {
-    articleDetailsCommentsReducer,
-    getArticleComments
-} from '../model/slice/articleDetailsCommentsSlice'
+import { getArticleComments } from '../model/slice/articleDetailsCommentsSlice'
 import { fetchArticleComments } from '../model/services/fetchArticleComments/fetchArticleComments'
 import {
     addNewCommentForArticle
@@ -26,19 +23,30 @@ import { RoutePath } from 'shared/config/routes/routes'
 import BackToIcon from 'shared/assets/icons/arrow-left.svg'
 import { Icon } from 'shared/ui/Icon/Icon'
 import { Page } from 'widgets/Page/ui/Page'
+import { getArticleRecommendations } from '../model/slice/articleDetailsRecommendationsSlice'
+import {
+    getArticlesRecommendationsStatus
+} from '../model/selectors/articleDetailsPageRecommendations'
+import {
+    fetchArticleDetailsRecommendations
+} from '../model/services/fetchArticleDetailsRecommendations/fetchArticleDetailsRecommendations'
+import { articleDetailsPageReducer } from '../model/slice'
 
 interface ArticleDetailsPageProps {
     className?: string
 }
 
 const asyncReducers: ReducersListType = {
-    articleDetailsComments: articleDetailsCommentsReducer
+    articleDetailsPage: articleDetailsPageReducer
 }
+
 const ArticleDetailsPage: FC<ArticleDetailsPageProps> = (props) => {
     const { t } = useTranslation('articleDetails')
     const { className } = props
     const { id = '1' } = useParams<{ id: string }>()
     const comments = useSelector(getArticleComments.selectAll)
+    const recommendations = useSelector(getArticleRecommendations.selectAll)
+    const recommendationsStatus = useSelector(getArticlesRecommendationsStatus)
     const dispatch = useAppDispatch()
     const navigate = useNavigate()
 
@@ -51,6 +59,7 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = (props) => {
     }
     useEffect(() => {
         void dispatch(fetchArticleComments(id))
+        void dispatch(fetchArticleDetailsRecommendations())
     }, [id, dispatch])
 
     if (!id) {
@@ -74,6 +83,17 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = (props) => {
                 </Button>
                 <ArticleDetails
                     articleId={ id }
+                />
+                <Text
+                    className={ s.title }
+                    title={ t('recommendations') }
+                />
+                <ArticlesList
+                    className={ s.recommendations }
+                    view={ ArticleView.GRID }
+                    articles={ recommendations }
+                    status={ recommendationsStatus }
+                    target={ '_blank' }
                 />
                 <Text
                     className={ s.title }

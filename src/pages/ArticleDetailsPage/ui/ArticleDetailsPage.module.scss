@@ -1,19 +1,25 @@
 .ArticleDetailsPage {
     position: relative;
-    padding: 20px 40px;
+    padding: 40px 20px 40px 60px;
 
     .title {
-        margin-bottom: 20px;
+        margin-bottom: 30px;
     }
 
     .backToBtn {
         position: absolute;
-        left: -50px;
-        top: 0;
+        left: 0;
+        top: 6px;
 
         svg {
             width: 24px;
             height: 24px;
         }
+    }
+
+    .recommendations {
+        display: flex;
+        overflow: auto;
+        margin-bottom: 30px;
     }
 }
