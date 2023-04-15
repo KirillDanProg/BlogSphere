@@ -1,5 +1,5 @@
 import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk'
-import { fetchUserProfile } from 'entities/Profile'
+import { fetchUserProfile } from '../fetchUserProfile/fetchUserProfile'
 import { type StateSchema } from 'app/providers/StoreProvider'
 
 const data = {

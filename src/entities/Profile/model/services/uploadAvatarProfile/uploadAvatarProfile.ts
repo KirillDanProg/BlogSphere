@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { profileActions } from 'entities/Profile'
+import { profileActions } from '../../slice/profileSlice'
 import { type ThunkConfig } from 'app/providers/StoreProvider/config/StateSchema'
 
 export const uploadAvatarProfile = createAsyncThunk<undefined, string | Blob, ThunkConfig<string>>(

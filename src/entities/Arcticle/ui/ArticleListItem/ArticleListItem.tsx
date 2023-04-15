@@ -27,6 +27,7 @@ interface ArticleListItemProps {
     view?: ArticleView
     article: ArticleType
     target?: string
+    style?: Record<string, string>
 }
 
 export const ArticleListItem: FC<ArticleListItemProps> = (props) => {
@@ -34,7 +35,8 @@ export const ArticleListItem: FC<ArticleListItemProps> = (props) => {
         view = ArticleView.GRID,
         article,
         className,
-        target
+        target,
+        style
     } = props
     const { t } = useTranslation('articleDetails')
     const convertedDate = convertDate(article.createdAt)
@@ -45,7 +47,9 @@ export const ArticleListItem: FC<ArticleListItemProps> = (props) => {
 
     if (view === ArticleView.LIST) {
         return (
-            <Card className={ classNames(s.ArticleListItem, {}, [className, s[view]]) }>
+            <Card className={ classNames(s.ArticleListItem, {}, [className, s[view]]) }
+                style={ style }
+            >
                 <div className={ s.header }>
                     <Avatar
                         size={ 50 }

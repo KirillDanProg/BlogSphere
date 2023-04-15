@@ -1,12 +1,10 @@
 import { type FC } from 'react'
-import { classNames } from 'shared/lib/classNames/classNames'
-import s from './ArticleList.module.scss'
 import { type ArticleType, ArticleView } from '../../model/types/article'
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem'
 import { type StatusType } from 'app/types/global'
-import {
-    ArticleListItemSkeleton
-} from 'entities/Arcticle/ui/ArticleListItemSkeleton/ArticleListItemSkeleton'
+import { ArticleListItemSkeleton } from '../ArticleListItemSkeleton/ArticleListItemSkeleton'
+import { Virtuoso, VirtuosoGrid } from 'react-virtuoso'
+import s from './ArticleList.module.scss'
 
 interface ArticleListProps {
     className?: string
@@ -16,43 +14,60 @@ interface ArticleListProps {
     target?: string
 }
 
-const renderSkeletons = (view: ArticleView) => {
-    return new Array(view === ArticleView.LIST ? 3 : 9).fill(0)
-        .map((el, index) => <ArticleListItemSkeleton
-            key={ index }
-            view={ view }/>)
-}
 export const ArticlesList: FC<ArticleListProps> = (props) => {
     const {
         articles,
-        className,
         view = ArticleView.GRID,
-        status,
         target
     } = props
 
-    const renderArticles = (article: ArticleType) => {
+    const renderArticles = (index: number) => {
         return (
             <ArticleListItem
-                key={ article._id }
-                article={ article }
+                key={ articles[index]._id }
+                article={ articles[index] }
                 view={ view }
                 target={ target }
+                style={ { marginBottom: '40px' } }
             />
         )
     }
 
     return (
-        <div className={ classNames(s.ArticleList, {}, [className, s[view]]) }>
+        <>
             {
-                articles.length > 0
-                    ? articles.map(renderArticles)
-                    : null
+                view === ArticleView.LIST
+                    ? <Virtuoso
+                        style={ { height: '100%' } }
+                        totalCount={ articles.length }
+                        itemContent={ renderArticles }
+                        components={ {
+                            Footer: () => {
+                                return <ArticleListItemSkeleton view={ ArticleView.LIST }/>
+                            }
+                        } }
+                        className={ s.LIST }
+                    />
+                    : <VirtuosoGrid
+                        style={ {
+                            height: '100%'
+                        } }
+                        listClassName={ s.GRID }
+                        totalCount={ articles.length }
+                        itemContent={ renderArticles }
+                        components={ {
+                            ScrollSeekPlaceholder: () => {
+                                return (
+                                    <ArticleListItemSkeleton view={ view }/>
+                                )
+                            }
+                        } }
+                        scrollSeekConfiguration={ {
+                            enter: velocity => Math.abs(velocity) > 50,
+                            exit: velocity => Math.abs(velocity) < 10
+                        } }
+                    />
             }
-            {
-                status === 'loading' &&
-                renderSkeletons(view)
-            }
-        </div>
+        </>
     )
 }

@@ -1,5 +1,5 @@
 import { type ComponentStory } from '@storybook/react'
-import { Skeleton } from 'shared/ui/Skeleton/ui/Skeleton'
+import { Skeleton } from '../ui/Skeleton'
 import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 

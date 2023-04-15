@@ -1,7 +1,7 @@
 import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk'
-import { updateUserProfile } from 'entities/Profile'
+import { updateUserProfile } from '../udateUserProfile/updateUserProfile'
 import { type StateSchema } from 'app/providers/StoreProvider'
-import { ValidateProfileErrors } from 'entities/Profile/model/types/profile'
+import { ValidateProfileErrors } from '../../types/profile'
 
 const data = {
     instagram: 'instagram.com',

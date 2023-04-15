@@ -3,10 +3,10 @@ import { type StateSchema } from 'app/providers/StoreProvider'
 import { type ArticleType } from 'entities/Arcticle'
 import {
     fetchArticleDetailsRecommendations
-} from 'pages/ArticleDetailsPage/model/services/fetchArticleDetailsRecommendations/fetchArticleDetailsRecommendations'
+} from '../services/fetchArticleDetailsRecommendations/fetchArticleDetailsRecommendations'
 import {
     type ArticleDetailsRecommendationsSchema
-} from 'pages/ArticleDetailsPage/model/types/articleDetailsRecommendationsSchema'
+} from '../types/articleDetailsRecommendationsSchema'
 
 const recommendationsAdapter = createEntityAdapter<ArticleType>({
     selectId: (article) => article._id

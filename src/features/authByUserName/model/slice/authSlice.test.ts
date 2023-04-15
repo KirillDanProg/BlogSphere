@@ -1,5 +1,6 @@
-import { authReducer, type LoginSchema } from 'features/authByUserName'
-import { authLoginThunk } from 'features/authByUserName/model/services/AuthLogin/authLoginThunk'
+import { authReducer } from '../slice/authSlice'
+import { type LoginSchema } from '../types/loginSchema'
+import { authLoginThunk } from '../services/AuthLogin/authLoginThunk'
 
 describe('authSlice.test', () => {
     test('authLoginThunk pending', () => {

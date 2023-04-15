@@ -3,7 +3,7 @@ import s from './SidebarItem.module.scss'
 import { useTranslation } from 'react-i18next'
 import { AppLink } from 'shared/ui'
 import { classNames } from 'shared/lib/classNames/classNames'
-import { type SidebarItemType } from 'widgets/Sidebar/model/types/sidebarItems'
+import { type SidebarItemType } from '../../model/types/sidebarItems'
 
 interface PropsType extends SidebarItemType {
     collapsed: boolean

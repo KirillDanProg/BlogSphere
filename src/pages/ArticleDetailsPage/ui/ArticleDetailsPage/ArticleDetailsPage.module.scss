@@ -1,20 +1,9 @@
 .ArticleDetailsPage {
     position: relative;
-    padding: 40px 20px 40px 60px;
+    padding: 60px 20px 40px 60px;
 
     .title {
         margin-bottom: 30px;
-    }
-
-    .backToBtn {
-        position: absolute;
-        left: 0;
-        top: 6px;
-
-        svg {
-            width: 24px;
-            height: 24px;
-        }
     }
 
     .recommendations {

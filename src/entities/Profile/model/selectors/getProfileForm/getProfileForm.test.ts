@@ -1,5 +1,5 @@
 import { type StateSchema } from 'app/providers/StoreProvider'
-import { getProfileForm } from 'entities/Profile/model/selectors/getProfileForm/getProfileForm'
+import { getProfileForm } from './getProfileForm'
 
 describe('getProfileForm', () => {
     it('return profile form', () => {

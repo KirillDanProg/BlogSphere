@@ -1,4 +1,4 @@
-import { type ArticleType } from 'entities/Arcticle'
+import { type ArticleType } from './article'
 import { type StatusType } from 'app/types/global'
 
 export interface ArticleSchema {

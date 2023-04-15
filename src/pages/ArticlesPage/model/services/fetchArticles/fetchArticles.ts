@@ -1,14 +1,14 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { type ArticleType } from 'entities/Arcticle'
 import { type ThunkConfig } from 'app/providers/StoreProvider/config/StateSchema'
-import { articlesPageActions } from 'pages/ArticlesPage/model/slice/articlesPageSlice'
+import { articlesPageActions } from '../../slice/articlesPageSlice'
 import {
     getArticlesPageLimit,
     getArticlesPageNum,
     getOrder,
     getSearch,
     getSort
-} from 'pages/ArticlesPage/model/selectors'
+} from '../../selectors'
 
 interface FetchArticlesProps {
     replace?: boolean

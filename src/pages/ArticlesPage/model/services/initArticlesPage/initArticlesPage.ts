@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { init } from '../saveViewModeToLS/saveViewModeToLS'
 import { fetchArticles } from '../fetchArticles/fetchArticles'
-import { getInitialized } from 'pages/ArticlesPage/model/selectors'
+import { getInitialized } from '../../selectors'
 import { type ThunkConfig } from 'app/providers/StoreProvider/config/StateSchema'
 
 interface InitArticlesPageParams {

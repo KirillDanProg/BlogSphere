@@ -6,7 +6,7 @@ import { Text, TextVariant } from 'shared/ui/Text/Text'
 import Input from 'shared/ui/Input/Input'
 import { type StatusType } from 'app/types/global'
 import { Loader } from 'shared/ui/Loader/Loader'
-import { type ProfileTypePartial } from 'entities/Profile/model/types/profile'
+import { type ProfileTypePartial } from '../model/types/profile'
 
 type onChangeHandlerType = (value: string) => void
 

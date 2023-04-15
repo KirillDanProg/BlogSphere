@@ -1,15 +1,17 @@
 import { type FC, memo, useCallback, useEffect } from 'react'
 import s from './ArticleDetailsPage.module.scss'
 import { ArticleDetails, ArticlesList, ArticleView } from 'entities/Arcticle'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { CommentsList } from 'entities/Comment'
 import { useSelector } from 'react-redux'
-import { getArticleComments } from '../model/slice/articleDetailsCommentsSlice'
-import { fetchArticleComments } from '../model/services/fetchArticleComments/fetchArticleComments'
+import { getArticleComments } from '../../model/slice/articleDetailsCommentsSlice'
+import {
+    fetchArticleComments
+} from '../../model/services/fetchArticleComments/fetchArticleComments'
 import {
     addNewCommentForArticle
-} from '../model/services/addNewCommentForArticle/addNewCommentForArticle'
+} from '../../model/services/addNewCommentForArticle/addNewCommentForArticle'
 import { AddNewCommentForm } from 'features/addNewComment'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch'
 import { classNames } from 'shared/lib/classNames/classNames'
@@ -18,19 +20,14 @@ import {
     DynamicModuleLoader,
     type ReducersListType
 } from 'shared/lib/components/DynamicModuleLoader'
-import { Button } from 'shared/ui'
-import { RoutePath } from 'shared/config/routes/routes'
-import BackToIcon from 'shared/assets/icons/arrow-left.svg'
-import { Icon } from 'shared/ui/Icon/Icon'
 import { Page } from 'widgets/Page/ui/Page'
-import { getArticleRecommendations } from '../model/slice/articleDetailsRecommendationsSlice'
-import {
-    getArticlesRecommendationsStatus
-} from '../model/selectors/articleDetailsPageRecommendations'
+import { getArticleRecommendations } from '../../model/slice/articleDetailsRecommendationsSlice'
+import { getArticlesRecommendationsStatus } from '../../model/selectors/recommendations'
 import {
     fetchArticleDetailsRecommendations
-} from '../model/services/fetchArticleDetailsRecommendations/fetchArticleDetailsRecommendations'
-import { articleDetailsPageReducer } from '../model/slice'
+} from '../../model/services/fetchArticleDetailsRecommendations/fetchArticleDetailsRecommendations'
+import { articleDetailsPageReducer } from '../../model/slice'
+import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader'
 
 interface ArticleDetailsPageProps {
     className?: string
@@ -48,15 +45,11 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = (props) => {
     const recommendations = useSelector(getArticleRecommendations.selectAll)
     const recommendationsStatus = useSelector(getArticlesRecommendationsStatus)
     const dispatch = useAppDispatch()
-    const navigate = useNavigate()
 
     const onSendArticleComment = useCallback((text) => {
         void dispatch(addNewCommentForArticle(text))
     }, [dispatch])
 
-    const backToArticleListHandler = () => {
-        navigate(RoutePath.articles)
-    }
     useEffect(() => {
         void dispatch(fetchArticleComments(id))
         void dispatch(fetchArticleDetailsRecommendations())
@@ -75,12 +68,7 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = (props) => {
             removeAfterUnmount={ true }
             reducers={ asyncReducers }>
             <Page className={ classNames(s.ArticleDetailsPage, {}, [className]) }>
-                <Button
-                    className={ s.backToBtn }
-                    onClick={ backToArticleListHandler }
-                >
-                    <Icon Svg={ BackToIcon }/>
-                </Button>
+                <ArticleDetailsPageHeader/>
                 <ArticleDetails
                     articleId={ id }
                 />

@@ -6,9 +6,9 @@ import s from './Sidebar.module.scss'
 import { ThemeSwitcher } from 'shared/ui'
 import AngleLeft from 'shared/assets/icons/angles-left-solid.svg'
 import AngleRight from 'shared/assets/icons/angles-right-solid.svg'
-import { SidebarItem } from 'widgets/Sidebar/ui/SidebarItem/SidebarItem'
+import { SidebarItem } from '../../ui/SidebarItem/SidebarItem'
 import { useSelector } from 'react-redux'
-import { getSidebarItems } from 'widgets/Sidebar/model/selectors/sidebarSelectors'
+import { getSidebarItems } from '../../model/selectors/sidebarSelectors'
 
 interface SidebarProps {
     className?: string

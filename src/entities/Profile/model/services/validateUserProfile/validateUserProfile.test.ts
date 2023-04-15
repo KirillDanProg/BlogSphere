@@ -1,7 +1,5 @@
-import {
-    validateUserProfile
-} from 'entities/Profile/model/services/validateUserProfile/validateUserProfile'
-import { ValidateProfileErrors } from 'entities/Profile/model/types/profile'
+import { validateUserProfile } from '../validateUserProfile/validateUserProfile'
+import { ValidateProfileErrors } from '../../types/profile'
 
 describe('validateUserProfile', () => {
     it('return empty array when there is no errors', () => {

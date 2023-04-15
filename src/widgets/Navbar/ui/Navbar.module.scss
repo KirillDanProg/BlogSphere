@@ -11,4 +11,19 @@
 .links {
     display: flex;
     align-items: center;
+    justify-content: center;
+    width: 100%;
+
+    .linkToEditPage {
+        order: 1;
+        flex-grow: 2;
+
+        .createPostBtn {
+            margin: 0 auto;
+        }
+    }
+
+    .authBtn {
+        order: 2;
+    }
 }

@@ -1,5 +1,5 @@
 import { type FC, memo } from 'react'
-import { Button } from 'shared/ui'
+import { Button } from '../Button/Button'
 import { useTranslation } from 'react-i18next'
 import ruIcon from 'shared/assets/icons/langIcons/icons8-russian-federation-48.png'
 import engIcon from 'shared/assets/icons/langIcons/icons8-great-britain-48.png'

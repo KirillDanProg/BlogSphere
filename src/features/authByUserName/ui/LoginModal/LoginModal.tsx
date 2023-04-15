@@ -8,7 +8,7 @@ import s from './LoginModal.module.scss'
 import { getAuthStatus } from '../../model/selectors/getAuthStatus/getAuthStatus'
 import { useSelector } from 'react-redux'
 import { getUserId } from 'entities/User/model/selectors/userSelectors'
-import { LoginFormLazy } from 'features/authByUserName/ui/LoginForm/LoginFormLazy'
+import { LoginFormLazy } from '../LoginForm/LoginFormLazy'
 import { Loader } from 'shared/ui/Loader/Loader'
 
 interface LoginModalProps {
