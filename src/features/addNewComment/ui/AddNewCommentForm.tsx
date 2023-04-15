@@ -1,18 +1,18 @@
-import { type FC, memo } from 'react'
+import React, { type FC, type KeyboardEvent, memo } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import s from './AddNewCommentForm.module.scss'
 import { useTranslation } from 'react-i18next'
 import Input from 'shared/ui/Input/Input'
 import { Button } from 'shared/ui'
+import {
+    DynamicModuleLoader,
+    type ReducersListType
+} from 'shared/lib/components/DynamicModuleLoader'
 import { useSelector } from 'react-redux'
 import { getCommentText } from '../model/selectors'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch'
 import { addNewCommentActions, addNewCommentReducer } from '../model/slice/addNewCommentSlice'
 import { ButtonVariant } from 'shared/ui/Button/Button'
-import {
-    DynamicModuleLoader,
-    type ReducersListType
-} from 'shared/lib/components/DynamicModuleLoader'
 
 interface AddNewCommentFormProps {
     className?: string
@@ -34,9 +34,17 @@ const AddNewCommentForm: FC<AddNewCommentFormProps> = (props) => {
     const onCommentTextChange = (value: string) => {
         dispatch(addNewCommentActions.setCommentText(value))
     }
-    const onSendHandler = () => {
+    const sendComment = () => {
         onCommentTextChange('')
         onSendComment(commentText)
+    }
+    const onSendHandler = () => {
+        sendComment()
+    }
+    const onKeyDownHandler = (e: KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === 'Enter') {
+            sendComment()
+        }
     }
 
     return (
@@ -47,6 +55,7 @@ const AddNewCommentForm: FC<AddNewCommentFormProps> = (props) => {
                     className={ s.input }
                     value={ commentText }
                     onChange={ onCommentTextChange }
+                    onKeyDown={ onKeyDownHandler }
                 />
                 <Button
                     onClick={ onSendHandler }
