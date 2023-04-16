@@ -68,12 +68,13 @@
           "data-testid",
           "to",
           "align",
-          "alt",
           "fill",
           "autoComplete",
+          "wrap",
+          "target",
           "name",
-          "label",
-          "target"
+          "direction",
+          "justify"
         ]
       }
     ],

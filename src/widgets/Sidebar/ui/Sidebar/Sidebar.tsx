@@ -9,6 +9,7 @@ import AngleRight from 'shared/assets/icons/angles-right-solid.svg'
 import { SidebarItem } from '../../ui/SidebarItem/SidebarItem'
 import { useSelector } from 'react-redux'
 import { getSidebarItems } from '../../model/selectors/sidebarSelectors'
+import { VStack } from 'shared/ui/Stack/VStack/VStack'
 
 interface SidebarProps {
     className?: string
@@ -44,9 +45,9 @@ export const Sidebar: FC<SidebarProps> = memo((props) => {
             data-testid="sidebar"
             className={ classNames(s.Sidebar, { [s.collapsed]: collapsed }) }>
 
-            <div className={ s.items }>
+            <VStack gap="16" className={ s.items }>
                 {itemsList}
-            </div>
+            </VStack>
 
             <Button
                 data-testid="sidebar-toggle"

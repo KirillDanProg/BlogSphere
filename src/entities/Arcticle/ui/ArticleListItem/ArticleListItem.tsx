@@ -19,6 +19,7 @@ import { Avatar } from 'shared/ui/Avatar/Avatar'
 import { ArticleTextBlock } from '../ArticleTextBlock/ArticleTextBlock'
 import { blocks } from 'data/db'
 import { useTranslation } from 'react-i18next'
+import { HStack } from 'shared/ui/Stack/HStack/HStack'
 
 const articleBlocks = blocks
 
@@ -50,7 +51,7 @@ export const ArticleListItem: FC<ArticleListItemProps> = (props) => {
             <Card className={ classNames(s.ArticleListItem, {}, [className, s[view]]) }
                 style={ style }
             >
-                <div className={ s.header }>
+                <HStack align="center" gap="8" className={ s.header }>
                     <Avatar
                         size={ 50 }
                         /* eslint-disable-next-line */
@@ -61,7 +62,7 @@ export const ArticleListItem: FC<ArticleListItemProps> = (props) => {
                         text={'Kirill'}
                     />
                     <span className={ s.date }>{convertedDate}</span>
-                </div>
+                </HStack>
                 <Text
                     className={ s.title }
                     title={ article.title }
@@ -100,7 +101,7 @@ export const ArticleListItem: FC<ArticleListItemProps> = (props) => {
                     />
                     <span className={ s.date }>{convertedDate}</span>
                 </div>
-                <div className={ s.infoWrapper }>
+                <HStack gap="8" align="center" className={ s.infoWrapper }>
                     <div className={ s.tags }>
                         {tags}
                     </div>
@@ -110,7 +111,7 @@ export const ArticleListItem: FC<ArticleListItemProps> = (props) => {
                     <Icon
                         className={ s.viewIcon }
                         Svg={ EyeIcon }/>
-                </div>
+                </HStack>
                 <Text
                     className={ s.title }
                     title={ article.title }/>

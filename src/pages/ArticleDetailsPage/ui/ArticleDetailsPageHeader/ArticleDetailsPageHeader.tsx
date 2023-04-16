@@ -11,6 +11,7 @@ import s from './ArticleDetailsPageHeader.module.scss'
 import { getAllowArticleEdit } from '../../model/selectors/article'
 import { ButtonVariant } from 'shared/ui/Button/Button'
 import { getArticleDetailsData } from 'entities/Arcticle/model/selectors/articleDetails'
+import { HStack } from 'shared/ui/Stack/HStack/HStack'
 
 interface ArticleDetailsPageHeaderProps {
     className?: string
@@ -29,7 +30,7 @@ export const ArticleDetailsPageHeader: FC<ArticleDetailsPageHeaderProps> = (prop
     }
 
     return (
-        <div className={ classNames(s.ArticleDetailsPageHeader) }>
+        <HStack justify="between" align="center" className={ classNames(s.ArticleDetailsPageHeader) }>
             <Button
                 className={ s.backToBtn }
                 onClick={ backToArticleListHandler }
@@ -45,6 +46,6 @@ export const ArticleDetailsPageHeader: FC<ArticleDetailsPageHeaderProps> = (prop
                     {t('edit')}
                 </Button>
             }
-        </div>
+        </HStack>
     )
 }

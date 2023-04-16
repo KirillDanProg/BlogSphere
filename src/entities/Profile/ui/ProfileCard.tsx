@@ -7,6 +7,8 @@ import Input from 'shared/ui/Input/Input'
 import { type StatusType } from 'app/types/global'
 import { Loader } from 'shared/ui/Loader/Loader'
 import { type ProfileTypePartial } from '../model/types/profile'
+import { Card } from 'shared/ui/Card/Card'
+import { VStack } from 'shared/ui/Stack/VStack/VStack'
 
 type onChangeHandlerType = (value: string) => void
 
@@ -45,58 +47,61 @@ export const ProfileCard: FC<ProfileCardProps> = (props) => {
     }
 
     if (profileError) {
-        return <div className={ classNames(s.ProfileCard, {}, [className, s.error]) }>
+        return <VStack align="center" justify="center"
+            className={ classNames(s.ProfileCard, {}, [className, s.error]) }>
             <Text align={ 'center' }
                 variant={ TextVariant.ERROR }
                 title={ t('errorTitle') }/>
             <Text align={ 'center' }
                 variant={ TextVariant.ERROR }
                 text={ t('errorMsg') }/>
-        </div>
+        </VStack>
     }
 
     return (
-        <div className={ classNames(s.ProfileCard, {}, [className]) }>
-            <Input
-                className={ s.input }
-                readonly={ readonly }
-                label={ t('FirstName') }
-                name="firstName"
-                value={ profileData?.firstName }
-                onChange={ onFirstNameChange }
-            />
-            <Input
-                className={ s.input }
-                readonly={ readonly }
-                label={ t('LastName') }
-                name="lastName"
-                value={ profileData?.lastName }
-                onChange={ onLastNameChange }
-            />
-            <Input
-                className={ s.input }
-                readonly={ readonly }
-                label={ t('age') }
-                name="age"
-                value={ profileData?.age }
-                onChange={ onAgeChange }
-            />
-            <Input
-                className={ s.input }
-                readonly={ readonly }
-                label={ t('Country') }
-                name="country"
-                value={ profileData?.country }
-                onChange={ onCountryChange }
-            />
-            <Input
-                className={ s.input }
-                readonly={ readonly }
-                label={ 'Instagram' }
-                name="instagram"
-                value={ profileData?.instagram }
-                onChange={ onInstagramChange }
-            />
-        </div>
+        <Card className={ classNames(s.ProfileCard, {}, [className]) }>
+            <VStack gap="32">
+                <Input
+                    className={ s.input }
+                    readonly={ readonly }
+                    label={ t('FirstName') }
+                    name="firstName"
+                    value={ profileData?.firstName }
+                    onChange={ onFirstNameChange }
+                />
+                <Input
+                    className={ s.input }
+                    readonly={ readonly }
+                    label={ t('LastName') }
+                    name="lastName"
+                    value={ profileData?.lastName }
+                    onChange={ onLastNameChange }
+                />
+                <Input
+                    className={ s.input }
+                    readonly={ readonly }
+                    label={ t('age') }
+                    name="age"
+                    value={ profileData?.age }
+                    onChange={ onAgeChange }
+                />
+                <Input
+                    className={ s.input }
+                    readonly={ readonly }
+                    label={ t('Country') }
+                    name="country"
+                    value={ profileData?.country }
+                    onChange={ onCountryChange }
+                />
+                <Input
+                    className={ s.input }
+                    readonly={ readonly }
+                    label={ t('Instagram') }
+                    name="instagram"
+                    value={ profileData?.instagram }
+                    onChange={ onInstagramChange }
+                />
+            </VStack>
+        </Card>
     )
 }

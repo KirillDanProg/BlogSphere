@@ -19,7 +19,6 @@ import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader'
 import { getProfileForm } from 'entities/Profile/model/selectors/getProfileForm/getProfileForm'
 import { Avatar } from 'shared/ui/Avatar/Avatar'
 import s from './ProfilePage.module.scss'
-import { Wrapper } from 'shared/ui/Wrapper/Wrapper'
 import {
     getValidationErrors
 } from 'entities/Profile/model/selectors/getValidationErrors/getValidationErrors'
@@ -33,6 +32,8 @@ import { useParams } from 'react-router-dom'
 import { getUserId } from 'entities/User/model/selectors/userSelectors'
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect'
 import { Page } from 'widgets/Page/ui/Page'
+import { HStack } from 'shared/ui/Stack/HStack/HStack'
+import { VStack } from 'shared/ui/Stack/VStack/VStack'
 
 const initialReducers: ReducersListType = {
     profile: profileReducer
@@ -95,8 +96,8 @@ const ProfilePage = () => {
             <Page className={ s.container }>
                 <ProfilePageHeader isOwner={ isOwner }/>
                 {errors}
-                <div className={ s.profileWrapper }>
-                    <div className={ s.profileAvatar }>
+                <HStack gap="32" className={ s.profileWrapper }>
+                    <VStack align="center" justify="center">
                         <Avatar
                             size={ 200 }
                             src={ profileData?.avatar
@@ -116,23 +117,22 @@ const ProfilePage = () => {
                                     className={ s.avatarIcon }
                                     width={ '15px' }
                                 />
-                                {t('avatar')}</label>
+                                {t('avatar')}
+                            </label>
                         </Button>
-                    </div>
-                    <Wrapper>
-                        <ProfileCard
-                            onFirstNameChange={ onFirstNameChangeHandler }
-                            onLastNameChange={ onLastNameChangeHandler }
-                            onAgeChange={ onAgeChangeHandler }
-                            onCountryChange={ onCountryChangeHandler }
-                            onInstagramChange={ onInstagramChangeHandler }
-                            readonly={ readonly }
-                            profileData={ profileData }
-                            profileStatus={ status }
-                            profileError={ error }
-                        />
-                    </Wrapper>
-                </div>
+                    </VStack>
+                    <ProfileCard
+                        onFirstNameChange={ onFirstNameChangeHandler }
+                        onLastNameChange={ onLastNameChangeHandler }
+                        onAgeChange={ onAgeChangeHandler }
+                        onCountryChange={ onCountryChangeHandler }
+                        onInstagramChange={ onInstagramChangeHandler }
+                        readonly={ readonly }
+                        profileData={ profileData }
+                        profileStatus={ status }
+                        profileError={ error }
+                    />
+                </HStack>
             </Page>
         </DynamicModuleLoader>
     )

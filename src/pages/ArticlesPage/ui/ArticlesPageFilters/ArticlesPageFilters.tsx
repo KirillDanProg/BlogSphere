@@ -21,6 +21,7 @@ import { saveViewModeToLS } from '../../model/services/saveViewModeToLS/saveView
 import { fetchArticles } from '../../model/services/fetchArticles/fetchArticles'
 import { useDebounce } from 'shared/lib/hooks/useDebounce'
 import { useSearchParams } from 'react-router-dom'
+import { HStack } from 'shared/ui/Stack/HStack/HStack'
 
 interface ArticlesPageFiltersProps {
     className?: string
@@ -69,7 +70,8 @@ export const ArticlesPageFilters: FC<ArticlesPageFiltersProps> = (props) => {
     }, [dispatch])
 
     return (
-        <div className={ classNames(s.ArticlesPageFilters, {}, [className]) }>
+        <HStack align="center" gap="16" justify="between" wrap="wrap"
+            className={ classNames(s.ArticlesPageFilters, {}, [className]) }>
             <ArticlesSortSelector
                 sortBy={ sortBy }
                 order={ order }
@@ -91,6 +93,6 @@ export const ArticlesPageFilters: FC<ArticlesPageFiltersProps> = (props) => {
                     className={ s.searchIcon }
                     Svg={ SearchIcon }/>
             </div>
-        </div>
+        </HStack>
     )
 }

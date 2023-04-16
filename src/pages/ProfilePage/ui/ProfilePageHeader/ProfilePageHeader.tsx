@@ -1,11 +1,11 @@
 import { type FC, useCallback } from 'react'
-import s from './ProfilePageHeader.module.scss'
 import { useTranslation } from 'react-i18next'
 import { Button, ButtonVariant } from 'shared/ui/Button/Button'
 import { Text } from 'shared/ui/Text/Text'
 import { useSelector } from 'react-redux'
 import { getProfileReadonly, profileActions, updateUserProfile } from 'entities/Profile'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch'
+import { HStack } from 'shared/ui/Stack/HStack/HStack'
 
 interface ProfilePageHeaderProps {
     className?: string
@@ -33,10 +33,10 @@ export const ProfilePageHeader: FC<ProfilePageHeaderProps> = (props) => {
     }, [dispatch])
 
     return (
-        <div className={ s.header }>
+        <HStack gap="32" justify="between" align="center">
             <Text title={ t('profile') }/>
             {
-                isOwner && <div className={ s.btnsGroup }>
+                isOwner && <HStack justify="between" align="center">
                     {
                         !readonly &&
                         <Button
@@ -65,9 +65,9 @@ export const ProfilePageHeader: FC<ProfilePageHeaderProps> = (props) => {
                                 : t('cancel')
                         }
                     </Button>
-                </div>
+                </HStack>
             }
 
-        </div>
+        </HStack>
     )
 }
