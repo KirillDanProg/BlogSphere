@@ -38,7 +38,7 @@ export const ArticlesList: FC<ArticleListProps> = (props) => {
             {
                 view === ArticleView.LIST
                     ? <Virtuoso
-                        style={ { height: '80%' } }
+                        style={ { height: '100%' } }
                         totalCount={ articles.length }
                         itemContent={ renderArticles }
                         components={ {
@@ -49,7 +49,7 @@ export const ArticlesList: FC<ArticleListProps> = (props) => {
                         className={ s.LIST }
                     />
                     : <VirtuosoGrid
-                        style={ { height: '82%' } }
+                        style={ { height: '100%' } }
                         listClassName={ s.GRID }
                         totalCount={ articles.length }
                         itemContent={ renderArticles }

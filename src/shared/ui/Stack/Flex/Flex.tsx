@@ -1,4 +1,4 @@
-import { type FC, type ReactNode } from 'react'
+import { type DetailedHTMLProps, type FC, type HTMLAttributes, type ReactNode } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import s from './Flex.module.scss'
 
@@ -8,7 +8,9 @@ type DirectionType = 'row' | 'column'
 type GapType = '4' | '8' | '16' | '32'
 type WrapType = 'wrap' | 'nowrap'
 
-export interface FlexProps {
+type DivProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>
+
+export interface FlexProps extends DivProps {
     className?: string
     children: ReactNode
     justify?: JustifyType

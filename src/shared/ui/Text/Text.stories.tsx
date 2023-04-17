@@ -26,6 +26,17 @@ TitleOnly.args = {
     title: 'Title'
 }
 
+export const TitleS = Template.bind({})
+TitleS.args = {
+    size: TextSize.S,
+    title: 'Title'
+}
+
+export const TitleL = Template.bind({})
+TitleL.args = {
+    size: TextSize.L,
+    title: 'Title'
+}
 export const TextOnly = Template.bind({})
 TextOnly.args = {
     text: 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.'
@@ -46,8 +57,8 @@ TextWithTitleErrorDark.args = {
     variant: TextVariant.ERROR
 }
 
-export const TitleOnlyCenter = Template.bind({})
-TitleOnlyCenter.args = {
+export const TitleCenter = Template.bind({})
+TitleCenter.args = {
     title: 'Title',
     center: true
 }

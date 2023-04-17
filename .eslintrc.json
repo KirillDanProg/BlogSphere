@@ -74,7 +74,8 @@
           "target",
           "name",
           "direction",
-          "justify"
+          "justify",
+          "role"
         ]
       }
     ],
