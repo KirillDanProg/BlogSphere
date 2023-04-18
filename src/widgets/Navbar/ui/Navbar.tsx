@@ -10,6 +10,10 @@ import { getUserId } from 'entities/User/model/selectors/userSelectors'
 import { deleteAuthUserDataThunk } from 'entities/User/model/slice/userSlice'
 import { RoutePath } from 'shared/config/routes/routes'
 import { AppLinkVariant } from 'shared/ui/AppLink/AppLink'
+import { Dropdown } from 'shared/ui/Dropdown/Dropdown'
+import { Avatar } from 'shared/ui/Avatar/Avatar'
+import { getProfileData } from 'entities/Profile'
+import defaultAvatar from 'shared/assets/images/defaultUserAvatar.jpg'
 
 interface NavbarProps {
     className?: string
@@ -18,14 +22,12 @@ interface NavbarProps {
 export const Navbar: FC<NavbarProps> = memo((props) => {
     const [isAuthModalOpen, setIsAuthModal] = useState(false)
     const { t } = useTranslation('auth')
+    const userData = useSelector(getProfileData)
     const isAuth = useSelector(getUserId)
     const dispatch = useDispatch()
 
     const onCloseHandler = useCallback(() => {
         setIsAuthModal(false)
-    }, [])
-    const onOpenHandler = useCallback(() => {
-        setIsAuthModal(true)
     }, [])
 
     const signOutHandler = useCallback(() => {
@@ -37,22 +39,35 @@ export const Navbar: FC<NavbarProps> = memo((props) => {
     return (
         <div className={ classNames(s.Navbar) }>
             <div className={ classNames(s.links) }>
-                <Button
+                <Dropdown
+                    direction="bottom right"
                     className={ s.authBtn }
-                    variant={ ButtonVariant.INVERTED }
-                    onClick={ isAuth
-                        ? signOutHandler
-                        : onOpenHandler
-                    }
-                >
-                    {
-                        isAuth
-                            ? t('signout')
-                            : t('signin')
+                    trigger={ <Avatar
+                        size={ 40 }
+                        src={ userData?.avatar ?? defaultAvatar }/> }
+                    items={ [
+                        {
+                            onClick: signOutHandler,
+                            content: 'Logout'
+                        }
+                    ] }
+                />
+                {/* <Button */}
+                {/*     */}
+                {/*     variant={ ButtonVariant.INVERTED } */}
+                {/*     onClick={ isAuth */}
+                {/*         ? signOutHandler */}
+                {/*         : onOpenHandler */}
+                {/*     } */}
+                {/* > */}
+                {/*     { */}
+                {/*         isAuth */}
+                {/*             ? t('signout') */}
+                {/*             : t('signin') */}
 
-                    }
+                {/*     } */}
 
-                </Button>
+                {/* </Button> */}
                 <AppLink
                     variant={ AppLinkVariant.DEFAULT }
                     to={ RoutePath.article_create_page }
