@@ -2,9 +2,10 @@ import { type FC } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import s from './ArticlesSortSelector.module.scss'
 import { useTranslation } from 'react-i18next'
-import { Select, type SelectOptionType } from 'shared/ui/Select/Select'
+import { type SelectOptionType } from 'shared/ui/Select/Select'
 import { ArticleSortField } from '../../model/types/article'
 import { type SortOrderType } from 'shared/types/articlesFilter'
+import { MyListBox } from 'shared/ui/MyListBox/MyListBox'
 
 interface ArticlesSortSelectorProps {
     className?: string
@@ -49,15 +50,15 @@ export const ArticlesSortSelector: FC<ArticlesSortSelectorProps> = (props) => {
     ]
     return (
         <div className={ classNames(s.ArticlesSortSelector) }>
-            <Select<SortOrderType>
+            <MyListBox<SortOrderType>
                 value={ order }
                 onChange={ onOrderChange }
-                options={ orderOptions }
+                items={ orderOptions }
             />
-            <Select<ArticleSortField>
+            <MyListBox<ArticleSortField>
                 value={ sortBy }
                 onChange={ onSortChange }
-                options={ sortByOptions }
+                items={ sortByOptions }
             />
         </div>
     )

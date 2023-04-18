@@ -67,6 +67,7 @@
         "ignoreAttribute": [
           "data-testid",
           "to",
+          "as",
           "align",
           "fill",
           "autoComplete",

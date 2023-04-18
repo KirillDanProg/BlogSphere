@@ -53,12 +53,12 @@ export const ArticlesPageFilters: FC<ArticlesPageFiltersProps> = (props) => {
 
     const debouncedFetchData = useDebounce(fetchData, 500)
 
-    const onChangeSortField = useCallback((sort: ArticleSortField) => {
-        void dispatch(articlesPageActions.setSortBy(sort))
+    const onChangeSortField = useCallback((value: ArticleSortField) => {
+        void dispatch(articlesPageActions.setSortBy(value))
         fetchData()
     }, [dispatch, fetchData])
-    const onChangeOrderField = useCallback((order: SortOrderType) => {
-        void dispatch(articlesPageActions.setOrder(order))
+    const onChangeOrderField = useCallback((value: SortOrderType) => {
+        void dispatch(articlesPageActions.setOrder(value))
         fetchData()
     }, [dispatch, fetchData])
     const onChangeSearchField = useCallback((search: string) => {
