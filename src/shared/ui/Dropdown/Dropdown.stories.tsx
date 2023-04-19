@@ -10,6 +10,9 @@ export default {
 const Template: ComponentStory<typeof Dropdown> = (args) => <Dropdown { ...args }/>
 
 export const Default = Template.bind({})
+Default.decorators = [
+    (Story) => <div style={ { padding: '200px' } }>{Story()}</div>
+]
 Default.args = {
     trigger: <Button>OPEN</Button>,
     items: [

@@ -3,6 +3,7 @@ import { Listbox } from '@headlessui/react'
 import s from './MyListBox.module.scss'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { Button, ButtonVariant } from '../Button/Button'
+import { type DropdownDirectionType } from 'shared/types/ui'
 
 interface ListBoxProps<T> {
     className?: string
@@ -10,6 +11,7 @@ interface ListBoxProps<T> {
     defaultValue?: T
     value?: T
     onChange?: (value: T) => void
+    direction?: DropdownDirectionType
 }
 
 interface ListBoxItemType {
@@ -24,7 +26,8 @@ export const MyListBox = <T extends string>(props: ListBoxProps<T>) => {
         className,
         defaultValue,
         value,
-        onChange
+        onChange,
+        direction = 'bottom left'
     } = props
 
     const getItemMods = (item: ListBoxItemType, active: boolean) => {
@@ -34,6 +37,15 @@ export const MyListBox = <T extends string>(props: ListBoxProps<T>) => {
         }
     }
 
+    const mapDirectionClass: Record<DropdownDirectionType, string> = {
+        'top left': s.topLeft,
+        'top right': s.topRight,
+        'bottom right': s.bottomRight,
+        'bottom left': s.bottomLeft
+    }
+    const classes = [
+        mapDirectionClass[direction]
+    ]
     return (
         <Listbox
             as="div"
@@ -41,14 +53,14 @@ export const MyListBox = <T extends string>(props: ListBoxProps<T>) => {
             value={ value }
             onChange={ onChange }
         >
-            <Listbox.Button
-                className={ s.trigger }
-            >
-                <Button variant={ ButtonVariant.INVERTED_OUTLINED }>
+            <Listbox.Button className={ s.trigger }>
+                <Button
+                    variant={ ButtonVariant.INVERTED_OUTLINED }
+                >
                     {value ?? defaultValue}
                 </Button>
             </Listbox.Button>
-            <Listbox.Options className={ s.options }>
+            <Listbox.Options className={ classNames(s.options, {}, classes) }>
                 {items?.map((item) => (
                     <Listbox.Option
                         key={ item.value }
