@@ -14,10 +14,12 @@ import { type AddNewCommentSchema } from 'features/addNewComment'
 import { type ArticlesPageSchema } from 'pages/ArticlesPage'
 import { type ScrollSchema } from 'widgets/Page'
 import { type ArticleDetailsPageSchema } from 'pages/ArticleDetailsPage'
+import { type rtkApi } from 'shared/rtkApi'
 
 export interface StateSchema {
     user: UserSchema
     scroll: ScrollSchema
+    [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>
 
     // async reducers
     auth?: LoginSchema
