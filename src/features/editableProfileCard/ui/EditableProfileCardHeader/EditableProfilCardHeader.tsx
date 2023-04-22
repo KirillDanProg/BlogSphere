@@ -3,19 +3,25 @@ import { useTranslation } from 'react-i18next'
 import { Button, ButtonVariant } from 'shared/ui/Button/Button'
 import { Text } from 'shared/ui/Text/Text'
 import { useSelector } from 'react-redux'
-import { getProfileReadonly, profileActions, updateUserProfile } from 'entities/Profile'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch'
 import { HStack } from 'shared/ui/Stack/HStack/HStack'
+import { getProfileReadonly } from '../../model/selectors/getProfileReadonly/getProfileReadonly'
+import { profileActions } from '../../model/slice/profileSlice'
+import { updateUserProfile } from '../../model/services/udateUserProfile/updateUserProfile'
+import { getUserId } from 'entities/User/model/selectors/userSelectors'
 
 interface ProfilePageHeaderProps {
     className?: string
-    isOwner?: boolean
+    id?: string
 }
 
-export const ProfilePageHeader: FC<ProfilePageHeaderProps> = (props) => {
-    const { isOwner } = props
+export const EditableProfileCardHeader: FC<ProfilePageHeaderProps> = (props) => {
+    const {
+        id
+    } = props
     const { t } = useTranslation()
-
+    const authUserId = useSelector(getUserId)
+    const isOwner = id === authUserId
     const readonly = useSelector(getProfileReadonly)
 
     const dispatch = useAppDispatch()

@@ -5,6 +5,7 @@ import { type StatusType } from 'app/types/global'
 import { ArticleListItemSkeleton } from '../ArticleListItemSkeleton/ArticleListItemSkeleton'
 import { Virtuoso, VirtuosoGrid } from 'react-virtuoso'
 import s from './ArticleList.module.scss'
+import { Loader } from 'shared/ui/Loader/Loader'
 
 interface ArticleListProps {
     className?: string
@@ -12,15 +13,22 @@ interface ArticleListProps {
     view?: ArticleView
     status?: StatusType
     target?: string
+    isLoading?: boolean
+    onScrollEnd?: () => void
 }
 
 export const ArticlesList: FC<ArticleListProps> = (props) => {
     const {
         articles,
         view = ArticleView.GRID,
-        target
+        target,
+        onScrollEnd,
+        isLoading
     } = props
 
+    if (isLoading) {
+        return <Loader/>
+    }
     const renderArticles = (index: number) => {
         return (
             <ArticleListItem
@@ -32,7 +40,6 @@ export const ArticlesList: FC<ArticleListProps> = (props) => {
             />
         )
     }
-
     return (
         <>
             {
@@ -47,12 +54,16 @@ export const ArticlesList: FC<ArticleListProps> = (props) => {
                             }
                         } }
                         className={ s.LIST }
+                        endReached={ onScrollEnd }
                     />
                     : <VirtuosoGrid
-                        style={ { height: '100%' } }
+                        style={ {
+                            height: '100%'
+                        } }
                         listClassName={ s.GRID }
                         totalCount={ articles.length }
                         itemContent={ renderArticles }
+                        endReached={ onScrollEnd }
                         components={ {
                             ScrollSeekPlaceholder: () => {
                                 return (
@@ -61,8 +72,8 @@ export const ArticlesList: FC<ArticleListProps> = (props) => {
                             }
                         } }
                         scrollSeekConfiguration={ {
-                            enter: velocity => Math.abs(velocity) > 50,
-                            exit: velocity => Math.abs(velocity) < 10
+                            enter: velocity => Math.abs(velocity) > 150,
+                            exit: velocity => Math.abs(velocity) < 30
                         } }
                     />
             }

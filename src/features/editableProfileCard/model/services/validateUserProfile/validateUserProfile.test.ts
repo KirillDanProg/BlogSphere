@@ -1,5 +1,5 @@
 import { validateUserProfile } from '../validateUserProfile/validateUserProfile'
-import { ValidateProfileErrors } from '../../types/profile'
+import { ValidateProfileErrors } from '../../types/editableProfileCardSchema'
 
 describe('validateUserProfile', () => {
     it('return empty array when there is no errors', () => {

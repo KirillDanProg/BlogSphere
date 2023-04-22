@@ -28,7 +28,8 @@ export const Flex: FC<FlexProps> = (props) => {
         direction = 'row',
         justify = 'start',
         wrap,
-        gap
+        gap,
+        ...restProps
     } = props
 
     const justifyClasses: Record<JustifyType, string> = {
@@ -66,7 +67,7 @@ export const Flex: FC<FlexProps> = (props) => {
     ]
 
     return (
-        <div className={ classNames(s.Flex, {}, classes) }>
+        <div className={ classNames(s.Flex, {}, classes) } { ...restProps }>
             {children}
         </div>
     )

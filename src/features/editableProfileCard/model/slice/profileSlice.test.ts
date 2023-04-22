@@ -1,6 +1,6 @@
 import { profileReducer } from '../slice/profileSlice'
-import { type ProfileSchema } from '../types/profile'
 import { fetchUserProfile } from '../services/fetchUserProfile/fetchUserProfile'
+import { type ProfileSchema } from '../types/editableProfileCardSchema'
 
 describe('profileSlice.test', () => {
     it('fetch profile data fulfilled', () => {

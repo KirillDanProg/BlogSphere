@@ -1,4 +1,5 @@
-import { type ProfileTypePartial, ValidateProfileErrors } from '../../types/profile'
+import { type ProfileTypePartial } from 'entities/Profile/model/types/profile'
+import { ValidateProfileErrors } from '../../types/editableProfileCardSchema'
 
 export const validateUserProfile = (profile: ProfileTypePartial) => {
     const errors: ValidateProfileErrors[] = []

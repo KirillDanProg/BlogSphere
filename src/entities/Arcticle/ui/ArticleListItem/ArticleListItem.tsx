@@ -26,7 +26,7 @@ const articleBlocks = blocks
 interface ArticleListItemProps {
     className?: string
     view?: ArticleView
-    article: ArticleType
+    article?: ArticleType
     target?: string
     style?: Record<string, string>
 }
@@ -40,9 +40,9 @@ export const ArticleListItem: FC<ArticleListItemProps> = (props) => {
         style
     } = props
     const { t } = useTranslation('articleDetails')
-    const convertedDate = convertDate(article.createdAt)
+    const convertedDate = convertDate(article?.createdAt)
 
-    const tags = article.tags
+    const tags = article?.tags
         .map(tag => tag.toUpperCase())
         .join(', ')
 
@@ -65,7 +65,7 @@ export const ArticleListItem: FC<ArticleListItemProps> = (props) => {
                 </HStack>
                 <Text
                     className={ s.title }
-                    title={ article.title }
+                    title={ article?.title }
                 />
                 <div className={ s.tags }>
                     {tags}
@@ -82,7 +82,7 @@ export const ArticleListItem: FC<ArticleListItemProps> = (props) => {
                 <AppLink
                     className={ s.readMore }
                     variant={ AppLinkVariant.INVERTED }
-                    to={ RoutePath.article_details_page + article._id }>
+                    to={ RoutePath.article_details_page + String(article?._id) }>
                     {t('readMore')}
                 </AppLink>
             </Card>
@@ -92,7 +92,7 @@ export const ArticleListItem: FC<ArticleListItemProps> = (props) => {
         <Card className={ classNames(s.ArticleListItem, {}, [className, s[view]]) }>
             <AppLink
                 variant={ AppLinkVariant.WITHOUT_STYLE }
-                to={ RoutePath.article_details_page + article._id }
+                to={ RoutePath.article_details_page + String(article?._id) }
                 target={ target }
             >
                 <div className={ s.imgWrapper }>
@@ -106,7 +106,7 @@ export const ArticleListItem: FC<ArticleListItemProps> = (props) => {
                         {tags}
                     </div>
                     <span className={ s.views }>
-                        {article.viewCount}
+                        {article?.viewCount}
                     </span>
                     <Icon
                         className={ s.viewIcon }
@@ -114,7 +114,7 @@ export const ArticleListItem: FC<ArticleListItemProps> = (props) => {
                 </HStack>
                 <Text
                     className={ s.title }
-                    title={ article.title }/>
+                    title={ article?.title }/>
             </AppLink>
         </Card>
     )

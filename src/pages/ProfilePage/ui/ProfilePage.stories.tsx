@@ -3,7 +3,9 @@ import ProfilePage from '../ui/ProfilePage'
 import { StoreDecorator } from 'shared/config/storybook/decorators/StoreDecorator'
 import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
-import { ValidateProfileErrors } from 'entities/Profile/model/types/profile'
+import {
+    ValidateProfileErrors
+} from 'features/editableProfileCard/model/types/editableProfileCardSchema'
 
 export default {
     title: 'pages/ProfilePage',
