@@ -1,4 +1,5 @@
 /build
+scripts
 node_modules
 .idea
 /storybook-static

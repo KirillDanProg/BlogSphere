@@ -14,13 +14,14 @@ export const TextAlign = {
 } as const
 
 export const TextSize = {
+    S: 'size_s',
     M: 'size_m',
     L: 'size_l'
 } as const
 
 type TextVariantType = 'primary' | 'error'
 type TextAlignType = 'left' | 'right' | 'center'
-type TextSizeType = 'size_m' | 'size_l'
+type TextSizeType = 'size_s' | 'size_m' | 'size_l'
 
 interface TextProps {
     className?: string
@@ -42,6 +43,16 @@ export const Text: FC<TextProps> = (props) => {
         size = TextSize.M
     } = props
 
+    type HeaderTagType = 'h1' | 'h2' | 'h3'
+
+    const mapSizeToHeaderTag: Record<TextSizeType, HeaderTagType> = {
+        [TextSize.S]: 'h3',
+        [TextSize.M]: 'h2',
+        [TextSize.L]: 'h1'
+    }
+
+    const HeaderTag = mapSizeToHeaderTag[size]
+
     const additionalClasses = [
         className,
         s[variant],
@@ -50,7 +61,7 @@ export const Text: FC<TextProps> = (props) => {
     ]
     return (
         <div className={ classNames(s.Text, {}, additionalClasses) }>
-            {title && <p className={ s.title }>{title}</p>}
+            {title && <HeaderTag className={ s.title }>{title}</HeaderTag>}
             {text && <p className={ s.text }>{text}</p>}
         </div>
     )

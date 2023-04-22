@@ -1,5 +1,5 @@
 import { type ComponentStory } from '@storybook/react'
-import { ArticleListItem } from 'entities/Arcticle/ui/ArticleListItem/ArticleListItem'
+import { ArticleListItem } from '../ArticleListItem/ArticleListItem'
 
 export default {
     title: '',

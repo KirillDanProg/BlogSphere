@@ -1,0 +1,17 @@
+.ArticleDetailsPageHeader {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    width: 100%;
+
+    .backToBtn {
+        svg {
+            width: 24px;
+            height: 24px;
+        }
+    }
+
+    .edit {
+        margin-right: 10px;
+    }
+}

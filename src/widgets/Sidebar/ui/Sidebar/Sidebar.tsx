@@ -6,9 +6,10 @@ import s from './Sidebar.module.scss'
 import { ThemeSwitcher } from 'shared/ui'
 import AngleLeft from 'shared/assets/icons/angles-left-solid.svg'
 import AngleRight from 'shared/assets/icons/angles-right-solid.svg'
-import { SidebarItem } from 'widgets/Sidebar/ui/SidebarItem/SidebarItem'
+import { SidebarItem } from '../../ui/SidebarItem/SidebarItem'
 import { useSelector } from 'react-redux'
-import { getSidebarItems } from 'widgets/Sidebar/model/selectors/sidebarSelectors'
+import { getSidebarItems } from '../../model/selectors/sidebarSelectors'
+import { VStack } from 'shared/ui/Stack/VStack/VStack'
 
 interface SidebarProps {
     className?: string
@@ -40,13 +41,13 @@ export const Sidebar: FC<SidebarProps> = memo((props) => {
     }, [collapsed, activePath, sidebarItemsList])
 
     return (
-        <div
+        <aside
             data-testid="sidebar"
             className={ classNames(s.Sidebar, { [s.collapsed]: collapsed }) }>
 
-            <div className={ s.items }>
+            <VStack role="navigation" gap="16" className={ s.items }>
                 {itemsList}
-            </div>
+            </VStack>
 
             <Button
                 data-testid="sidebar-toggle"
@@ -66,6 +67,6 @@ export const Sidebar: FC<SidebarProps> = memo((props) => {
                 <ThemeSwitcher className={ s.themeSwitcher }/>
                 <LangSwitcher className={ s.langSwitcher }/>
             </div>
-        </div>
+        </aside>
     )
 })

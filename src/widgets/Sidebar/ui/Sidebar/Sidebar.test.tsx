@@ -1,5 +1,5 @@
 import { screen } from '@testing-library/react'
-import { Sidebar } from 'widgets/Sidebar'
+import { Sidebar } from './Sidebar'
 import { customComponentRender } from 'shared/lib/tests/customRenderComponent'
 
 describe('Sidebar', () => {

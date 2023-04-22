@@ -1,4 +1,4 @@
-import { Sidebar } from 'widgets/Sidebar'
+import { Sidebar } from './Sidebar'
 import { type ComponentStory } from '@storybook/react'
 import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'

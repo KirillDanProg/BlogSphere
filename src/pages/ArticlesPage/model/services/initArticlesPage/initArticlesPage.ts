@@ -1,23 +1,25 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { init } from '../saveViewModeToLS/saveViewModeToLS'
 import { fetchArticles } from '../fetchArticles/fetchArticles'
-import { getArticlesPageNum, getInitialized } from 'pages/ArticlesPage/model/selectors'
+import { getInitialized } from '../../selectors'
 import { type ThunkConfig } from 'app/providers/StoreProvider/config/StateSchema'
 
-export const initArticlesPage = createAsyncThunk<void, void, ThunkConfig<undefined>>(
+interface InitArticlesPageParams {
+    searchParams?: URLSearchParams
+}
+
+export const initArticlesPage = createAsyncThunk<void, InitArticlesPageParams, ThunkConfig<undefined>>(
     'articles/initArticlesPage',
-    (_, thunkAPI) => {
+    (args, thunkAPI) => {
         const {
             dispatch,
             getState
         } = thunkAPI
-        const page = getArticlesPageNum(getState())
+
         const initialized = getInitialized(getState())
         if (!initialized) {
             void dispatch(init())
-            void dispatch(fetchArticles({
-                page
-            }))
+            void dispatch(fetchArticles({ params: args.searchParams }))
         }
     }
 )

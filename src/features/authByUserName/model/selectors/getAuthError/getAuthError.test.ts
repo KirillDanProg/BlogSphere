@@ -1,6 +1,6 @@
 import { type DeepPartial } from '@reduxjs/toolkit'
 import { type StateSchema } from 'app/providers/StoreProvider'
-import { getAuthError } from 'features/authByUserName/model/selectors/getAuthError/getAuthError'
+import { getAuthError } from '../../selectors/getAuthError/getAuthError'
 
 describe('getAuthError.test', () => {
     it('return auth error', () => {

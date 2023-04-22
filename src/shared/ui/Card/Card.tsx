@@ -4,15 +4,19 @@ import s from './Card.module.scss'
 
 interface CardProps extends HTMLAttributes<HTMLDivElement> {
     className?: string
+    style?: Record<string, string>
 }
 
 export const Card: FC<CardProps> = (props) => {
     const {
         className,
-        children
+        children,
+        style
     } = props
     return (
-        <div className={ classNames(s.Card, {}, [className]) }>
+        <div
+            style={ style }
+            className={ classNames(s.Card, {}, [className]) }>
             {children}
         </div>
     )

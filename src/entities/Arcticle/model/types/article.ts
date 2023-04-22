@@ -9,6 +9,12 @@ export enum ArticleView {
     GRID = 'GRID'
 }
 
+export enum ArticleSortField {
+    VIEWS = 'viewCount',
+    TITLE = 'title',
+    DATE = 'createdAt'
+}
+
 interface ArticleBaseType {
     type: ArticleBlockVariant
     id: string

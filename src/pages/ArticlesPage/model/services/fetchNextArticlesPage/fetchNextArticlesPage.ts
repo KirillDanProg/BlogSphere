@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { type ThunkConfig } from 'app/providers/StoreProvider/config/StateSchema'
-import { articlesPageActions } from 'pages/ArticlesPage/model/slice/articlesPageSlice'
+import { articlesPageActions } from '../../slice/articlesPageSlice'
 import { getArticlesPageHasMore, getArticlesPageNum, getArticlesPageStatus } from '../../selectors'
 import { fetchArticles } from '../fetchArticles/fetchArticles'
 
@@ -13,9 +13,7 @@ export const fetchNextArticlesPage = createAsyncThunk<void, void, ThunkConfig<st
             const status = getArticlesPageStatus(thunkAPI.getState())
             if (hasMore && status !== 'loading') {
                 thunkAPI.dispatch(articlesPageActions.setArticlesPageNum(page + 1))
-                void thunkAPI.dispatch(fetchArticles({
-                    page: page + 1
-                }))
+                void thunkAPI.dispatch(fetchArticles({}))
             }
         } catch (e) {
             return thunkAPI.rejectWithValue('Не удалось загрузить статьи')

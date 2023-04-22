@@ -1,7 +1,7 @@
 import { type FC } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import s from './CommentItem.module.scss'
-import { type CommentType } from 'entities/Comment'
+import { type CommentType } from '../../model/types/comment'
 import { Avatar } from 'shared/ui/Avatar/Avatar'
 import { Text, TextSize } from 'shared/ui/Text/Text'
 import { type StatusType } from 'app/types/global'

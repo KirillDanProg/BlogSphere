@@ -1,7 +1,7 @@
 import { type ComponentStory } from '@storybook/react'
 import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
-import { ProfileCard } from 'entities/Profile'
+import { ProfileCard } from '../ui/ProfileCard'
 import avatar from 'shared/assets/images/defaultUserAvatar.jpg'
 
 export default {

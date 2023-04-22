@@ -1,10 +1,9 @@
 import { type FC } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import s from './Code.module.scss'
-import { Icon } from 'shared/ui/Icon/Icon'
-import { Button } from 'shared/ui'
-import CopyIcon from 'shared/assets/icons/copy-regular.svg'
-import { ButtonVariant } from 'shared/ui/Button/Button'
+import { Icon } from '../Icon/Icon'
+import { Button, ButtonVariant } from '../Button/Button'
+import CopyIcon from '../../assets/icons/copy-regular.svg'
 
 interface CodeProps {
     className?: string

@@ -1,5 +1,5 @@
 import { type UserSchema } from 'entities/User'
-import { type LoginSchema } from 'features/authByUserName/model/types/loginSchema'
+import { type LoginSchema } from 'features/authByUserName'
 import { type ToolkitStore } from '@reduxjs/toolkit/dist/configureStore'
 import {
     type AnyAction,
@@ -7,21 +7,25 @@ import {
     type Reducer,
     type ReducersMapObject
 } from '@reduxjs/toolkit'
-import { type ProfileSchema } from 'entities/Profile'
 import { type AxiosInstance } from 'axios'
-import { type ArticleSchema } from 'entities/Arcticle/model/types/articleSchema'
-import { type ArticleDetailsCommentSchema } from 'pages/ArticleDetailsPage'
+import { type ArticleSchema } from 'entities/Arcticle'
 import { type AddNewCommentSchema } from 'features/addNewComment'
 import { type ArticlesPageSchema } from 'pages/ArticlesPage'
+import { type ScrollSchema } from 'widgets/Page'
+import { type ArticleDetailsPageSchema } from 'pages/ArticleDetailsPage'
+import { type rtkApi } from 'shared/rtkApi'
+import { type ProfileSchema } from 'features/editableProfileCard'
 
 export interface StateSchema {
     user: UserSchema
+    scroll: ScrollSchema
+    [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>
 
     // async reducers
     auth?: LoginSchema
     profile?: ProfileSchema
     articleDetails?: ArticleSchema
-    articleDetailsComments?: ArticleDetailsCommentSchema
+    articleDetailsPage?: ArticleDetailsPageSchema
     addNewComment?: AddNewCommentSchema
     articlesPage?: ArticlesPageSchema
 }

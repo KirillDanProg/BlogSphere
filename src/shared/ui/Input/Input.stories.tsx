@@ -1,5 +1,5 @@
 import { type ComponentStory } from '@storybook/react'
-import Input from 'shared/ui/Input/Input'
+import Input from '../Input/Input'
 import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 

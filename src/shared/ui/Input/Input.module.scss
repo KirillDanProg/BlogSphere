@@ -1,6 +1,5 @@
 .inputBox {
     position: relative;
-    max-width: 90%;
 
     label {
         position: absolute;
@@ -18,7 +17,6 @@
         padding: 10px 0;
         font-size: 20px;
         color: var(--primary-color);
-        margin-bottom: 20px;
         border: none;
         border-bottom: 1px solid #fff;
         outline: none;

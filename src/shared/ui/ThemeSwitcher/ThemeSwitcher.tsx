@@ -1,5 +1,5 @@
 import { type FC, memo } from 'react'
-import { Button } from 'shared/ui'
+import { Button } from '../Button/Button'
 import { useTheme } from 'shared/lib/hooks/useTheme'
 import { Theme } from 'app/providers/ThemeProvider'
 import SunIcon from 'shared/assets/icons/themeIcons/sun-solid.svg'

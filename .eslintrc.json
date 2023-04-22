@@ -7,6 +7,11 @@
     "__API__": true,
     "__IS_DEV__": true
   },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
   "extends": [
     "plugin:react/recommended",
     "standard-with-typescript",
@@ -36,7 +41,8 @@
   "plugins": [
     "react",
     "i18next",
-    "react-hooks"
+    "react-hooks",
+    "kirill-fsd-plugin"
   ],
   "rules": {
     "@typescript-eslint/indent": [
@@ -61,12 +67,16 @@
         "ignoreAttribute": [
           "data-testid",
           "to",
+          "as",
           "align",
-          "alt",
           "fill",
           "autoComplete",
+          "wrap",
+          "target",
           "name",
-          "label"
+          "direction",
+          "justify",
+          "role"
         ]
       }
     ],
@@ -81,7 +91,9 @@
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "error",
     "@typescript-eslint/no-confusing-void-expression": "off",
-    "@typescript-eslint/no-invalid-void-type": "off"
+    "@typescript-eslint/no-invalid-void-type": "off",
+    "n/no-callback-literal": "off",
+    "kirill-fsd-plugin/path-control": "error"
     //    "declaration-block-no-shorthand-property-overrides": [2, true]
     //    "i18next/no-literal-string": 2
     //    "selector-pseudo-element-colon-notation": [2, "double"],

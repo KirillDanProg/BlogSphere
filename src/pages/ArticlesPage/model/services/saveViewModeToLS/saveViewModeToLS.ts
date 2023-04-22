@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { articlesPageActions } from 'pages/ArticlesPage/model/slice/articlesPageSlice'
+import { articlesPageActions } from '../../slice/articlesPageSlice'
 import { type ArticleView } from 'entities/Arcticle'
 
 export const LOCAL_STORAGE_ARTICLE_VIEW_MODE = 'article-view-mode'

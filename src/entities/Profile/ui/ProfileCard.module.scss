@@ -1,25 +1,14 @@
 .ProfileCard {
     position: relative;
     min-width: 400px;
-    margin-top: 15px;
+    padding: 40px;
 
     .input {
         width: 100%;
-        margin-bottom: 20px;
     }
-}
-
-.data {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
 }
 
 .loading,
 .error {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     height: 300px;
 }

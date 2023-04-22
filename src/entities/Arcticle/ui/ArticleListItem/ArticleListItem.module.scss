@@ -1,11 +1,5 @@
 .LIST {
-    display: flex;
-    flex-direction: column;
-
     .header {
-        display: flex;
-        align-items: center;
-        gap: 6px;
         margin-bottom: 16px;
 
         .date {
@@ -80,9 +74,6 @@
     }
 
     .infoWrapper {
-        display: flex;
-        align-items: center;
-        gap: 8px;
         margin: 6px 0 12px;
 
         .tags {
