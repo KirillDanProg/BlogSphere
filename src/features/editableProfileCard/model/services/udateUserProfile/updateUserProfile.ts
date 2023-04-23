@@ -13,7 +13,6 @@ export const updateUserProfile = createAsyncThunk<ProfileType, string, ThunkConf
         try {
             const userId = getUserId(thunkAPI.getState())
             const updatedProfileData = getProfileForm(thunkAPI.getState())
-
             if (userId && updatedProfileData) {
                 const validationsErrors = validateUserProfile(updatedProfileData)
                 if (validationsErrors.length) {

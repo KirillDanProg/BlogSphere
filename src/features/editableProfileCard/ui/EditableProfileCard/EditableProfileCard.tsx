@@ -61,6 +61,7 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
 
     const errors = validationErrors.map(error => {
         return <Text
+            data-testid={ 'EDITABLE_PROFILE_CARD.ERROR' }
             key={ error }
             text={ errorsConvertedForUser[error] }
             variant={ TextVariant.ERROR }/>
@@ -92,7 +93,7 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
     }
     return (
         <DynamicModuleLoader reducers={ initialReducers } removeAfterUnmount={ false }>
-            <EditableProfileCardHeader/>
+            <EditableProfileCardHeader id={ id }/>
             {errors}
             <HStack gap="32" className={ s.profileWrapper }>
                 <VStack align="center" justify="center">
@@ -104,7 +105,8 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
                         hidden/>
                     <Button
                         className={ s.avatarBtn }
-                        variant={ ButtonVariant.INVERTED_OUTLINED }>
+                        variant={ ButtonVariant.INVERTED_OUTLINED }
+                    >
                         <label
                             className={ s.label }
                             htmlFor="upload-file">

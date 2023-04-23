@@ -68,6 +68,7 @@ export const ProfileCard: FC<ProfileCardProps> = (props) => {
                     name="firstName"
                     value={ profileData?.firstName }
                     onChange={ onFirstNameChange }
+                    data-testid={ 'EDITABLE_PROFILE_CARD.FIRSTNAME' }
                 />
                 <Input
                     className={ s.input }
@@ -76,6 +77,7 @@ export const ProfileCard: FC<ProfileCardProps> = (props) => {
                     name="lastName"
                     value={ profileData?.lastName }
                     onChange={ onLastNameChange }
+                    data-testid={ 'EDITABLE_PROFILE_CARD.LASTNAME' }
                 />
                 <Input
                     className={ s.input }

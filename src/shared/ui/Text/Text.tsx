@@ -31,6 +31,7 @@ interface TextProps {
     variant?: TextVariantType
     align?: TextAlignType
     size?: TextSizeType
+    ['data-testid']?: string
 }
 
 export const Text: FC<TextProps> = (props) => {
@@ -40,7 +41,8 @@ export const Text: FC<TextProps> = (props) => {
         title,
         variant = TextVariant.DEFAULT,
         align = TextAlign.LEFT,
-        size = TextSize.M
+        size = TextSize.M,
+        'data-testid': testId = 'Text'
     } = props
 
     type HeaderTagType = 'h1' | 'h2' | 'h3'
@@ -61,8 +63,9 @@ export const Text: FC<TextProps> = (props) => {
     ]
     return (
         <div className={ classNames(s.Text, {}, additionalClasses) }>
-            {title && <HeaderTag className={ s.title }>{title}</HeaderTag>}
-            {text && <p className={ s.text }>{text}</p>}
+            {title &&
+                <HeaderTag data-testid={ `${testId}.HEADER` } className={ s.title }>{title}</HeaderTag>}
+            {text && <p data-testid={ `${testId}.PARAGRAPH` } className={ s.text }>{text}</p>}
         </div>
     )
 }

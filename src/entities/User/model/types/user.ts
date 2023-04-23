@@ -13,5 +13,5 @@ export interface IServerResponseUser extends IUser {
 
 export interface UserSchema {
     authData: IUser | null
-    isInit: boolean
+    isInit?: boolean
 }

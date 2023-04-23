@@ -13,7 +13,9 @@ const ProfilePage = () => {
 
     return (
         <Page className={ s.container }>
-            <EditableProfileCard id={ id }/>
+            <EditableProfileCard
+                data-testid={ 'EDITABLE_PROFILE_CARD' }
+                id={ id }/>
         </Page>
     )
 }

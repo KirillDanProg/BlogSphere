@@ -21,7 +21,7 @@ export const EditableProfileCardHeader: FC<ProfilePageHeaderProps> = (props) => 
     } = props
     const { t } = useTranslation()
     const authUserId = useSelector(getUserId)
-    const isOwner = id === authUserId
+    const isOwner = id === String(authUserId)
     const readonly = useSelector(getProfileReadonly)
 
     const dispatch = useAppDispatch()
@@ -48,11 +48,17 @@ export const EditableProfileCardHeader: FC<ProfilePageHeaderProps> = (props) => 
                         <Button
                             variant={ ButtonVariant.INVERTED_OUTLINED }
                             onClick={ onSaveEditHandler }
+                            data-testid={ 'EDITABLE_PROFILE_CARD.SAVE' }
                         >
                             {t('save')}
                         </Button>
                     }
                     <Button
+                        data-testid={
+                            readonly
+                                ? 'EDITABLE_PROFILE_CARD.EDIT'
+                                : 'EDITABLE_PROFILE_CARD.CANCEL'
+                        }
                         onClick={
                             readonly
                                 ? onEditHandler

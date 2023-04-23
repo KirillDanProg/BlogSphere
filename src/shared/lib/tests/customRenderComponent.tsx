@@ -4,20 +4,23 @@ import i18nForTests from 'shared/config/i18n/i18nForTests'
 import { I18nextProvider } from 'react-i18next'
 import { MemoryRouter } from 'react-router-dom'
 import { type StateSchema, StoreProvider } from 'app/providers/StoreProvider'
+import { type ReducersListType } from '../components/DynamicModuleLoader'
 
 interface IComponentRender {
     route?: string
     initialState?: DeepPartial<StateSchema>
+    asyncReducers?: ReducersListType
 }
 
 export const customComponentRender = (component: ReactNode, options: IComponentRender = {}) => {
     const {
         route = '/',
-        initialState
+        initialState,
+        asyncReducers
     } = options
     return render(
         <MemoryRouter initialEntries={ [route] }>
-            <StoreProvider initialState={ initialState }>
+            <StoreProvider asyncReducers={ asyncReducers } initialState={ initialState }>
                 <I18nextProvider i18n={ i18nForTests }>
                     {component}
                 </I18nextProvider>
