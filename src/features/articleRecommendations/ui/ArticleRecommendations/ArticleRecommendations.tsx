@@ -4,6 +4,9 @@ import { Text } from 'shared/ui/Text/Text'
 import { ArticlesList, ArticleView } from 'entities/Arcticle'
 import { useFetchArticleRecommendationsQuery } from '../../api'
 import { classNames } from 'shared/lib/classNames/classNames'
+import { HStack } from 'shared/ui/Stack/HStack/HStack'
+import s from './ArticleRecommendations.module.scss'
+import { VStack } from 'shared/ui/Stack/VStack/VStack'
 
 interface ArticleRecommendationsProps {
     className?: string
@@ -11,24 +14,30 @@ interface ArticleRecommendationsProps {
 
 export const ArticleRecommendations = memo((props: ArticleRecommendationsProps) => {
     const { className } = props
-    const { t } = useTranslation()
+    const { t } = useTranslation('articleDetails')
 
     const {
-        data,
+        data = [],
         isLoading
-    } = useFetchArticleRecommendationsQuery(3)
+    } = useFetchArticleRecommendationsQuery(4)
 
     return (
-        <div className={ classNames('', {}, [className]) } style={ { height: '90%' } }>
+        <VStack
+            gap="16"
+            className={ classNames(s.ArticleRecommendations, {}, [className]) }
+        >
             <Text
                 title={ t('recommendations') }
             />
-            <ArticlesList
-                view={ ArticleView.GRID }
-                articles={ data }
-                target={ '_blank' }
-                isLoading={ isLoading }
-            />
-        </div>
+            <HStack max={ true } justify="between">
+                <ArticlesList
+                    view={ ArticleView.GRID }
+                    articles={ data }
+                    target={ '_blank' }
+                    isLoading={ isLoading }
+                    virtualized={ false }
+                />
+            </HStack>
+        </VStack>
     )
 })

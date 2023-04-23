@@ -20,7 +20,7 @@ interface ArticleDetailsCommentsProps {
 }
 
 export const ArticleDetailsComments: FC<ArticleDetailsCommentsProps> = (props) => {
-    const { t } = useTranslation()
+    const { t } = useTranslation('articleDetails')
     const {
         className,
         id

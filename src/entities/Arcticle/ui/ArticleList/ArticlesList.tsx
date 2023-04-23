@@ -15,6 +15,7 @@ interface ArticleListProps {
     target?: string
     isLoading?: boolean
     onScrollEnd?: () => void
+    virtualized?: boolean
 }
 
 export const ArticlesList: FC<ArticleListProps> = (props) => {
@@ -23,12 +24,14 @@ export const ArticlesList: FC<ArticleListProps> = (props) => {
         view = ArticleView.GRID,
         target,
         onScrollEnd,
-        isLoading
+        isLoading,
+        virtualized = true
     } = props
 
     if (isLoading) {
         return <Loader/>
     }
+
     const renderArticles = (index: number) => {
         return (
             <ArticleListItem
@@ -43,39 +46,53 @@ export const ArticlesList: FC<ArticleListProps> = (props) => {
     return (
         <>
             {
-                view === ArticleView.LIST
-                    ? <Virtuoso
-                        style={ { height: '100%' } }
-                        totalCount={ articles.length }
-                        itemContent={ renderArticles }
-                        components={ {
-                            Footer: () => {
-                                return <ArticleListItemSkeleton view={ ArticleView.LIST }/>
-                            }
-                        } }
-                        className={ s.LIST }
-                        endReached={ onScrollEnd }
-                    />
-                    : <VirtuosoGrid
-                        style={ {
-                            height: '100%'
-                        } }
-                        listClassName={ s.GRID }
-                        totalCount={ articles.length }
-                        itemContent={ renderArticles }
-                        endReached={ onScrollEnd }
-                        components={ {
-                            ScrollSeekPlaceholder: () => {
-                                return (
-                                    <ArticleListItemSkeleton view={ view }/>
-                                )
-                            }
-                        } }
-                        scrollSeekConfiguration={ {
-                            enter: velocity => Math.abs(velocity) > 150,
-                            exit: velocity => Math.abs(velocity) < 30
-                        } }
-                    />
+                !virtualized
+                    ? articles.map(article => {
+                        return (
+                            <ArticleListItem
+                                key={ article._id }
+                                article={ article }
+                                view={ view }
+                                target={ target }
+                                style={ { marginBottom: '70px' } }
+                            />
+                        )
+                    })
+                    : (
+                        view === ArticleView.LIST
+                            ? <Virtuoso
+                                style={ { height: '100%' } }
+                                totalCount={ articles.length }
+                                itemContent={ renderArticles }
+                                components={ {
+                                    Footer: () => {
+                                        return <ArticleListItemSkeleton view={ ArticleView.LIST }/>
+                                    }
+                                } }
+                                className={ s.LIST }
+                                endReached={ onScrollEnd }
+                            />
+                            : <VirtuosoGrid
+                                style={ {
+                                    height: '100%'
+                                } }
+                                listClassName={ s.GRID }
+                                totalCount={ articles.length }
+                                itemContent={ renderArticles }
+                                endReached={ onScrollEnd }
+                                components={ {
+                                    ScrollSeekPlaceholder: () => {
+                                        return (
+                                            <ArticleListItemSkeleton view={ view }/>
+                                        )
+                                    }
+                                } }
+                                scrollSeekConfiguration={ {
+                                    enter: velocity => Math.abs(velocity) > 150,
+                                    exit: velocity => Math.abs(velocity) < 30
+                                } }
+                            />
+                    )
             }
         </>
     )

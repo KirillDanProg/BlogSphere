@@ -18,6 +18,7 @@ export interface FlexProps extends DivProps {
     direction: DirectionType
     gap?: GapType
     wrap?: WrapType
+    max?: boolean
 }
 
 export const Flex: FC<FlexProps> = (props) => {
@@ -29,6 +30,7 @@ export const Flex: FC<FlexProps> = (props) => {
         justify = 'start',
         wrap,
         gap,
+        max = true,
         ...restProps
     } = props
 
@@ -67,7 +69,7 @@ export const Flex: FC<FlexProps> = (props) => {
     ]
 
     return (
-        <div className={ classNames(s.Flex, {}, classes) } { ...restProps }>
+        <div className={ classNames(s.Flex, { [s.max]: max }, classes) } { ...restProps }>
             {children}
         </div>
     )
