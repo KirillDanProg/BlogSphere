@@ -1,9 +1,10 @@
-import { type FC } from 'react'
+import { type FC, type ReactNode } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import s from './Wrapper.module.scss'
 
 interface WrapperProps {
     className?: string
+    children: ReactNode
 }
 
 export const Wrapper: FC<WrapperProps> = (props) => {

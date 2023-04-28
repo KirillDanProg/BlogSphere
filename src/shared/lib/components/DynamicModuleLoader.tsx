@@ -1,4 +1,4 @@
-import { type FC, useEffect } from 'react'
+import { type FC, type ReactNode, useEffect } from 'react'
 import {
     type StateSchemaKey,
     type StoreWithReducerManager
@@ -14,6 +14,7 @@ export type ReducersListEntry = [reducerKey: StateSchemaKey, reducer: Reducer]
 interface Props {
     reducers: ReducersListType
     removeAfterUnmount?: boolean
+    children: ReactNode
 }
 
 export const DynamicModuleLoader: FC<Props> = (props) => {

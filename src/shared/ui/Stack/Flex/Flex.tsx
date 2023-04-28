@@ -30,7 +30,7 @@ export const Flex: FC<FlexProps> = (props) => {
         justify = 'start',
         wrap,
         gap,
-        max = true,
+        max = false,
         ...restProps
     } = props
 

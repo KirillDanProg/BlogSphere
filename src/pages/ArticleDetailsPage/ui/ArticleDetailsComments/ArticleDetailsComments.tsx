@@ -29,7 +29,7 @@ export const ArticleDetailsComments: FC<ArticleDetailsCommentsProps> = (props) =
     const comments = useSelector(getArticleComments.selectAll)
     const dispatch = useAppDispatch()
 
-    const onSendArticleComment = useCallback((text) => {
+    const onSendArticleComment = useCallback((text: string) => {
         void dispatch(addNewCommentForArticle(text))
     }, [dispatch])
 

@@ -1,4 +1,4 @@
-import { type FC, type MutableRefObject, type UIEvent, useRef } from 'react'
+import { type FC, type MutableRefObject, type ReactNode, type UIEvent, useRef } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import s from './Page.module.scss'
 import { useInfiniteScroll } from 'shared/lib/hooks/useInfiniteScroll'
@@ -14,6 +14,7 @@ import { useThrottle } from 'shared/lib/hooks/useThrottle'
 interface PageProps {
     className?: string
     onScrollEnd?: () => void
+    children: ReactNode
 }
 
 export const Page: FC<PageProps> = (props) => {
