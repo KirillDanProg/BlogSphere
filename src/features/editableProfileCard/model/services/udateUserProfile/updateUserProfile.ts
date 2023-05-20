@@ -1,5 +1,4 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { profileActions } from '../../slice/profileSlice'
 import { type ThunkConfig } from 'app/providers/StoreProvider/config/StateSchema'
 import { validateUserProfile } from '../../services/validateUserProfile/validateUserProfile'
 import { getUserId } from 'entities/User/model/selectors/userSelectors'
@@ -23,7 +22,6 @@ export const updateUserProfile = createAsyncThunk<ProfileType, string, ThunkConf
                     `/profile/${userId}`,
                     updatedProfileData
                 )
-                thunkAPI.dispatch(profileActions.setReadonly(true))
                 return response.data
             }
 

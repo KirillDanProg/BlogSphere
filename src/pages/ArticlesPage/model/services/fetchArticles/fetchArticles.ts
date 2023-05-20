@@ -1,7 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { type ArticleType } from 'entities/Arcticle'
 import { type ThunkConfig } from 'app/providers/StoreProvider/config/StateSchema'
-import { articlesPageActions } from '../../slice/articlesPageSlice'
 import {
     getArticlesPageLimit,
     getArticlesPageNum,
@@ -22,8 +21,7 @@ export const fetchArticles = createAsyncThunk<ArticleType[], FetchArticlesProps,
         const {
             getState,
             extra,
-            rejectWithValue,
-            dispatch
+            rejectWithValue
         } = thunkAPI
 
         const sort = getSort(getState()) || args.params?.get('sort')
@@ -39,7 +37,6 @@ export const fetchArticles = createAsyncThunk<ArticleType[], FetchArticlesProps,
         })
 
         try {
-            dispatch(articlesPageActions.setArticlesLimit())
             const response = await extra.api.get<ArticleType[]>('/posts', {
                 params: {
                     page,

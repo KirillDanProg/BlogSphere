@@ -15,12 +15,15 @@ import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect'
 import { getProfileForm } from '../../model/selectors/getProfileForm/getProfileForm'
 import { getValidationErrors } from '../../model/selectors/getValidationErrors/getValidationErrors'
 import { getProfileReadonly } from '../../model/selectors/getProfileReadonly/getProfileReadonly'
-import { profileActions, profileReducer } from '../../model/slice/profileSlice'
+import {
+    profileActions,
+    profileReducer,
+    uploadAvatarProfile
+} from '../../model/slice/profileSlice'
 import { ProfileCard } from 'entities/Profile'
 import { getProfileError } from '../../model/selectors/getProfileError/getProfileError'
 import { getProfileStatus } from '../../model/selectors/getProfileStatus/getProfileStatus'
 import { fetchUserProfile } from '../../model/services/fetchUserProfile/fetchUserProfile'
-import { uploadAvatarProfile } from '../../model/services/uploadAvatarProfile/uploadAvatarProfile'
 import {
     DynamicModuleLoader,
     type ReducersListType

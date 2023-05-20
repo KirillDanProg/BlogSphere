@@ -1,10 +1,10 @@
-import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice, type PayloadAction } from '@reduxjs/toolkit'
 import { fetchUserProfile } from '../services/fetchUserProfile/fetchUserProfile'
-import { uploadAvatarProfile } from '../services/uploadAvatarProfile/uploadAvatarProfile'
 import { updateUserProfile } from '../services/udateUserProfile/updateUserProfile'
 import { type ProfileType } from 'entities/Profile'
 import { type ProfileTypePartial } from 'entities/Profile/model/types/profile'
 import { type ProfileSchema } from '../types/editableProfileCardSchema'
+import { type ThunkConfig } from 'app/providers/StoreProvider/config/StateSchema'
 
 const initialState: ProfileSchema = {
     data: null,
@@ -57,6 +57,7 @@ export const profileSlice = createSlice({
                 state.status = 'succeeded'
                 state.data = state.form
                 state.validationErrors = null
+                state.readonly = true
             })
             .addCase(updateUserProfile.rejected, (state, action) => {
                 state.status = 'failed'
@@ -81,3 +82,16 @@ export const profileSlice = createSlice({
 
 export const { reducer: profileReducer } = profileSlice
 export const { actions: profileActions } = profileSlice
+
+export const uploadAvatarProfile = createAsyncThunk<undefined, string | Blob, ThunkConfig<string>>(
+    'profile/uploadAvatar',
+    async (image, thunkAPI) => {
+        try {
+            const formData = new FormData()
+            formData.append('image', image)
+            const response = await thunkAPI.extra.api.post('/upload', formData)
+            thunkAPI.dispatch(profileActions.updateProfileForm({ avatar: response.data.url }))
+        } catch (e) {
+            return thunkAPI.rejectWithValue('Что-то пошло не так')
+        }
+    })
