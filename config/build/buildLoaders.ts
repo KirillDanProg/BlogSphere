@@ -1,6 +1,7 @@
 import { type RuleSetRule } from 'webpack'
 import { type BuildOptions } from './types/config'
 import { buildCssLoader } from './loaders/buildCssLoader'
+import { buildBabelLoader } from './loaders/buildBabelLoader'
 
 export function buildLoaders ({ isDev }: BuildOptions): RuleSetRule[] {
     const fileLoader = {
@@ -11,32 +12,27 @@ export function buildLoaders ({ isDev }: BuildOptions): RuleSetRule[] {
             }
         ]
     }
-    const babelLoader = {
-        test: /\.(js|jsx|ts|tsx)$/,
-        exclude: /node_modules/,
-        use: {
-            loader: 'babel-loader',
-            options: {
-                presets: ['@babel/preset-env']
-            }
-        }
-    }
+    const babelLoader = buildBabelLoader({
+        isTsx: false
+    })
+    const tsxBabelLoader = buildBabelLoader({ isTsx: true })
     const svgLoader = {
         test: /\.svg$/i,
         issuer: /\.[jt]sx?$/,
         use: ['@svgr/webpack']
     }
-    const typescriptLoader = {
-        test: /\.tsx?$/,
-        use: 'ts-loader',
-        exclude: /node_modules/
-    }
+    // const typescriptLoader = {
+    //     test: /\.tsx?$/,
+    //     use: 'ts-loader',
+    //     exclude: /node_modules/
+    // }
     const cssLoader = buildCssLoader(isDev)
     return [
         svgLoader,
         fileLoader,
         babelLoader,
-        typescriptLoader,
+        tsxBabelLoader,
+        // typescriptLoader,
         cssLoader
     ]
 }

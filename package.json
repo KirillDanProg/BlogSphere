@@ -30,6 +30,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.17.5",
+    "@babel/plugin-transform-runtime": "^7.21.4",
+    "@babel/plugin-transform-typescript": "^7.21.3",
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-react": "^7.16.7",
     "@babel/preset-typescript": "^7.16.7",
@@ -69,6 +71,7 @@
     "eslint-plugin-react-hooks": "^4.3.0",
     "eslint-plugin-storybook": "^0.6.10",
     "file-loader": "^6.2.0",
+    "fork-ts-checker-webpack-plugin": "^8.0.0",
     "html-webpack-plugin": "^5.5.0",
     "husky": "^7.0.0",
     "jest": "^27.5.1",
@@ -92,7 +95,9 @@
   "dependencies": {
     "@headlessui/react": "^1.7.14",
     "@reduxjs/toolkit": "^1.8.0",
+    "@types/circular-dependency-plugin": "^5.0.5",
     "axios": "^0.26.1",
+    "circular-dependency-plugin": "^5.2.2",
     "concurrently": "^7.6.0",
     "i18next": "^21.6.11",
     "i18next-browser-languagedetector": "^6.1.3",

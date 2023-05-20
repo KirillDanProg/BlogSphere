@@ -12,3 +12,5 @@ module.exports = {
         builder: 'webpack5',
     },
 };
+
+export {};

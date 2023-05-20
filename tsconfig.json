@@ -16,7 +16,8 @@
     "allowJs": true,
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "isolatedModules": true
   },
   "ts-node": {
     "compilerOptions": {
@@ -28,6 +29,7 @@
     "config/jest/**/*",
     "config/.storybook/*.ts",
     "config/build/*",
+    "config/build/*/*",
     "./*.config.ts"
   ]
 }
