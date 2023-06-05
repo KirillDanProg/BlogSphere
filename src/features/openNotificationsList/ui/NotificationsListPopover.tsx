@@ -15,7 +15,7 @@ interface NotificationsListPopoverProps {
 export const NotificationsListPopover: FC<NotificationsListPopoverProps> = (props) => {
     return (
         <Popover
-            direction="bottom left"
+            direction="bottom right"
             trigger={
                 <Button variant={ ButtonVariant.DEFAULT }>
                     <Icon
