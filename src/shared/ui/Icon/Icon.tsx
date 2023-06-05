@@ -5,15 +5,17 @@ import s from './Icon.module.scss'
 interface IconProps {
     className?: string
     Svg: React.FC<React.SVGProps<SVGSVGElement>>
+    inverted?: boolean
 }
 
 export const Icon: FC<IconProps> = (props) => {
     const {
         className,
-        Svg
+        Svg,
+        inverted
     } = props
 
     return (
-        <Svg className={ classNames(s.Icon, {}, [className]) }/>
+        <Svg className={ classNames(inverted ? s.inverted : s.Icon, {}, [className]) }/>
     )
 }
