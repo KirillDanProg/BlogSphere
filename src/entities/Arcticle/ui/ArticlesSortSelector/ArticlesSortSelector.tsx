@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next'
 import { type SelectOptionType } from 'shared/ui/Select/Select'
 import { ArticleSortField } from '../../model/types/article'
 import { type SortOrderType } from 'shared/types/articlesFilter'
-import { MyListBox } from 'shared/ui/MyListBox/MyListBox'
+import { ListBox } from 'shared/ui/Popups/ui/ListBox/Listbox'
 
 interface ArticlesSortSelectorProps {
     className?: string
@@ -50,12 +50,12 @@ export const ArticlesSortSelector: FC<ArticlesSortSelectorProps> = (props) => {
     ]
     return (
         <div className={ classNames(s.ArticlesSortSelector) }>
-            <MyListBox<SortOrderType>
+            <ListBox<SortOrderType>
                 value={ order }
                 onChange={ onOrderChange }
                 items={ orderOptions }
             />
-            <MyListBox<ArticleSortField>
+            <ListBox<ArticleSortField>
                 value={ sortBy }
                 onChange={ onSortChange }
                 items={ sortByOptions }

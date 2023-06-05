@@ -1,3 +1,5 @@
+@import "../../../app/styles/mixins/mixins";
+
 .Navbar {
     width: 100%;
     height: var(--navbar-height);
@@ -8,11 +10,9 @@
 .links {
     display: flex;
     align-items: center;
-    justify-content: center;
     width: 100%;
 
     .linkToEditPage {
-        order: 1;
         flex-grow: 2;
 
         .createPostBtn {
@@ -20,7 +20,8 @@
         }
     }
 
-    .authBtn {
-        order: 2;
+    .notificationsIcon {
+        width: 20px;
+        height: 20px;
     }
 }
