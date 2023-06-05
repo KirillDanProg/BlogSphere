@@ -1,12 +1,12 @@
 import { type ComponentStory } from '@storybook/react'
-import { MyListBox } from './MyListBox'
+import { ListBox } from './Listbox'
 
 export default {
     title: 'shared/MyListBox',
-    component: MyListBox
+    component: ListBox
 }
 
-const Template: ComponentStory<typeof MyListBox> = (args) => <MyListBox { ...args }/>
+const Template: ComponentStory<typeof ListBox> = (args) => <ListBox { ...args }/>
 export const Light = Template.bind({})
 Light.decorators = [
     (Story) => <div style={ { padding: '200px' } }>{Story()}</div>
