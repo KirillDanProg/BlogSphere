@@ -1,46 +1,46 @@
 @import "../../../../app/styles/mixins/mixins";
 
 .Sidebar {
-    @include gradient-bg-color(var(--inverted-bg-color), var(--bg-color-sec));
-
     position: relative;
+    display: flex;
+    justify-content: center;
     width: var(--sidebar-width);
     height: calc(100vh - var(--navbar-height));
-    transition: width 0.6s;
+    background-color: var(--secondary-color);
+    transition: width var(--transition-fast);
     flex-shrink: 0;
 
     .items {
-        margin: 20px 0 0 90px;
         opacity: 1;
-        transition: 0.7s;
+        transition: var(--transition-fast) ease;
     }
 }
 
 .toggleSidebar {
     position: absolute;
-    right: -16px;
+    right: 4px;
     top: 45%;
     border-radius: 50%;
 
     & svg {
-        fill: var(--text-color);
+        fill: var(--text-color-light);
     }
 }
 
 .switchers {
     position: absolute;
+    display: flex;
+    justify-content: center;
     width: 100%;
     bottom: 16px;
-    transition: 1s;
+    transition: var(--transition-prime);
 
     .themeSwitcher {
-        transition: 0.5s;
-        transform: translate(100px, 42px);
+        transition: var(--transition-prime);
     }
 
     .langSwitcher {
-        transition: 0.5s;
-        transform: translateX(160px);
+        transition: var(--transition-prime);
     }
 
     .langSwitcher img {
@@ -54,16 +54,22 @@
 
     .items {
         margin: 10px 0 0 10px;
-        transition: 0.5s;
+    }
+
+    .switchers {
+        flex-direction: column;
     }
 
     .themeSwitcher {
-        transition: 0.5s;
         transform: translateY(0);
     }
 
     .langSwitcher {
-        transition: 0.5s;
         transform: translateX(0);
+    }
+
+    .toggleSidebar {
+        right: 50%;
+        transform: translate(50%);
     }
 }
