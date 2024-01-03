@@ -1,11 +1,13 @@
 .inputBox {
     position: relative;
+    width: 100%;
 
     label {
         position: absolute;
-        top: 0;
-        left: 0;
-        padding: 5px 0;
+        top: 50%;
+        left: 20%;
+        transform: translate(-50%);
+        min-width: 90px;
         font-size: 20px;
         color: #fff;
         pointer-events: none;
@@ -16,14 +18,13 @@
         width: 100%;
         padding: 10px 0;
         font-size: 20px;
-        color: var(--primary-color);
+        color: var(--secondary-color);
         border: none;
-        border-bottom: 1px solid #fff;
         outline: none;
         background: transparent;
 
         &:focus ~ label {
-            top: -23px;
+            top: 32px;
             left: -15px;
             color: var(--primary-color);
             transform: scale(0.7);

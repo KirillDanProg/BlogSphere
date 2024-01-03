@@ -30,9 +30,10 @@ export const AppLink: FC<AppLinkProps> = (props) => {
     }
 
     return (
-        <NavLink to={ to }
-            { ...otherProps }
-            className={ toggleActiveLink }
+        <NavLink
+            to={to}
+            {...otherProps}
+            className={toggleActiveLink}
         >
             {children}
         </NavLink>

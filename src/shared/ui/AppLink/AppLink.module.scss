@@ -9,20 +9,18 @@
 }
 
 .default {
-    @include gradient-color(var(--secondary-color), var(--secondary-color-bright));
+    color: #fff;
 }
 
 .primary {
-    @include gradient-color(var(--primary-color), var(--primary-color-light));
+    color: #fff;
 }
 
 .inverted {
-    @include gradient-color(var(--primary-color), var(--primary-color-light));
+    color: #fff;
 }
 
 .outlined {
-    @include gradient-color(var(--secondary-color), var(--secondary-color-bright));
-
     border: 2px solid var(--secondary-color-bright);
     border-radius: 10px;
 }
