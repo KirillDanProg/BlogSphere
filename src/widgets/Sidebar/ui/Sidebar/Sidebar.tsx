@@ -29,13 +29,13 @@ export const Sidebar: FC<SidebarProps> = memo((props) => {
     const itemsList = useMemo(() => {
         return sidebarItemsList.map((item: any) => {
             return <SidebarItem
-                key={ item.path }
-                text={ item.text }
-                path={ item.path }
-                Icon={ item.Icon }
-                collapsed={ collapsed }
-                setActive={ setActiveHandler }
-                active={ activePath === item.path }
+                key={item.path}
+                text={item.text}
+                path={item.path}
+                Icon={item.Icon}
+                collapsed={collapsed}
+                setActive={setActiveHandler}
+                active={activePath === item.path}
             />
         })
     }, [collapsed, activePath, sidebarItemsList])
@@ -43,29 +43,29 @@ export const Sidebar: FC<SidebarProps> = memo((props) => {
     return (
         <aside
             data-testid="sidebar"
-            className={ classNames(s.Sidebar, { [s.collapsed]: collapsed }) }>
+            className={classNames(s.Sidebar, { [s.collapsed]: collapsed })}>
 
-            <VStack role="navigation" gap="16" className={ s.items }>
+            <VStack role="navigation" gap="16" className={s.items}>
                 {itemsList}
             </VStack>
 
             <Button
                 data-testid="sidebar-toggle"
-                className={ s.toggleSidebar }
-                onClick={ toggleSidebar }
-                variant={ ButtonVariant.PRIMARY }
-                size={ ButtonSize.M }
+                className={s.toggleSidebar}
+                onClick={toggleSidebar}
+                variant={ButtonVariant.PRIMARY}
+                size={ButtonSize.M}
                 square
             >
                 {
                     collapsed
-                        ? <AngleRight width="18px"/>
-                        : <AngleLeft width="18px"/>
+                        ? <AngleRight width="18px" />
+                        : <AngleLeft width="18px" />
                 }
             </Button>
-            <div className={ s.switchers }>
-                <ThemeSwitcher className={ s.themeSwitcher }/>
-                <LangSwitcher className={ s.langSwitcher }/>
+            <div className={s.switchers}>
+                <ThemeSwitcher className={s.themeSwitcher} />
+                <LangSwitcher className={s.langSwitcher} />
             </div>
         </aside>
     )
