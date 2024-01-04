@@ -12,8 +12,6 @@ body {
 }
 
 .app {
-    @include gradient-bg-color(var(--bg-color), var(--bg-color-sec));
-
     height: 100vh;
     transition: 0.4s;
 }

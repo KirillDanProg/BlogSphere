@@ -26,7 +26,6 @@ export class ErrorBoundary extends Component<Props, State> {
         if (this.state.hasError) {
             return <PageError />
         }
-
-        return <>{this.props.children}</>
+        return this.props.children
     }
 }

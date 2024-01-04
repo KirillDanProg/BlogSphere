@@ -49,6 +49,7 @@
       "warn",
       4
     ],
+    "@typescript-eslint/space-before-function-paren": "off",
     "@typescript-eslint/strict-boolean-expressions": "off",
     "@typescript-eslint/restrict-template-expressions": "off",
     "@typescript-eslint/prefer-nullish-coalescing": "warn",
@@ -91,8 +92,5 @@
     "@typescript-eslint/no-invalid-void-type": "off",
     "n/no-callback-literal": "off",
     "kirill-fsd-plugin/path-control": "error"
-    //    "declaration-block-no-shorthand-property-overrides": [2, true]
-    //    "i18next/no-literal-string": 2
-    //    "selector-pseudo-element-colon-notation": [2, "double"],
   }
 }

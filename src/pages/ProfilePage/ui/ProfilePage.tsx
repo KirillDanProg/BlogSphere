@@ -12,10 +12,10 @@ const ProfilePage = () => {
     }
 
     return (
-        <Page className={ s.container }>
+        <Page className={s.container}>
             <EditableProfileCard
-                data-testid={ 'EDITABLE_PROFILE_CARD' }
-                id={ id }/>
+                data-testid={'EDITABLE_PROFILE_CARD'}
+                id={id} />
         </Page>
     )
 }

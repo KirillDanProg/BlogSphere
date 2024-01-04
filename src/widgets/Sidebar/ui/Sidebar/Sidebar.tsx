@@ -1,4 +1,4 @@
-import { type FC, memo, useMemo, useState } from 'react'
+import { type FC, memo, useMemo, useState, useEffect } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { LangSwitcher } from 'shared/ui/LangSwitcher/LangSwitcher'
 import { Button, ButtonSize, ButtonVariant } from 'shared/ui/Button/Button'
@@ -10,6 +10,7 @@ import { SidebarItem } from '../../ui/SidebarItem/SidebarItem'
 import { useSelector } from 'react-redux'
 import { getSidebarItems } from '../../model/selectors/sidebarSelectors'
 import { VStack } from 'shared/ui/Stack/VStack/VStack'
+import { useDebounce } from 'shared/lib/hooks/useDebounce'
 
 interface SidebarProps {
     className?: string
@@ -21,12 +22,26 @@ export const Sidebar: FC<SidebarProps> = memo((props) => {
     const toggleSidebar = () => {
         setCollapsed(!collapsed)
     }
+    const debouncedHandleResize = useDebounce(() => {
+        if (window.matchMedia('(max-width: 800px)').matches) {
+            setCollapsed(true)
+        } else {
+            setCollapsed(false)
+        }
+    }, 100)
 
-    const [activePath, setActivePath] = useState<string>()
+    useEffect(() => {
+        window.addEventListener('resize', debouncedHandleResize)
+        return () => {
+            window.removeEventListener('resize', debouncedHandleResize)
+        }
+    }, [debouncedHandleResize])
+
+    const [activePath, setActivePath] = useState<string>('/')
     const setActiveHandler = (path: string) => {
         setActivePath(path)
     }
-    const itemsList = useMemo(() => {
+    const memoizedSidebarItemsList = useMemo(() => {
         return sidebarItemsList.map((item: any) => {
             return <SidebarItem
                 key={item.path}
@@ -46,7 +61,7 @@ export const Sidebar: FC<SidebarProps> = memo((props) => {
             className={classNames(s.Sidebar, { [s.collapsed]: collapsed })}>
 
             <VStack role="navigation" gap="16" className={s.items}>
-                {itemsList}
+                {memoizedSidebarItemsList}
             </VStack>
 
             <Button

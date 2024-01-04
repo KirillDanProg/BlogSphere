@@ -14,11 +14,14 @@
     --font-size-xl: 32px;
     --font-line-xl: 40px;
     --font-xl: var(--font-size-xl) / var(--font-line-xl) var(--font-family-main);
-    --navbar-height: 65px;
+    --navbar-height: 100px;
     --sidebar-width: 20%;
-    --collapsed-sidebar-width: 4%;
+    --collapsed-sidebar-width: 56px;
     --overlay-color: rgba(0 0 0 / 50%);
-    --transparent: rgb(175 7 7);
     --error-color: rgb(187 35 35 / 90%);
     --modal-z-index: 3;
+    --transition-prime: 0.7s;
+    --transition-fast: 0.3s;
+    --text-color-light: #ddd7eb;
+    --text-color-dark: #23222d;
 }

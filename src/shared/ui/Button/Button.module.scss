@@ -36,10 +36,6 @@
     }
 }
 
-.inverted {
-    @include gradient-color(var(--secondary-color), var(--secondary-color-bright));
-}
-
 .outlined,
 .invertedOutlined,
 .red {
@@ -52,8 +48,6 @@
 }
 
 .primary {
-    @include gradient-bg-color(var(--secondary-color), var(--secondary-color-bright));
-
     border-radius: 10px;
 }
 

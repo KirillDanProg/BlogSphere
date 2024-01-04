@@ -64,10 +64,10 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
 
     const errors = validationErrors.map(error => {
         return <Text
-            data-testid={ 'EDITABLE_PROFILE_CARD.ERROR' }
-            key={ error }
-            text={ errorsConvertedForUser[error] }
-            variant={ TextVariant.ERROR }/>
+            data-testid={'EDITABLE_PROFILE_CARD.ERROR'}
+            key={error}
+            text={errorsConvertedForUser[error]}
+            variant={TextVariant.ERROR} />
     })
 
     useInitialEffect(() => {
@@ -95,42 +95,42 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
         }
     }
     return (
-        <DynamicModuleLoader reducers={ initialReducers } removeAfterUnmount={ false }>
-            <EditableProfileCardHeader id={ id }/>
+        <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount={false}>
+            <EditableProfileCardHeader id={id} />
             {errors}
-            <HStack gap="32" className={ s.profileWrapper }>
+            <HStack gap="32" className={s.profileWrapper}>
                 <VStack align="center" justify="center">
                     <Avatar
-                        size={ 200 }
-                        src={ userAvatar }
+                        size={200}
+                        src={userAvatar}
                     />
-                    <input onChange={ onAvatarChangeHandler } type="file" id="upload-file"
-                        hidden/>
+                    <input onChange={onAvatarChangeHandler} type="file" id="upload-file"
+                        hidden />
                     <Button
-                        className={ s.avatarBtn }
-                        variant={ ButtonVariant.INVERTED_OUTLINED }
-                    >
+                        className={s.avatarBtn}
+                        variant={ButtonVariant.INVERTED_OUTLINED}>
                         <label
-                            className={ s.label }
+                            className={s.label}
                             htmlFor="upload-file">
                             <Upload
-                                className={ s.avatarIcon }
-                                width={ '15px' }
+                                className={s.avatarIcon}
+                                width={'15px'}
                             />
                             {t('avatar')}
                         </label>
                     </Button>
                 </VStack>
                 <ProfileCard
-                    onFirstNameChange={ onFirstNameChangeHandler }
-                    onLastNameChange={ onLastNameChangeHandler }
-                    onAgeChange={ onAgeChangeHandler }
-                    onCountryChange={ onCountryChangeHandler }
-                    onInstagramChange={ onInstagramChangeHandler }
-                    readonly={ readonly }
-                    profileData={ profileData }
-                    profileStatus={ status }
-                    profileError={ error }
+                    onFirstNameChange={onFirstNameChangeHandler}
+                    onLastNameChange={onLastNameChangeHandler}
+                    onAgeChange={onAgeChangeHandler}
+                    onCountryChange={onCountryChangeHandler}
+                    onInstagramChange={onInstagramChangeHandler}
+                    readonly={readonly}
+                    profileData={profileData}
+                    profileStatus={status}
+                    profileError={error}
+                    className={s.profileCard}
                 />
             </HStack>
         </DynamicModuleLoader>
