@@ -57,29 +57,29 @@ export const Navbar: FC<NavbarProps> = memo((props) => {
     }, [authData, signOutHandler, onOpenHandler, userId, t])
 
     return (
-        <HStack align="center" className={ classNames(s.Navbar) }>
-            <div className={ classNames(s.links) }>
+        <HStack align="center" className={classNames(s.Navbar)}>
+            <div className={classNames(s.links)}>
                 <Dropdown
                     direction="bottom right"
-                    className={ s.authBtn }
-                    trigger={ <Avatar circle size={ 40 } src={ userData?.avatar ?? defaultAvatar }/> }
-                    items={ dropdownItems }
+                    className={s.authBtn}
+                    trigger={<Avatar circle size={40} src={userData?.avatar ?? defaultAvatar} />}
+                    items={dropdownItems}
                 />
                 <AppLink
-                    variant={ AppLinkVariant.DEFAULT }
-                    to={ RoutePath.article_create_page }
-                    className={ s.linkToEditPage }>
+                    variant={AppLinkVariant.DEFAULT}
+                    to={RoutePath.article_create_page}
+                    className={s.linkToEditPage}>
                     <Button
-                        className={ s.createPostBtn }
-                        variant={ ButtonVariant.NO_HOVER }
+                        className={s.createPostBtn}
+                        variant={ButtonVariant.NO_HOVER}
                     >
                         {t('create-post')}
                     </Button>
                 </AppLink>
             </div>
             <LoginModal
-                isOpen={ isAuthModalOpen }
-                onClose={ onCloseHandler }
+                isOpen={isAuthModalOpen}
+                onClose={onCloseHandler}
             />
         </HStack>
     )

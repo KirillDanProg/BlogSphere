@@ -58,44 +58,44 @@ const LoginForm: FC<LoginFormProps> = (props) => {
 
     return (
         <DynamicModuleLoader
-            reducers={ initialReducers }
+            reducers={initialReducers}
             removeAfterUnmount
         >
             <form
-                autoComplete={ 'off' }
-                onSubmit={ handleSubmit }
-                className={ classNames(s.LoginForm) }>
+                autoComplete={'off'}
+                onSubmit={handleSubmit}
+                className={classNames(s.LoginForm)}>
 
                 {
-                    authError && <Text center variant={ TextVariant.ERROR } title={ authError }/>
+                    authError && <Text center variant={TextVariant.ERROR} title={authError} />
                 }
 
                 {
                     !haveAnAccount &&
                     <Input
-                        autoComplete={ 'off' }
+                        autoComplete={'off'}
                         name="userName"
                         autoFocus
-                        label={ t('username') }
-                        type="text"/>
+                        label={t('username')}
+                        type="text" />
                 }
                 <Input
-                    autoComplete={ 'off' }
+                    autoComplete={'off'}
                     name="email"
-                    label={ t('email') }
-                    type="text"/>
+                    label={t('email')}
+                    type="text" />
                 <Input
-                    autoComplete={ 'off' }
+                    autoComplete={'off'}
                     name="password"
-                    label={ t('password') }
-                    type="password"/>
-                <div className={ s.buttonsGroup }>
+                    label={t('password')}
+                    type="password" />
+                <div className={s.buttonsGroup}>
                     {
                         <>
                             <Button
                                 type="submit"
-                                className={ s.loginButton }
-                                variant={ ButtonVariant.NO_HOVER }
+                                className={s.loginButton}
+                                variant={ButtonVariant.NO_HOVER}
                                 onClick={
                                     haveAnAccount
                                         ? goToSignUp
@@ -110,8 +110,8 @@ const LoginForm: FC<LoginFormProps> = (props) => {
                             </Button>
                             <Button
                                 type="submit"
-                                className={ s.loginButton }
-                                variant={ ButtonVariant.OUTLINED }
+                                className={s.loginButton}
+                                variant={ButtonVariant.OUTLINED}
                             >
                                 {
                                     haveAnAccount

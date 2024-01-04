@@ -83,10 +83,6 @@
     "react/display-name": "off",
     "linebreak-style": "off",
     "restrict-template-expressions": "off",
-    "react/jsx-curly-spacing": [
-      2,
-      "always"
-    ],
     "keyframes-name-pattern": "off",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "error",
