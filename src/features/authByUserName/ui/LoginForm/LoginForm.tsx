@@ -5,7 +5,7 @@ import s from './LoginForm.module.scss'
 import { Button } from 'shared/ui'
 import { ButtonVariant } from 'shared/ui/Button/Button'
 import Input from 'shared/ui/Input/Input'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { authRegisterThunk } from '../../model/services/AuthRegister/authRegisterThunk'
 import { authLoginThunk } from '../../model/services/AuthLogin/authLoginThunk'
 import { getAuthError } from '../../model/selectors/getAuthError/getAuthError'
@@ -15,6 +15,7 @@ import {
     type ReducersListType
 } from 'shared/lib/components/DynamicModuleLoader'
 import { authReducer } from '../../model/slice/authSlice'
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch'
 
 const initialReducers: ReducersListType = {
     auth: authReducer
@@ -34,7 +35,7 @@ const LoginForm: FC<LoginFormProps> = (props) => {
         goToSignIn
     } = props
     const { t } = useTranslation('auth')
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
     const authError = useSelector(getAuthError)
 
     const handleSubmit = (e: any) => {
@@ -43,12 +44,12 @@ const LoginForm: FC<LoginFormProps> = (props) => {
         const email = e.currentTarget.elements.email.value
         const password = e.currentTarget.elements.password.value
         if (haveAnAccount) {
-            dispatch(authLoginThunk({
+            void dispatch(authLoginThunk({
                 email,
                 password
             }))
         } else {
-            dispatch(authRegisterThunk({
+            void dispatch(authRegisterThunk({
                 userName,
                 email,
                 password
