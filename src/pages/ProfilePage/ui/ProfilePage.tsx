@@ -12,8 +12,8 @@ const ProfilePage = () => {
     }
 
     return (
-        <Page className={ s.container }>
-            <EditableProfileCard id={ id }/>
+        <Page className={s.container}>
+            <EditableProfileCard id={id} />
         </Page>
     )
 }

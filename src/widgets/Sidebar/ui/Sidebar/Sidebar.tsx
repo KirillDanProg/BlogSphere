@@ -37,7 +37,7 @@ export const Sidebar: FC<SidebarProps> = memo((props) => {
         }
     }, [debouncedHandleResize])
 
-    const [activePath, setActivePath] = useState<string>()
+    const [activePath, setActivePath] = useState<string>('/')
     const setActiveHandler = (path: string) => {
         setActivePath(path)
     }

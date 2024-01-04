@@ -92,7 +92,7 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
     }
     return (
         <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount={false}>
-            <EditableProfileCardHeader />
+            <EditableProfileCardHeader id={id} />
             {errors}
             <HStack gap="32" className={s.profileWrapper}>
                 <VStack align="center" justify="center">
