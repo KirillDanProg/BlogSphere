@@ -15,7 +15,7 @@ interface InputProps extends HTMLInputProps {
     onFileInputChange?: (value: File) => void
 }
 
-const Input: FC<InputProps> = (props) => {
+const Input: FC<InputProps> = memo((props) => {
     const {
         value,
         onChange,
@@ -50,21 +50,21 @@ const Input: FC<InputProps> = (props) => {
     }
 
     return (
-        <div className={ classNames(s.inputBox, mods, [className]) }>
+        <div className={classNames(s.inputBox, mods, [className])}>
             <input
-                ref={ ref }
-                autoFocus={ autoFocus }
+                ref={ref}
+                autoFocus={autoFocus}
                 required
-                value={ value }
-                onChange={ onChangeHandler }
-                type={ type }
-                className={ s.input }
-                { ...otherProps }
+                value={value}
+                onChange={onChangeHandler}
+                type={type}
+                className={s.input}
+                {...otherProps}
             />
             <label>{t(label)}</label>
         </div>
 
     )
 }
-
-export default memo(Input)
+)
+export default Input

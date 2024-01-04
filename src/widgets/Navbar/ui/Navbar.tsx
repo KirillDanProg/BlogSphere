@@ -5,7 +5,7 @@ import { AppLink, Button } from 'shared/ui'
 import { ButtonVariant } from 'shared/ui/Button/Button'
 import { useTranslation } from 'react-i18next'
 import { LoginModal } from 'features/authByUserName'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { getUserAuthData } from 'entities/User/model/selectors/userSelectors'
 import { deleteAuthUserDataThunk } from 'entities/User/model/slice/userSlice'
 import { RoutePath } from 'shared/config/routes/routes'
@@ -14,9 +14,7 @@ import { Dropdown } from 'shared/ui/Dropdown/Dropdown'
 import { Avatar } from 'shared/ui/Avatar/Avatar'
 import defaultAvatar from 'shared/assets/images/defaultUserAvatar.jpg'
 import { HStack } from 'shared/ui/Stack/HStack/HStack'
-import {
-    getProfileData
-} from 'features/editableProfileCard/model/selectors/getProfileData/getProfileData'
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch'
 
 interface NavbarProps {
     className?: string
@@ -25,9 +23,8 @@ interface NavbarProps {
 export const Navbar: FC<NavbarProps> = memo((props) => {
     const [isAuthModalOpen, setIsAuthModal] = useState(false)
     const { t } = useTranslation('auth')
-    const userData = useSelector(getProfileData)
     const authData = useSelector(getUserAuthData)
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
     const userId = String(authData?._id)
 
     const onOpenHandler = useCallback(() => {
@@ -39,7 +36,7 @@ export const Navbar: FC<NavbarProps> = memo((props) => {
 
     const signOutHandler = useCallback(() => {
         if (userId) {
-            dispatch(deleteAuthUserDataThunk())
+            void dispatch(deleteAuthUserDataThunk())
         }
     }, [userId, dispatch])
 
@@ -62,7 +59,7 @@ export const Navbar: FC<NavbarProps> = memo((props) => {
                 <Dropdown
                     direction="bottom right"
                     className={s.authBtn}
-                    trigger={<Avatar circle size={40} src={userData?.avatar ?? defaultAvatar} />}
+                    trigger={<Avatar circle size={40} src={authData?.avatar ?? defaultAvatar} />}
                     items={dropdownItems}
                 />
                 <AppLink

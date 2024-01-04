@@ -3,6 +3,7 @@ export interface IUser {
     token: string
     userName: string
     _id: number | null
+    avatar?: string
 }
 
 export interface IServerResponseUser extends IUser {

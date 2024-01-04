@@ -40,14 +40,15 @@ export const EditableProfileCardHeader: FC<ProfilePageHeaderProps> = (props) => 
 
     return (
         <HStack gap="32" justify="between" align="center">
-            <Text title={ t('profile') }/>
+            <Text title={t('profile')} />
             {
-                isOwner && <HStack justify="between" align="center">
+                isOwner &&
+                <HStack justify="between" align="center" gap="8">
                     {
                         !readonly &&
                         <Button
-                            variant={ ButtonVariant.INVERTED_OUTLINED }
-                            onClick={ onSaveEditHandler }
+                            variant={ButtonVariant.INVERTED_OUTLINED}
+                            onClick={onSaveEditHandler}
                         >
                             {t('save')}
                         </Button>
@@ -73,7 +74,6 @@ export const EditableProfileCardHeader: FC<ProfilePageHeaderProps> = (props) => 
                     </Button>
                 </HStack>
             }
-
         </HStack>
     )
 }
