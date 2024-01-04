@@ -5,6 +5,7 @@ import { App } from 'app/App'
 import { StoreProvider } from 'app/providers/StoreProvider'
 import { BrowserRouter } from 'react-router-dom'
 import { ThemeProvider } from 'app/providers/ThemeProvider'
+import { ErrorBoundary } from 'app/providers/ErrorBoundaries'
 
 const container = document.getElementById('root')
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
@@ -13,9 +14,11 @@ const root = createRoot(container!)
 root.render(
     <BrowserRouter>
         <StoreProvider>
-            <ThemeProvider>
-                <App />
-            </ThemeProvider>
+            <ErrorBoundary>
+                <ThemeProvider>
+                    <App />
+                </ThemeProvider>
+            </ErrorBoundary>
         </StoreProvider>
     </BrowserRouter>
 )

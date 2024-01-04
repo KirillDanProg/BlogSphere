@@ -14,6 +14,7 @@ import { HStack } from 'shared/ui/Stack/HStack/HStack'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch'
 import { Avatar } from 'shared/ui/Avatar/Avatar'
 import { Dropdown } from 'shared/ui/Popups'
+import defaultAvatar from 'shared/assets/images/defaultUserAvatar.jpg'
 
 interface NavbarProps {
     className?: string
