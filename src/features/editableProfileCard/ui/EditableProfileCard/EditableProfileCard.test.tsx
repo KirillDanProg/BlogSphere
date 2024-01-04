@@ -44,36 +44,36 @@ const options: { initialState: Partial<StateSchema>, asyncReducers: ReducersList
 
 describe('EditableProfileCard', () => {
     it('render test', () => {
-        customComponentRender(<EditableProfileCard/>, options)
+        customComponentRender(<EditableProfileCard />, options)
         expect(screen.queryByTestId('EDITABLE_PROFILE_CARD.FIRSTNAME'))
             .toBeInTheDocument()
     })
 
     it('change profile readonly state', async () => {
-        customComponentRender(<EditableProfileCard id={ '1' }/>, options)
+        customComponentRender(<EditableProfileCard id={'1'} />, options)
         expect(screen.queryByTestId('EDITABLE_PROFILE_CARD.EDIT'))
             .toBeInTheDocument()
-        await userEvent.click(screen.getByTestId('EDITABLE_PROFILE_CARD.EDIT'))
+        userEvent.click(screen.getByTestId('EDITABLE_PROFILE_CARD.EDIT'))
         expect(screen.queryByTestId('EDITABLE_PROFILE_CARD.CANCEL'))
             .toBeInTheDocument()
     })
 
     it('cancel all changes after cancel button clicked', async () => {
-        customComponentRender(<EditableProfileCard id={ '1' }/>, options)
-        await userEvent.click(screen.getByTestId('EDITABLE_PROFILE_CARD.EDIT'))
+        customComponentRender(<EditableProfileCard id={'1'} />, options)
+        userEvent.click(screen.getByTestId('EDITABLE_PROFILE_CARD.EDIT'))
 
-        await userEvent.clear(screen.getByTestId('EDITABLE_PROFILE_CARD.FIRSTNAME'))
-        await userEvent.clear(screen.getByTestId('EDITABLE_PROFILE_CARD.LASTNAME'))
+        userEvent.clear(screen.getByTestId('EDITABLE_PROFILE_CARD.FIRSTNAME'))
+        userEvent.clear(screen.getByTestId('EDITABLE_PROFILE_CARD.LASTNAME'))
 
-        await userEvent.type(screen.getByTestId('EDITABLE_PROFILE_CARD.FIRSTNAME'), 'Alex')
-        await userEvent.type(screen.getByTestId('EDITABLE_PROFILE_CARD.LASTNAME'), 'Bond')
+        userEvent.type(screen.getByTestId('EDITABLE_PROFILE_CARD.FIRSTNAME'), 'Alex')
+        userEvent.type(screen.getByTestId('EDITABLE_PROFILE_CARD.LASTNAME'), 'Bond')
 
         expect(screen.queryByTestId('EDITABLE_PROFILE_CARD.FIRSTNAME'))
             .toHaveValue('Alex')
         expect(screen.queryByTestId('EDITABLE_PROFILE_CARD.LASTNAME'))
             .toHaveValue('Bond')
 
-        await userEvent.click(screen.getByTestId('EDITABLE_PROFILE_CARD.CANCEL'))
+        userEvent.click(screen.getByTestId('EDITABLE_PROFILE_CARD.CANCEL'))
 
         expect(screen.queryByTestId('EDITABLE_PROFILE_CARD.FIRSTNAME'))
             .toHaveValue('Kirill')
@@ -82,17 +82,17 @@ describe('EditableProfileCard', () => {
     })
 
     it('display errors', async () => {
-        customComponentRender(<EditableProfileCard id={ '1' }/>, options)
+        customComponentRender(<EditableProfileCard id={'1'} />, options)
         expect(screen.queryByTestId('EDITABLE_PROFILE_CARD.EDIT'))
             .toBeInTheDocument()
-        await userEvent.click(screen.getByTestId('EDITABLE_PROFILE_CARD.EDIT'))
+        userEvent.click(screen.getByTestId('EDITABLE_PROFILE_CARD.EDIT'))
 
-        await userEvent.clear(screen.getByTestId('EDITABLE_PROFILE_CARD.FIRSTNAME'))
+        userEvent.clear(screen.getByTestId('EDITABLE_PROFILE_CARD.FIRSTNAME'))
 
         expect(screen.getByTestId('EDITABLE_PROFILE_CARD.SAVE'))
             .toBeInTheDocument()
 
-        await userEvent.click(screen.getByTestId('EDITABLE_PROFILE_CARD.SAVE'))
+        userEvent.click(screen.getByTestId('EDITABLE_PROFILE_CARD.SAVE'))
 
         expect(screen.queryByTestId('EDITABLE_PROFILE_CARD.ERROR.PARAGRAPH'))
             .toBeInTheDocument()
@@ -100,10 +100,10 @@ describe('EditableProfileCard', () => {
 
     it('should send PUT request', async () => {
         const mockPutReq = jest.spyOn(api, 'put')
-        customComponentRender(<EditableProfileCard id={ '1' }/>, options)
-        await userEvent.click(screen.getByTestId('EDITABLE_PROFILE_CARD.EDIT'))
-        await userEvent.type(screen.getByTestId('EDITABLE_PROFILE_CARD.FIRSTNAME'), 'Alex')
-        await userEvent.click(screen.getByTestId('EDITABLE_PROFILE_CARD.SAVE'))
+        customComponentRender(<EditableProfileCard id={'1'} />, options)
+        userEvent.click(screen.getByTestId('EDITABLE_PROFILE_CARD.EDIT'))
+        userEvent.type(screen.getByTestId('EDITABLE_PROFILE_CARD.FIRSTNAME'), 'Alex')
+        userEvent.click(screen.getByTestId('EDITABLE_PROFILE_CARD.SAVE'))
         expect(mockPutReq)
             .toHaveBeenCalled()
     })
