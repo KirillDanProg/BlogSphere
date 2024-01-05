@@ -11,16 +11,7 @@
         margin-top: 6px;
         padding: 6px 12px;
         border-radius: 10px;
-        background-color: var(--code-bg);
+        background-color: var(--transparent-bg);
         cursor: pointer;
-    }
-
-    .item {
-        padding: 6px 12px;
-    }
-
-    .trigger {
-        display: flex;
-        align-items: center;
     }
 }

@@ -1,5 +1,4 @@
 import { type FC, memo, useCallback, useState, useMemo } from 'react'
-import { classNames } from 'shared/lib/classNames/classNames'
 import s from './Navbar.module.scss'
 import { AppLink, Button } from 'shared/ui'
 import { ButtonVariant } from 'shared/ui/Button/Button'
@@ -54,8 +53,8 @@ export const Navbar: FC<NavbarProps> = memo((props) => {
     }, [authData, signOutHandler, onOpenHandler, userId, t])
 
     return (
-        <HStack align="center" className={classNames(s.Navbar)}>
-            <div className={classNames(s.links)}>
+        <HStack align="center" className={s.Navbar}>
+            <div className={s.links}>
                 <Dropdown
                     direction="bottom right"
                     className={s.authBtn}

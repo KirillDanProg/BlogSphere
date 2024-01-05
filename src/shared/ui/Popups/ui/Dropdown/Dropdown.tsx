@@ -37,40 +37,40 @@ export const Dropdown: FC<DropdownProps> = (props) => {
     return (
         <Menu
             as="div"
-            className={ classNames(s.Dropdown, {}, [className, popupStyles.popup]) }>
-            <Menu.Button className={ classNames(s.trigger, {}, [popupStyles.trigger]) }>
+            className={classNames(s.Dropdown, {}, [className])}>
+            <Menu.Button className={popupStyles.trigger}>
                 {trigger}
             </Menu.Button>
             <Menu.Items
-                className={ classNames(s.menu, {}, classes) }
+                className={classNames(s.menu, {}, classes)}
             >
                 {
                     items.map((item, index) => {
                         const content = ({ active }: { active: boolean }) => (
                             <Button
-                                variant={ ButtonVariant.NO_HOVER }
-                                className={ classNames(s.item, { [s.active]: active }, []) }
+                                variant={ButtonVariant.NO_HOVER}
+                                className={classNames(popupStyles.item, { [s.active]: active }, [])}
                                 type="button"
-                                disabled={ item.disabled }
-                                onClick={ item.onClick }
+                                disabled={item.disabled}
+                                onClick={item.onClick}
                             >
                                 {item.content}
                             </Button>
                         )
                         if (item.href) {
                             return <Menu.Item
-                                to={ item.href }
-                                key={ index }
-                                as={ AppLink }
-                                disabled={ item.disabled }
+                                to={item.href}
+                                key={index}
+                                as={AppLink}
+                                disabled={item.disabled}
                             >
                                 {content}
                             </Menu.Item>
                         }
                         return <Menu.Item
-                            key={ index }
-                            as={ Fragment }
-                            disabled={ item.disabled }
+                            key={index}
+                            as={Fragment}
+                            disabled={item.disabled}
                         >
                             {content}
                         </Menu.Item>
