@@ -18,47 +18,54 @@ export const ArticleListItemSkeleton: FC<ArticleListItemProps> = (props) => {
 
     if (view === ArticleView.LIST) {
         return (
-            <Card className={ classNames(s.ArticleListItem, {}, [className, s[view]]) }>
-                <div className={ s.header }>
-                    <Skeleton width={ 40 } height={ 40 }/>
+            <Card className={classNames(s.ArticleListItem, {}, [className, s[view]])}>
+                <div className={s.header}>
+                    <Skeleton width={40} height={40} />
                     <Skeleton
-                        className={ s.userName }
-                        width={ 100 } height={ 16 }
+                        width={100} height={16}
                     />
                     <Skeleton
-                        width={ 60 } height={ 16 }
-                        className={ s.date }/>
+                        width={60} height={16}
+                    />
                 </div>
                 <Skeleton
-                    className={ s.title }
-                    width={ 400 } height={ 40 }
+                    width={400} height={40}
                 />
-                <Skeleton width={ 200 } height={ 20 } className={ s.tags }/>
+                <Skeleton width={200} height={20} />
                 <Skeleton
-                    width={ '100%' }
-                    height={ 700 }
-                    className={ s.textBlock }
+                    width={'100%'}
+                    height={700}
+                    className={s.textBlock}
                 />
             </Card>
         )
     }
 
     return (
-        <Card className={ classNames(s.ArticleListItem, {}, [className, s[view]]) }>
-            <Skeleton width={ '100%' } height={ '80%' } borderRadius={ 20 } className={ s.imgWrapper }/>
-            <div className={ s.infoWrapper }>
-                <Skeleton width={ 150 } height={ 20 } className={ s.tags }/>
+        <Card className={classNames(s.ArticleListItem, {}, [className, s[view]])}>
+            <Skeleton width={'100%'} height={'80%'} borderRadius={20} className={s.imgWrapper} />
+            <div style={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                justifyContent: 'space-between',
+                gap: '8px',
+                margin: '12px 0'
+            }}>
+                <Skeleton width={'50%'} height={20} />
 
-                <Skeleton className={ s.views } width={ 50 } height={ 16 }/>
+                <Skeleton className={s.views} width={50} height={16} />
 
                 <Skeleton
-                    className={ s.viewIcon }
+                    width={'60%'} height={24}
                 />
+
+                <div style={{ width: '100%', marginLeft: '70%' }}>
+                    <Skeleton
+                        height={16}
+                        width={90}
+                    />
+                </div>
             </div>
-            <Skeleton
-                width={ 250 } height={ 24 }
-                className={ s.title }
-            />
         </Card>
     )
 }

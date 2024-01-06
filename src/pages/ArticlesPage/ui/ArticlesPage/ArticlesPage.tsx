@@ -29,12 +29,14 @@ const ArticlesPage: FC<ArticlesPageProps> = (props) => {
     }
 
     return (
-        <DynamicModuleLoader reducers={ asyncReducers } removeAfterUnmount={ false }>
+        <DynamicModuleLoader reducers={asyncReducers} removeAfterUnmount={false}>
             <Page
-                className={ classNames(s.ArticlesPage) }
+                className={classNames(s.ArticlesPage)}
             >
-                <ArticlesPageFilters view={ currentArticlesViewMode }/>
-                <ArticleInfinitScroll/>
+                <ArticlesPageFilters view={currentArticlesViewMode} className={s.articlesFilters} />
+                <div className={s.articlesListContainer}>
+                    <ArticleInfinitScroll />
+                </div>
             </Page>
         </DynamicModuleLoader>
     )

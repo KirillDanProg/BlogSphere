@@ -20,8 +20,10 @@
         font-size: 20px;
         color: var(--secondary-color);
         border: none;
+        border-radius: 8px;
         outline: none;
         background: transparent;
+        box-shadow: inset rgb(203, 203, 203) 0px 0px 4px 1px; 
 
         &:focus ~ label {
             top: 32px;

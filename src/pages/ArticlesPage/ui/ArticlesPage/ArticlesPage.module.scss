@@ -1,4 +1,7 @@
 .ArticlesPage {
-    padding: 10px 10px 120px 35px;
     overflow-y: hidden;
+
+    .articlesListContainer {
+        height: 94%;
+    }
 }

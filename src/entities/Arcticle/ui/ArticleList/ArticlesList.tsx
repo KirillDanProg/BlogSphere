@@ -29,17 +29,17 @@ export const ArticlesList: FC<ArticleListProps> = (props) => {
     } = props
 
     if (isLoading) {
-        return <Loader/>
+        return <Loader />
     }
 
     const renderArticles = (index: number) => {
         return (
             <ArticleListItem
-                key={ articles[index]._id }
-                article={ articles[index] }
-                view={ view }
-                target={ target }
-                style={ { marginBottom: '70px' } }
+                key={articles[index]._id}
+                article={articles[index]}
+                view={view}
+                target={target}
+                style={{ marginBottom: '70px' }}
             />
         )
     }
@@ -50,47 +50,44 @@ export const ArticlesList: FC<ArticleListProps> = (props) => {
                     ? articles.map(article => {
                         return (
                             <ArticleListItem
-                                key={ article._id }
-                                article={ article }
-                                view={ view }
-                                target={ target }
-                                style={ { marginBottom: '70px' } }
+                                key={article._id}
+                                article={article}
+                                view={view}
+                                target={target}
+                                style={{ marginBottom: '70px' }}
                             />
                         )
                     })
                     : (
                         view === ArticleView.LIST
                             ? <Virtuoso
-                                style={ { height: '100%' } }
-                                totalCount={ articles.length }
-                                itemContent={ renderArticles }
-                                components={ {
+                                style={{ height: '100%' }}
+                                totalCount={articles.length}
+                                itemContent={renderArticles}
+                                components={{
                                     Footer: () => {
-                                        return <ArticleListItemSkeleton view={ ArticleView.LIST }/>
+                                        return <ArticleListItemSkeleton view={ArticleView.LIST} />
                                     }
-                                } }
-                                className={ s.LIST }
-                                endReached={ onScrollEnd }
+                                }}
+                                className={s.LIST}
+                                endReached={onScrollEnd}
                             />
                             : <VirtuosoGrid
-                                style={ {
-                                    height: '100%'
-                                } }
-                                listClassName={ s.GRID }
-                                totalCount={ articles.length }
-                                itemContent={ renderArticles }
-                                endReached={ onScrollEnd }
-                                components={ {
+                                listClassName={s.GRID}
+                                totalCount={articles.length}
+                                itemContent={renderArticles}
+                                endReached={onScrollEnd}
+                                components={{
                                     ScrollSeekPlaceholder: () => {
                                         return (
-                                            <ArticleListItemSkeleton view={ view }/>
+                                            <ArticleListItemSkeleton view={ArticleView.GRID} />
                                         )
                                     }
-                                } }
-                                scrollSeekConfiguration={ {
+                                }}
+                                scrollSeekConfiguration={{
                                     enter: velocity => Math.abs(velocity) > 150,
                                     exit: velocity => Math.abs(velocity) < 30
-                                } }
+                                }}
                             />
                     )
             }

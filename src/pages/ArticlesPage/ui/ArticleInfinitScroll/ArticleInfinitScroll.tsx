@@ -32,10 +32,10 @@ export const ArticleInfinitScroll: FC<ArticleInfinitScrollProps> = (props) => {
     })
     return (
         <ArticlesList
-            onScrollEnd={ onFetchNextPage }
-            status={ status }
-            view={ currentArticlesViewMode }
-            articles={ articles || [] }
+            onScrollEnd={onFetchNextPage}
+            status={status}
+            view={currentArticlesViewMode}
+            articles={articles || []}
         />
     )
 }

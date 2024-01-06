@@ -50,13 +50,14 @@ export const Page: FC<PageProps> = (props) => {
     })
     return (
         <section
-            ref={ wrapperRef }
-            onScroll={ throttledScroll }
-            className={ classNames(s.Page, {}, [className]) }>
+            ref={wrapperRef}
+            onScroll={throttledScroll}
+            className={classNames(s.Page, {}, [className])}>
             {children}
             <div
-                className={ s.trigger }
-                ref={ triggerRef }/>
+                className={s.trigger}
+                ref={triggerRef}
+            />
         </section>
     )
 }
